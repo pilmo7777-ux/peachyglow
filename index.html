@@ -1,0 +1,1244 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Peachy Glow ♡ Bracelets, Squishies & Candy</title>
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&family=Pacifico&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --pink:       #ff91b4;
+      --pink-light: #ffd6e7;
+      --pink-pale:  #fff0f6;
+      --pink-dark:  #e8629a;
+      --peach:      #ffb997;
+      --gold:       #f7c948;
+      --white:      #ffffff;
+      --text:       #7a3f5e;
+      --text-light: #b07090;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Nunito', sans-serif;
+      background: var(--pink-pale);
+      color: var(--text);
+      overflow-x: hidden;
+    }
+
+    /* ── ANNOUNCEMENT BAR ── */
+    .announce {
+      background: var(--pink);
+      color: #fff;
+      text-align: center;
+      padding: 8px 16px;
+      font-size: .85rem;
+      font-weight: 700;
+      letter-spacing: .3px;
+    }
+    .announce span { margin: 0 6px; }
+
+    /* ── HEADER ── */
+    header {
+      background: #fff;
+      position: sticky;
+      top: 0;
+      z-index: 200;
+      box-shadow: 0 2px 12px #ffb6c140;
+    }
+
+    .header-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 70px;
+      gap: 16px;
+    }
+
+    .logo {
+      font-family: 'Pacifico', cursive;
+      font-size: 1.6rem;
+      color: var(--pink);
+      text-decoration: none;
+      white-space: nowrap;
+      flex-shrink: 0;
+    }
+    .logo span { color: var(--peach); }
+
+    nav { display: flex; gap: 4px; }
+    nav a {
+      color: var(--text);
+      text-decoration: none;
+      font-weight: 700;
+      font-size: .9rem;
+      padding: 6px 14px;
+      border-radius: 999px;
+      transition: background .2s, color .2s;
+      white-space: nowrap;
+    }
+    nav a:hover, nav a.active {
+      background: var(--pink-light);
+      color: var(--pink-dark);
+    }
+
+    .header-actions { display: flex; gap: 12px; align-items: center; }
+    .icon-btn {
+      background: none;
+      border: none;
+      cursor: pointer;
+      font-size: 1.3rem;
+      color: var(--text);
+      position: relative;
+      padding: 4px;
+      transition: transform .2s;
+    }
+    .icon-btn:hover { transform: scale(1.15); color: var(--pink); }
+
+    .cart-badge {
+      position: absolute;
+      top: -4px; right: -6px;
+      background: var(--pink);
+      color: #fff;
+      font-size: .65rem;
+      font-weight: 800;
+      min-width: 18px;
+      height: 18px;
+      border-radius: 999px;
+      display: flex; align-items: center; justify-content: center;
+      padding: 0 4px;
+      display: none;
+    }
+    .cart-badge.show { display: flex; }
+
+    /* ── HERO ── */
+    .hero {
+      background: linear-gradient(135deg, #ffd6e7 0%, #ffe8f4 40%, #ffebd6 100%);
+      position: relative;
+      overflow: hidden;
+      padding: 60px 24px 80px;
+    }
+    .hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image:
+        radial-gradient(circle, #ff91b430 1px, transparent 1px);
+      background-size: 28px 28px;
+      pointer-events: none;
+    }
+
+    .hero-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      gap: 48px;
+    }
+
+    .hero-text { flex: 1; }
+    .hero-text h1 {
+      font-size: clamp(2rem, 5vw, 3.4rem);
+      font-weight: 900;
+      color: var(--pink-dark);
+      line-height: 1.15;
+      margin-bottom: 16px;
+    }
+    .hero-text h1 em {
+      font-style: normal;
+      color: var(--pink);
+      text-shadow: 2px 2px 0 #fff;
+    }
+    .hero-text p {
+      font-size: 1.1rem;
+      color: var(--text-light);
+      margin-bottom: 28px;
+      max-width: 360px;
+    }
+
+    .btn-primary {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--pink);
+      color: #fff;
+      font-family: 'Nunito', sans-serif;
+      font-weight: 800;
+      font-size: 1rem;
+      padding: 14px 32px;
+      border-radius: 999px;
+      border: none;
+      cursor: pointer;
+      text-decoration: none;
+      box-shadow: 0 4px 18px #ff91b460;
+      transition: transform .2s, box-shadow .2s;
+    }
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 24px #ff91b480;
+    }
+
+    .hero-emojis {
+      flex: 1;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+      max-width: 380px;
+    }
+    .hero-emoji-card {
+      background: #fff;
+      border-radius: 20px;
+      padding: 20px 12px;
+      text-align: center;
+      font-size: 2.8rem;
+      box-shadow: 0 4px 20px #ffb6c130;
+      transition: transform .25s;
+    }
+    .hero-emoji-card:hover { transform: translateY(-6px) rotate(3deg); }
+    .hero-emoji-card span { display: block; font-size: .7rem; font-weight: 800; color: var(--text-light); margin-top: 6px; }
+
+    /* floating sparkles */
+    .sparkle {
+      position: absolute;
+      pointer-events: none;
+      font-size: 1.4rem;
+      animation: floatSpark 4s ease-in-out infinite;
+    }
+    @keyframes floatSpark {
+      0%, 100% { transform: translateY(0) rotate(0deg); opacity: .7; }
+      50% { transform: translateY(-16px) rotate(20deg); opacity: 1; }
+    }
+
+    /* wave divider */
+    .wave {
+      width: 100%;
+      line-height: 0;
+      display: block;
+      margin-top: -2px;
+    }
+
+    /* ── CATEGORIES ── */
+    .categories {
+      background: #fff;
+      padding: 40px 24px;
+    }
+    .categories-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: flex;
+      gap: 16px;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+    .cat-card {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 10px;
+      cursor: pointer;
+      text-decoration: none;
+      color: var(--text);
+      padding: 18px 24px;
+      border-radius: 18px;
+      border: 2px solid var(--pink-light);
+      background: var(--pink-pale);
+      transition: border-color .2s, transform .2s, background .2s;
+      min-width: 110px;
+    }
+    .cat-card:hover {
+      border-color: var(--pink);
+      background: var(--pink-light);
+      transform: translateY(-4px);
+    }
+    .cat-card .cat-icon { font-size: 2.2rem; }
+    .cat-card .cat-name { font-weight: 800; font-size: .85rem; }
+
+    /* ── SECTION HEADINGS ── */
+    .section-heading {
+      text-align: center;
+      font-size: 1.7rem;
+      font-weight: 900;
+      color: var(--pink-dark);
+      margin-bottom: 32px;
+    }
+    .section-heading::before,
+    .section-heading::after { content: ' ♡ '; color: var(--pink); }
+
+    /* ── PRODUCTS ── */
+    .products-section {
+      padding: 52px 24px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    .products-section + .products-section { padding-top: 0; }
+
+    .products-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      gap: 20px;
+    }
+
+    .product-card {
+      background: #fff;
+      border-radius: 20px;
+      overflow: hidden;
+      box-shadow: 0 3px 16px #ffb6c120;
+      transition: transform .25s, box-shadow .25s;
+      position: relative;
+    }
+    .product-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 10px 28px #ff91b430;
+    }
+
+    .product-badge {
+      position: absolute;
+      top: 12px; left: 12px;
+      background: var(--pink);
+      color: #fff;
+      font-size: .7rem;
+      font-weight: 800;
+      padding: 3px 10px;
+      border-radius: 999px;
+      z-index: 1;
+    }
+    .product-badge.sale { background: #ff6b6b; }
+
+    .product-img {
+      width: 100%;
+      aspect-ratio: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 4rem;
+      background: linear-gradient(135deg, #ffd6e7, #ffe8f4);
+    }
+
+    .product-info { padding: 14px 16px 18px; }
+    .product-name {
+      font-weight: 800;
+      font-size: .95rem;
+      color: var(--pink-dark);
+      margin-bottom: 4px;
+    }
+    .product-price {
+      font-weight: 700;
+      font-size: 1rem;
+      color: var(--text);
+      margin-bottom: 10px;
+    }
+    .stars { color: var(--gold); font-size: .85rem; margin-bottom: 12px; }
+
+    .product-desc {
+      font-size: .78rem;
+      color: var(--text-light);
+      margin-bottom: 8px;
+      line-height: 1.4;
+    }
+
+    .product-desc {
+      font-size: .82rem;
+      color: var(--text-light);
+      font-weight: 600;
+      margin-bottom: 8px;
+      line-height: 1.45;
+    }
+
+    .btn-cart {
+      width: 100%;
+      background: var(--pink);
+      color: #fff;
+      border: none;
+      border-radius: 999px;
+      padding: 10px 0;
+      font-family: 'Nunito', sans-serif;
+      font-weight: 800;
+      font-size: .85rem;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      transition: background .2s, transform .15s;
+    }
+    .btn-cart:hover { background: var(--pink-dark); transform: scale(1.03); }
+    .btn-cart:active { transform: scale(.97); }
+
+    /* ── PERKS STRIP ── */
+    .perks {
+      background: linear-gradient(90deg, #ffd6e7, #ffe8f4, #ffd6e7);
+      padding: 32px 24px;
+    }
+    .perks-inner {
+      max-width: 1000px;
+      margin: 0 auto;
+      display: flex;
+      gap: 24px;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+    .perk {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 8px;
+      text-align: center;
+      min-width: 140px;
+    }
+    .perk-icon { font-size: 2.2rem; }
+    .perk-title { font-weight: 900; font-size: .9rem; color: var(--pink-dark); }
+    .perk-sub { font-size: .8rem; color: var(--text-light); }
+
+    /* ── FOOTER ── */
+    footer {
+      background: #fff;
+      border-top: 2px solid var(--pink-light);
+      padding: 40px 24px 24px;
+      text-align: center;
+      color: var(--text-light);
+      font-size: .85rem;
+    }
+    footer .footer-logo {
+      font-family: 'Pacifico', cursive;
+      font-size: 1.8rem;
+      color: var(--pink);
+      margin-bottom: 12px;
+    }
+    footer .footer-links { display: flex; gap: 20px; justify-content: center; flex-wrap: wrap; margin-bottom: 16px; }
+    footer .footer-links a { color: var(--text-light); text-decoration: none; font-weight: 700; transition: color .2s; }
+    footer .footer-links a:hover { color: var(--pink); }
+    footer .footer-copy { margin-top: 16px; font-size: .78rem; }
+
+    /* ── CART DRAWER ── */
+    .cart-overlay {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: #0004;
+      z-index: 999;
+    }
+    .cart-overlay.open { display: block; }
+
+    .cart-drawer {
+      position: fixed;
+      top: 0; right: 0;
+      width: min(380px, 100vw);
+      height: 100%;
+      background: #fff;
+      z-index: 1000;
+      display: flex;
+      flex-direction: column;
+      transform: translateX(100%);
+      transition: transform .35s cubic-bezier(.4,0,.2,1);
+      box-shadow: -4px 0 32px #00000020;
+    }
+    .cart-drawer.open { transform: translateX(0); }
+
+    .cart-header {
+      padding: 20px 24px;
+      border-bottom: 2px solid var(--pink-light);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .cart-header h2 { font-size: 1.2rem; font-weight: 900; color: var(--pink-dark); }
+    .cart-close { font-size: 1.5rem; background: none; border: none; cursor: pointer; color: var(--text); transition: color .2s; }
+    .cart-close:hover { color: var(--pink); }
+
+    .cart-items { flex: 1; overflow-y: auto; padding: 16px 24px; }
+
+    .cart-empty {
+      text-align: center;
+      padding: 60px 20px;
+      color: var(--text-light);
+    }
+    .cart-empty .empty-icon { font-size: 3rem; margin-bottom: 12px; }
+    .cart-empty p { font-weight: 700; }
+
+    .cart-item {
+      display: flex;
+      gap: 14px;
+      align-items: center;
+      padding: 14px 0;
+      border-bottom: 1px solid var(--pink-light);
+    }
+    .cart-item-img { font-size: 2.4rem; background: var(--pink-pale); border-radius: 12px; width: 56px; height: 56px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+    .cart-item-info { flex: 1; }
+    .cart-item-name { font-weight: 800; font-size: .9rem; color: var(--text); }
+    .cart-item-price { font-weight: 700; font-size: .85rem; color: var(--pink); }
+    .cart-item-qty {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-top: 6px;
+    }
+    .qty-btn {
+      background: var(--pink-light);
+      border: none;
+      border-radius: 999px;
+      width: 24px; height: 24px;
+      cursor: pointer;
+      font-size: .9rem;
+      font-weight: 900;
+      color: var(--pink-dark);
+      display: flex; align-items: center; justify-content: center;
+      transition: background .2s;
+    }
+    .qty-btn:hover { background: var(--pink); color: #fff; }
+    .qty-num { font-weight: 800; font-size: .9rem; min-width: 20px; text-align: center; }
+    .cart-remove { background: none; border: none; cursor: pointer; color: #ccc; font-size: 1rem; transition: color .2s; }
+    .cart-remove:hover { color: #ff6b6b; }
+
+    .cart-footer {
+      padding: 20px 24px;
+      border-top: 2px solid var(--pink-light);
+    }
+    .cart-subtotal {
+      display: flex;
+      justify-content: space-between;
+      font-weight: 900;
+      font-size: 1.05rem;
+      margin-bottom: 16px;
+      color: var(--text);
+    }
+    .cart-subtotal span:last-child { color: var(--pink); }
+    .btn-checkout {
+      width: 100%;
+      background: linear-gradient(135deg, var(--pink), var(--pink-dark));
+      color: #fff;
+      border: none;
+      border-radius: 999px;
+      padding: 16px;
+      font-family: 'Nunito', sans-serif;
+      font-weight: 900;
+      font-size: 1rem;
+      cursor: pointer;
+      box-shadow: 0 4px 18px #ff91b450;
+      transition: transform .2s, box-shadow .2s;
+    }
+    .btn-checkout:hover { transform: translateY(-2px); box-shadow: 0 8px 24px #ff91b470; }
+
+    /* toast */
+    .toast {
+      position: fixed;
+      bottom: 32px; left: 50%;
+      transform: translateX(-50%) translateY(80px);
+      background: var(--pink-dark);
+      color: #fff;
+      padding: 12px 24px;
+      border-radius: 999px;
+      font-weight: 800;
+      font-size: .9rem;
+      z-index: 2000;
+      transition: transform .35s cubic-bezier(.4,0,.2,1);
+      white-space: nowrap;
+    }
+    .toast.show { transform: translateX(-50%) translateY(0); }
+
+    /* page sections */
+    .page-section { display: none; }
+    .page-section.active { display: block; }
+
+    @media (max-width: 700px) {
+      nav { display: none; }
+      .hero-inner { flex-direction: column; text-align: center; }
+      .hero-emojis { max-width: 100%; }
+      .hero-text p { max-width: 100%; }
+    }
+
+    /* ── CATEGORY PAGE BANNER ── */
+    .cat-page-banner {
+      padding: 44px 24px 36px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .cat-page-banner::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image: radial-gradient(circle, #ff91b428 1px, transparent 1px);
+      background-size: 26px 26px;
+      pointer-events: none;
+    }
+    .cat-page-banner .cat-big-emoji {
+      font-size: 4rem;
+      display: block;
+      margin-bottom: 10px;
+      animation: floatSpark 3s ease-in-out infinite;
+    }
+    .cat-page-banner h1 {
+      font-family: 'Pacifico', cursive;
+      font-size: clamp(1.8rem, 5vw, 2.6rem);
+      color: var(--pink-dark);
+      margin-bottom: 8px;
+    }
+    .cat-page-banner p {
+      color: var(--text-light);
+      font-weight: 600;
+      font-size: .95rem;
+      margin-bottom: 18px;
+    }
+    .cat-back-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: #fff;
+      border: 2px solid var(--pink-light);
+      color: var(--pink-dark);
+      font-family: 'Nunito', sans-serif;
+      font-weight: 800;
+      font-size: .9rem;
+      padding: 8px 20px;
+      border-radius: 999px;
+      cursor: pointer;
+      transition: background .2s, border-color .2s;
+      text-decoration: none;
+    }
+    .cat-back-btn:hover {
+      background: var(--pink-light);
+      border-color: var(--pink);
+    }
+    .cat-product-count {
+      display: inline-block;
+      background: var(--pink-light);
+      color: var(--pink-dark);
+      font-weight: 800;
+      font-size: .8rem;
+      padding: 4px 14px;
+      border-radius: 999px;
+      margin-left: 10px;
+    }
+  </style>
+</head>
+<body>
+
+<!-- ANNOUNCEMENT BAR -->
+<div class="announce">
+  ♡ <span>FREE shipping on orders over $50!</span> ♡ <span>$10 flat rate shipping</span> ♡ <span>new drops every friday!</span> ♡ <span>💅 spend over $60 & get a FREE nail package!</span>
+</div>
+
+<!-- HEADER -->
+<header>
+  <div class="header-inner">
+    <a class="logo" href="#" onclick="showPage('home')"><img src="images/logo.png" alt="Peachy Glow" style="height:56px; width:auto; display:block;" /></a>
+    <nav id="main-nav">
+      <a href="#" class="active" onclick="showPage('home'); return false;">Home</a>
+      <a href="#" onclick="showPage('squishies'); return false;">Squishies</a>
+      <a href="#" onclick="showPage('candy'); return false;">Candy</a>
+      <a href="#" onclick="showPage('beauty'); return false;">Beauty</a>
+      <a href="#" onclick="showPage('hairclips'); return false;">Hair Clips</a>
+      <a href="#" onclick="showPage('skincare'); return false;">Skincare</a>
+      <a href="#" onclick="showPage('baskets'); return false;">🧺 Baskets</a>
+    </nav>
+    <div class="header-actions">
+      <button class="icon-btn" onclick="openCart()" title="Shopping Cart">
+        🛒
+        <span class="cart-badge" id="cart-badge">0</span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<!-- ======== HOME PAGE ======== -->
+<div id="page-home" class="page-section active">
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="sparkle" style="top:15%;left:8%;animation-delay:0s">✨</div>
+    <div class="sparkle" style="top:60%;left:5%;animation-delay:.8s">⭐</div>
+    <div class="sparkle" style="top:25%;right:6%;animation-delay:.4s">💫</div>
+    <div class="sparkle" style="top:70%;right:9%;animation-delay:1.2s">✨</div>
+    <div class="sparkle" style="top:10%;left:45%;animation-delay:.6s">🌸</div>
+
+    <div class="hero-inner">
+      <div class="hero-text">
+        <h1>cute things<br/><em>glow better</em><br/>with you ♡</h1>
+        <p>Squishies, candy, beauty & hair clips — cute things glow better with you! ♡</p>
+        <a class="btn-primary" href="#" onclick="showPage('squishies'); return false;">
+          Shop Now ♡
+        </a>
+      </div>
+      <div class="hero-emojis">
+        <div class="hero-emoji-card" onclick="showPage('squishies')" style="cursor:pointer;" title="Shop Squishies">🥟<span>Squishies</span></div>
+        <div class="hero-emoji-card" onclick="showPage('candy')" style="cursor:pointer;" title="Shop Candy">🍬<span>Candy</span></div>
+        <div class="hero-emoji-card">✨<span>Glitter</span></div>
+        <div class="hero-emoji-card" onclick="showPage('beauty')" style="cursor:pointer;" title="Shop Beauty">🧊<span>Beauty</span></div>
+        <div class="hero-emoji-card" onclick="showPage('hairclips')" style="cursor:pointer;" title="Shop Hair Clips">🩷<span>Hair Clips</span></div>
+        <div class="hero-emoji-card">🌟<span>New!</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- WAVE -->
+  <svg class="wave" viewBox="0 0 1440 40" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
+    <path d="M0,20 C240,0 480,40 720,20 C960,0 1200,40 1440,20 L1440,40 L0,40 Z" fill="#ffffff"/>
+  </svg>
+
+  <!-- CATEGORIES -->
+  <section class="categories">
+    <div class="categories-inner">
+      <a class="cat-card" href="#" onclick="showPage('squishies'); return false;"><span class="cat-icon">🥟</span><span class="cat-name">Squishies</span></a>
+      <a class="cat-card" href="#" onclick="showPage('candy'); return false;"><span class="cat-icon">🍬</span><span class="cat-name">Candy</span></a>
+      <a class="cat-card" href="#" onclick="showPage('beauty'); return false;"><span class="cat-icon">🧊</span><span class="cat-name">Beauty</span></a>
+      <a class="cat-card" href="#" onclick="showPage('hairclips'); return false;"><span class="cat-icon">🩷</span><span class="cat-name">Hair Clips</span></a>
+      <a class="cat-card" href="#" onclick="showPage('skincare'); return false;"><span class="cat-icon">✨</span><span class="cat-name">Skincare</span></a>
+        <a class="cat-card" href="#" onclick="showPage('baskets'); return false;">
+          <div class="cat-icon">🧺</div>
+          <div class="cat-name">Baskets</div>
+        </a>
+      <a class="cat-card" href="#" onclick="showPage('skincare'); return false;"><span class="cat-icon">🌟</span><span class="cat-name">New Arrivals</span></a>
+      <a class="cat-card" href="#" onclick="showPage('squishies'); return false;"><span class="cat-icon">🎁</span><span class="cat-name">Best Sellers</span></a>
+    </div>
+  </section>
+
+<!-- SQUISHIES SECTION -->
+  <section class="products-section" style="background:linear-gradient(180deg,#fff8fc 0%,#fff0f6 100%);max-width:100%;padding:52px 24px;">
+    <div style="max-width:1200px;margin:0 auto;">
+      <div class="products-grid" id="home-squishies-grid"></div>
+    </div>
+  </section>
+
+  <!-- CANDY SECTION -->
+  <section class="products-section" style="background:linear-gradient(180deg,#fffdf0 0%,#fff9e6 100%);max-width:100%;padding:52px 24px;">
+    <div style="max-width:1200px;margin:0 auto;">
+      <div class="products-grid" id="home-candy-grid"></div>
+    </div>
+  </section>
+
+  <!-- BEAUTY SECTION -->
+  <section class="products-section" style="background:linear-gradient(180deg,#f0f8ff 0%,#e8f4ff 100%);max-width:100%;padding:52px 24px;">
+    <div style="max-width:1200px;margin:0 auto;">
+      <div class="products-grid" id="home-beauty-grid"></div>
+    </div>
+  </section>
+
+  <!-- HAIR CLIPS SECTION -->
+  <section class="products-section" style="background:linear-gradient(180deg,#fdf0ff 0%,#f8e8ff 100%);max-width:100%;padding:52px 24px;">
+    <div style="max-width:1200px;margin:0 auto;">
+      <div class="products-grid" id="home-hairclips-grid"></div>
+    </div>
+  </section>
+  <!-- SKINCARE SECTION -->
+  <section class="products-section" style="background:linear-gradient(180deg,#e8fff0 0%,#f0fff8 100%);max-width:100%;padding:52px 24px;">
+    <div style="max-width:1200px;margin:0 auto;">
+      <div class="products-grid" id="home-baskets-grid"></div>
+    </section>
+    <section class="products-section">
+      <div class="products-grid" id="home-skincare-grid"></div>
+    </div>
+  </section>
+<!-- PERKS -->
+  <section class="perks">
+    <div class="perks-inner">
+      <div class="perk"><span class="perk-icon">🚚</span><span class="perk-title">Free Shipping</span><span class="perk-sub">on orders over $50</span></div>
+      <div class="perk"><span class="perk-icon">♡</span><span class="perk-title">Easy Returns</span><span class="perk-sub">30 day returns</span></div>
+      <div class="perk"><span class="perk-icon">🎀</span><span class="perk-title">Cute Packaging</span><span class="perk-sub">every order</span></div>
+      <div class="perk"><span class="perk-icon">⭐</span><span class="perk-title">Support 24/7</span><span class="perk-sub">we're here for you!</span></div>
+    </div>
+  </section>
+
+</div><!-- /home -->
+
+<!-- ======== SQUISHIES PAGE ======== -->
+<div id="page-squishies" class="page-section">
+  <div class="cat-page-banner" style="background:linear-gradient(135deg,#ffd6e7,#ffe8f4,#ffd6f4);">
+    <span class="cat-big-emoji">🥟</span>
+    <h1>Squishies</h1>
+    <p>Soft, squishy, and totally adorable — squeeze away the stress! ✨<span class="cat-product-count" id="squishies-count"></span></p>
+    <button class="cat-back-btn" onclick="showPage('home')">← Back to Shop</button>
+  </div>
+  <section class="products-section">
+    <div class="products-grid" id="squishies-grid"></div>
+  </section>
+</div>
+
+<!-- ======== CANDY PAGE ======== -->
+<div id="page-candy" class="page-section">
+  <div class="cat-page-banner" style="background:linear-gradient(135deg,#fff3d6,#fff8e8,#ffe8d6);">
+    <span class="cat-big-emoji">🍬</span>
+    <h1>Candy</h1>
+    <p>Peelable, gummy, fruity goodness — your new favorite treat! 🍑<span class="cat-product-count" id="candy-count"></span></p>
+    <button class="cat-back-btn" onclick="showPage('home')">← Back to Shop</button>
+  </div>
+  <section class="products-section">
+    <div class="products-grid" id="candy-grid"></div>
+  </section>
+</div>
+
+<!-- ======== BEAUTY PAGE ======== -->
+<div id="page-beauty" class="page-section">
+  <div class="cat-page-banner" style="background:linear-gradient(135deg,#d6f0ff,#e8f4ff,#f0d6ff);">
+    <span class="cat-big-emoji">💄</span>
+    <h1>Beauty</h1>
+    <p>Glow up with lip gloss, ice rollers & more — you deserve it! 💅<span class="cat-product-count" id="beauty-count"></span></p>
+    <button class="cat-back-btn" onclick="showPage('home')">← Back to Shop</button>
+  </div>
+  <section class="products-section">
+    <div class="products-grid" id="beauty-grid"></div>
+  </section>
+</div>
+
+<!-- ======== HAIR CLIPS PAGE ======== -->
+<div id="page-hairclips" class="page-section">
+  <div class="cat-page-banner" style="background:linear-gradient(135deg,#f4d6ff,#fce8ff,#ffd6f0);">
+    <span class="cat-big-emoji">🎀</span>
+    <h1>Hair Clips</h1>
+    <p>Bows, scrunchies, barrettes & clips — cute hair every day! 🌸<span class="cat-product-count" id="hairclips-count"></span></p>
+    <button class="cat-back-btn" onclick="showPage('home')">← Back to Shop</button>
+  </div>
+  <section class="products-section">
+    <div class="products-grid" id="hairclips-grid"></div>
+  </section>
+</div>
+
+
+<!-- ======== SKINCARE PAGE ======== -->
+<div id="page-baskets" class="page-section">
+  <div class="cat-page-banner" style="background:linear-gradient(135deg,#ffd6e7 0%,#ffe8f4 50%,#ffeef8 100%);">
+    <span class="cat-big-emoji">🧺</span>
+    <h1>Gift Baskets</h1>
+    <p>Curated kawaii bundles — perfect for gifting! 🌸<span class="cat-product-count" id="baskets-count"></span></p>
+    <button class="cat-back-btn" onclick="showPage('home')">← Back to Shop</button>
+  </div>
+  <div class="products-section">
+    <div class="products-grid" id="baskets-grid"></div>
+  </div>
+</div>
+
+<div id="page-skincare" class="page-section">
+  <div class="cat-page-banner" style="background:linear-gradient(135deg,#e8fff0 0%,#f0fff8 50%,#e0f8ff 100%);">
+    <span class="cat-big-emoji">✨</span>
+    <h1>Skincare</h1>
+    <p>Glow up your routine with face masks, eye patches & more! 🌸<span class="cat-product-count" id="skincare-count"></span></p>
+    <button class="cat-back-btn" onclick="showPage('home')">← Back to Shop</button>
+  </div>
+  <section class="products-section">
+    <div class="products-grid" id="skincare-grid"></div>
+  </section>
+</div>
+
+<!-- FOOTER (shared) -->
+<footer>
+  <div class="footer-logo">peachyglow.com</div>
+  <div class="footer-links">
+    <a href="#" onclick="showPage('home'); return false;">Home</a>
+    <a href="#" onclick="showPage('squishies'); return false;">Squishies</a>
+    <a href="#" onclick="showPage('candy'); return false;">Candy</a>
+    <a href="#" onclick="showPage('beauty'); return false;">Beauty</a>
+    <a href="#" onclick="showPage('hairclips'); return false;">Hair Clips</a>
+    <a href="#" onclick="showPage('skincare'); return false;">Skincare</a>
+  </div>
+  <p>Made with ♡ | All things cute, all things glow</p>
+  <p class="footer-copy">© 2026 peachyglow.com · All rights reserved</p>
+</footer>
+
+<!-- CART DRAWER -->
+<div class="cart-overlay" id="cart-overlay" onclick="closeCart()"></div>
+<div class="cart-drawer" id="cart-drawer">
+  <div class="cart-header">
+    <h2>🛒 Your Cart</h2>
+    <button class="cart-close" onclick="closeCart()">✕</button>
+  </div>
+  <div class="cart-items" id="cart-items"></div>
+  <div class="cart-footer" id="cart-footer" style="display:none">
+    <div class="cart-subtotal">
+      <span>Subtotal</span>
+      <span id="cart-total">$0.00</span>
+    </div>
+    <div id="shipping-note" style="font-size:.8rem;font-weight:700;text-align:center;margin:6px 0;padding:6px 10px;border-radius:10px;background:var(--pink-pale);color:var(--pink-dark);"></div>
+    <button class="btn-checkout" onclick="checkout()">Checkout ♡</button>
+  </div>
+</div>
+
+<script>
+// ─── DATA ───────────────────────────────────────────────────────────────────
+const products = {
+  squishies: [
+    { id:'s1', name:'Mystery Dumpling Squishy',    price:12.99, emoji:'🥟', img:'https://i5.walmartimages.com/asr/836f0e8f-282d-41cf-83bb-a90f93ccc7f1.7ec89295d61bbfc2e89658f39bd93ef5.jpeg', badge:'NEW',  rating:5, desc:'Super squishy glitter dumpling! 6 colors — 1 random. Which will YOU get? 🎲' },
+    { id:'s2', name:'Glitter Cube Squishy',         price:7.99,  emoji:'✨', img:'https://i5.walmartimages.com/asr/d6f9e9da-19a7-4a1e-9753-230bb9937da6.846893413ee8fe0b0670650f6a84095e.jpeg',    badge:'NEW',  rating:4, desc:'Satisfying sparkly cube squishy — 1 random color: blue, pink, or purple ✨' },
+    { id:'s3', name:'Mystery Dumpling 3-Pack',      price:22.99, emoji:'🥟', img:'https://i5.walmartimages.com/asr/836f0e8f-282d-41cf-83bb-a90f93ccc7f1.7ec89295d61bbfc2e89658f39bd93ef5.jpeg', badge:'SALE', rating:5, desc:'3 mystery dumpling squishies! Great for gifts or collecting 🎁' },
+    { id:'s5', name:'Kawaii Cat Paw Squishy',       price:9.99, emoji:'🐾', img:'https://i5.walmartimages.com/asr/fe743c38-df4a-49d9-8859-a2d75e7d7935.f842e81b07351ce6e4f2718e87bb77db.jpeg', badge:'',     rating:5, desc:'Giant soft cat paw squishy — super satisfying to squeeze! 🐾 Perfect stress reliever!' },
+    { id:'s6', name:'Face Swap Squishy Toy',        price:10.99, emoji:'😄', img:'https://i5.walmartimages.com/asr/53f2f5d3-906d-4133-95e3-23ce48040cf5.f5061b5d264c6e7b2bb07005475bcc0a.jpeg',badge:'NEW', rating:4, desc:'2026 summer hit! Squeeze it to swap the face — so funny and satisfying 😄✨' },
+    { id:'s7', name:'Glitter Dumpling 12-Pack',      price:11.99, emoji:'🥟', img:'https://i5.walmartimages.com/asr/de6af6ed-8dc3-42ea-89d1-6a9654f38344.e1de4f993f8020c9b9cdda8b8241ab5a.jpeg', badge:'NEW', rating:5, desc:'12 colorful glitter crystal dumpling squishies — stress-busting & super satisfying! 🌈' },
+    { id:'s8', name:'Crystal Dumpling 4-Pack',       price:11.99, emoji:'🥟', img:'https://i5.walmartimages.com/asr/5d28fb3e-0644-4c52-a070-8b9c3cfbdc3b.327ebffa348fa7d5ed207fbc10d0ffcd.jpeg', badge:'',    rating:5, desc:'4 kawaii crystal dumpling squishies — slow rising, super soft & adorable! 🥟💕' },
+        { id:'s10', name:'Jumbo Butter Squishy', price:9.99, emoji:'🧈', img:'https://i5.walmartimages.com/seo/2026-New-Pink-Jumbo-Butter-Squishies-14oz-Butter-Stick-Squishy-Squeezy-Butter-Shape-Stress-Ball-Slow-Rising-Food-Fidget-Toy-Stress-Relief-Anxiety-Rel_cd7f1a46-d9c5-4486-86f5-c18199f7f249.dc653cd64933e83a52dd47749bc20775.jpeg', badge:'NEW', rating:5, desc:'Giant pink slow-rising butter squishy — super satisfying to squeeze! 🧈💕 2026 viral hit!' },
+    { id:'s9', name:'Kawaii Dumpling Squishy',         price:12.99,  emoji:'🥟', img:'https://i5.walmartimages.com/asr/ad2b3a01-c8f2-4088-a025-dc150a99beb6.a1f434670f0ddb383626a3f86f5901e8.jpeg', badge:'NEW',  rating:5, desc:'Super cute slow-rising kawaii dumpling squishy with adorable face — so satisfying! 🥟✨' },
+  ],
+  candy: [
+    { id:'c1', name:'PeelerZ Gummies – 1 Pack',    price:4.99,  emoji:'🍑', img:'https://i5.walmartimages.com/asr/4b62cae9-7d8b-4f79-9525-8827d9ae7641.afbb56bafc76a8d80554be2856ea2093.jpeg',         badge:'NEW',  rating:5, desc:'One pack of exotic peelable gummies — Mango, Peach, Banana & more! 🍑' },
+    { id:'c2', name:'PeelerZ Gummies – Variety Bag',price:7.99, emoji:'🍬', img:'https://i5.walmartimages.com/asr/4b62cae9-7d8b-4f79-9525-8827d9ae7641.afbb56bafc76a8d80554be2856ea2093.jpeg',         badge:'',     rating:5, desc:'Bigger variety bag packed with peelable gummies — great for sharing! 😋' },
+    { id:'c3', name:'PeelerZ 10-Pack Gift Box',     price:14.99, emoji:'🎁', img:'https://i5.walmartimages.com/asr/4b62cae9-7d8b-4f79-9525-8827d9ae7641.afbb56bafc76a8d80554be2856ea2093.jpeg', badge:'',     rating:5, desc:'10 individual packs in one box — the ultimate PeelerZ gift set! 🎀' },
+    { id:'c4', name:'4D Mango Peelable Gummies',    price:4.99,  emoji:'🥭', img:'https://i5.walmartimages.com/asr/13bc959a-debf-4287-b759-e1296c7a71fe.d77222086883372ba1220e129361da98.jpeg',   badge:'NEW',  rating:4, desc:'Peel the outer layer to reveal a soft jelly inside — just like real fruit! 🥭 So fun!' },
+    { id:'c5', name:'Peelable Gummies 3-Pack',      price:11.99, emoji:'🍈', img:'https://i5.walmartimages.com/asr/4b62cae9-7d8b-4f79-9525-8827d9ae7641.afbb56bafc76a8d80554be2856ea2093.jpeg', badge:'',     rating:5, desc:'3 resealable bags of mixed peelable gummies — great deal for candy lovers! 🍬' },
+    { id:'c6', name:'PeelerZ Watermelon',            price:4.99,  emoji:'🍉', img:'https://i5.walmartimages.com/asr/1843363f-7ded-49ce-8a60-61fb86a19b21.5bcbac1fd0cf0d9764ed64c5392420b9.jpeg',  badge:'NEW',  rating:5, desc:'Peelable watermelon gummies — peel the layers for a juicy fruity surprise! 🍉😋' },
+    { id:'c7', name:'PeelerZ Chili Mango',           price:4.99,  emoji:'🥭', img:'https://i5.walmartimages.com/asr/9b3bb794-e5a5-43e3-9161-32fb704565e2.ebfa1fc22da6660e1436a15c5a763430.jpeg',  badge:'🌶️HOT', rating:4, desc:'Spicy chili mango peelable gummies — sweet, tangy & a little spicy! 🥭🌶️ So addicting!' },
+    { id:'c8', name:'PeelerZ Lychee',                 price:4.99,  emoji:'🍈', img:'https://i5.walmartimages.com/asr/f4b386f1-2652-45d3-a97c-71567297e9ae.90b7b80ac701137d0d2698cc1ebd116b.jpeg',  badge:'NEW',    rating:5, desc:'Sweet & floral lychee peelable gummies — peel the layers for a tropical surprise! 🍈✨' },
+  ],
+  beauty: [
+    { id:'b1', name:'Silicone Ice Roller (1 pc)',  price:7.99,  emoji:'🧊', img:'https://i5.walmartimages.com/asr/03bc1c47-5971-4335-ad0b-6e7336f796ea.fff810df64a57571d2a1e6fd2eee6809.jpeg',       badge:'NEW',  rating:5, desc:'Freeze & roll on your face for glowing skin! Super trendy beauty tool 🧊✨' },
+    { id:'b2', name:'Ice Roller Bundle – 2 Pack',  price:12.99, emoji:'🧊', img:'https://i5.walmartimages.com/asr/03bc1c47-5971-4335-ad0b-6e7336f796ea.fff810df64a57571d2a1e6fd2eee6809.jpeg',       badge:'SALE', rating:5, desc:'Two ice rollers — keep one, gift one! Great value 💕' },
+    { id:'b3', name:'Pink Lip Gloss',              price:7.99,  emoji:'💄', img:'https://i5.walmartimages.com/asr/be56e71c-cba5-4bb7-9c96-cd90c13ac6b1.3bfeca806f77ffd39029c2b76d41e846.jpeg',        badge:'NEW',  rating:5, desc:'Shiny pink lip gloss that keeps lips soft & glossy all day 💄 So pretty!' },
+    { id:'b4', name:'16-Pc Lip Gloss Kit',         price:17.99, emoji:'💗', img:'https://i5.walmartimages.com/asr/683ac997-55d0-414d-baae-e3327befa5bc.32520e74d091363a90b2e5c0bca03471.jpeg',    badge:'NEW',  rating:5, desc:'16 shimmery lip glosses in one cute kit — perfect gift for any girl! 💗✨' },
+        { id:'b6', name:'Strawberry Overnight Lip Mask', price:6.99, emoji:'🍓', img:'https://i5.walmartimages.com/seo/Tree-Hut-Strawberry-Hydrating-Overnight-Lip-Mask-0-6-oz_9c13fcd3-2d11-4e68-91d6-5f0e2c32219c.25cc6ab4eccd89a085e5274ec5ccf02c.png', badge:'NEW', rating:5, desc:'Hydrating strawberry overnight lip mask — wake up with soft, plump, kissable lips! 🍓💋' },
+    { id:'b7', name:'Vanilla Plump & Repair Lip Mask', price:5.99, emoji:'💋', img:'https://i5.walmartimages.com/seo/Vitamasques-Overnight-Lip-Mask-Plump-Repair-for-All-Skin-Types-Vanilla-One-Count-10-ml_833bfb27-d790-42b1-bbed-b4db08344ea1.cbeb3224ef5641954f5cdf379f544973.jpeg', badge:'NEW', rating:4, desc:'Vanilla scented overnight lip mask that plumps & repairs while you sleep! 💋✨' },
+    { id:'b5', name:'Lip Plumper Gloss',           price:7.99,  emoji:'💋', img:'https://i5.walmartimages.com/asr/a4df6b02-3423-426f-9bf5-fdd227b4f1b5.550e9fb8fd0dee2ce96e24945d6ac2a3.jpeg',      badge:'',     rating:4, desc:'Hydrating lip plumper gloss with a pretty pink tint — plump & glossy lips! 💋' },
+  ],
+  hairclips: [
+    { id:'h1', name:'8-Pc Mermaid Seashell Clips', price:7.50, emoji:'🐚', img:'https://i5.walmartimages.com/asr/8d75a98e-e34b-4d65-8ba2-af70ed5feff7.1e70c9d40fa095279b2216599248dd70.jpeg',      badge:'NEW',  rating:5, desc:'8 cute mermaid & seashell hair clips — perfect for summer & beach vibes! 🌊' },
+    { id:'h2', name:'4-Pc Starfish Hair Clips',    price:7.50,  emoji:'⭐', img:'https://i5.walmartimages.com/asr/8d75a98e-e34b-4d65-8ba2-af70ed5feff7.1e70c9d40fa095279b2216599248dd70.jpeg',       badge:'',     rating:5, desc:'4 adorable starfish clips — great for beach days & everyday cute looks! 🌟' },
+    { id:'h3', name:'5-Pc Kawaii Mermaid Clips',   price:7.50, emoji:'🩷', img:'https://i5.walmartimages.com/asr/8d75a98e-e34b-4d65-8ba2-af70ed5feff7.1e70c9d40fa095279b2216599248dd70.jpeg',       badge:'',     rating:5, desc:'5-piece set of super cute mermaid shell hair clips — girls love these! 🩷' },
+    { id:'h4', name:'Scrunchie Set (10-Pc)',        price:7.99, emoji:'🎀', img:'https://i5.walmartimages.com/asr/4cc76f3a-4fc3-4338-abed-8b1aaac04b28.f461549b46f579c27b787f38d04e9321.jpeg',       badge:'NEW',  rating:5, desc:'10 super cute scrunchies in all the prettiest colors — perfect for any hairstyle! 🎀' },
+    { id:'h5', name:'Bow Hair Clips Set',           price:7.50,  emoji:'🎀', img:'https://i5.walmartimages.com/asr/513859c1-6e7a-4ce7-981a-9adb61458263.f05a41015bcfc57316b8cb175d2d833c.jpeg',        badge:'',     rating:5, desc:'Set of cute satin ribbon bow hair clips — the coquette look everyone loves! 🎀💕' },
+    { id:'h6', name:'Bling Glitter Hair Barrettes', price:7.50,  emoji:'✨', img:'https://i5.walmartimages.com/asr/6f055ec6-e319-42a9-b9e4-37abf63555f1.f7b58e1000b8b91ab744e82c8f1028f7.jpeg',        badge:'NEW',  rating:5, desc:'Sparkly glitter snap barrettes — add some shine to any hairstyle! ✨💫' },
+  ],
+  baskets: [
+    { id:'bk1', name:'Squishy Lover Basket', price:19.99, emoji:'🧺', img:'https://i5.walmartimages.com/seo/YOSENING-Kawaii-Cartoon-Hello-Kitty-Storage-Basket-Cute-Pink-Cosmetics-Toys-Organizer-Box-Bedroom-Decor-Birthday-Gift-Girls-Teens-QQH624-2862_34639011-3f89-457b-922f-c6138425b9da.5f6dd964644c7442064cb7ffa9824022.jpeg', badge:'NEW', rating:5, desc:'3 kawaii squishies in a cute gift basket — dumpling, cat paw & butter squishy! 🥟🧈💕 Perfect gift!' },
+    { id:'bk2', name:'Candy Lover Basket',   price:10.00, emoji:'🍬', img:'https://i5.walmartimages.com/seo/YOSENING-Kawaii-Cartoon-Hello-Kitty-Storage-Basket-Cute-Pink-Cosmetics-Toys-Organizer-Box-Bedroom-Decor-Birthday-Gift-Girls-Teens-QQH624-2862_34639011-3f89-457b-922f-c6138425b9da.5f6dd964644c7442064cb7ffa9824022.jpeg', badge:'NEW', rating:5, desc:'3 PeelerZ gummies (mango, watermelon & lychee) in a cute basket — sweetest gift! 🍬🍈✨' },
+    { id:'bk3', name:'Beauty Glam Basket',   price:14.99, emoji:'💄', img:'https://i5.walmartimages.com/seo/YOSENING-Kawaii-Cartoon-Hello-Kitty-Storage-Basket-Cute-Pink-Cosmetics-Toys-Organizer-Box-Bedroom-Decor-Birthday-Gift-Girls-Teens-QQH624-2862_34639011-3f89-457b-922f-c6138425b9da.5f6dd964644c7442064cb7ffa9824022.jpeg', badge:'NEW', rating:5, desc:'Lip gloss + lip mask + nail art pens in a pretty gift basket — glow up gift! 💄💅🌸' },
+    { id:'bk4', name:'Hair Cutie Basket',    price:9.99, emoji:'🎀', img:'https://i5.walmartimages.com/seo/Stuffed-Cat-Plush-Cat-Toy-Basket-Pink-Desk-Decor-Desk-Decoration-Cat-Lovers-Bow-Decor-Plush-Toy-Cute-Basket-Pink-Decorations-Kawaii-Decor-5inTall-1-S_73e4ae3c-0422-457d-9061-b25dd34701d6.c12f2d485282835d536498100efd7368.jpeg', badge:'NEW', rating:5, desc:'Scrunchies + bow clips + mermaid clips in a kawaii basket — hair goals in a box! 🎀🐚💕' },
+    { id:'bk5', name:'Kawaii BFF Basket',    price:29.99, emoji:'🌸', img:'https://i5.walmartimages.com/seo/YOSENING-Kawaii-Cartoon-Hello-Kitty-Storage-Basket-Cute-Pink-Cosmetics-Toys-Organizer-Box-Bedroom-Decor-Birthday-Gift-Girls-Teens-QQH624-2862_34639011-3f89-457b-922f-c6138425b9da.5f6dd964644c7442064cb7ffa9824022.jpeg', badge:'POPULAR', rating:5, desc:'The ultimate gift! Squishy + candy + lip gloss + hair clip + face mask! 🌸✨' },
+  ],
+  skincare: [
+    { id:'sk1', name:'Hello Kitty Sheet Mask',        price:8.99,  emoji:'🐱', img:'https://i5.walmartimages.com/asr/4f089511-e40e-4aea-b9f7-208123bb6485.cf363306713f8d83bbc4ace2264ecc24.jpeg', badge:'NEW',  rating:5, desc:'Adorable Hello Kitty sheet mask for glowing, hydrated skin! Perfect spa night treat 🐱✨' },
+    { id:'sk2', name:'7-Pack Face Mask Set',           price:8.99, emoji:'🌸', img:'https://i5.walmartimages.com/asr/41e385d6-9ec0-404b-a69f-dcdc894d8302.dd2f9cb311d5a926491a10da5120cd03.jpeg', badge:'NEW',  rating:5, desc:'7 hydrating sheet masks — one for every day of the week! Spa night essential 🌸' },
+    { id:'sk3', name:'Golden Eye Patches (16 Pairs)',  price:13.99, emoji:'👁️', img:'https://i5.walmartimages.com/asr/40fa9a0b-ca8e-429c-9748-1d2ca0e5e513.46280fc3574dfb6d153eab8b3d47cb9c.jpeg', badge:'',     rating:5, desc:'16 pairs of golden hydrogel eye patches — de-puff & glow up your eyes! ✨' },
+    { id:'sk6', name:'Pink Bow Spa Headband',          price:5.99,  emoji:'🎀', img:'https://i5.walmartimages.com/asr/17639e0f-222b-4d31-bba4-1753beefb40f.65e472c153458dc4522117c008c9d207.jpeg', badge:'',     rating:5, desc:'Soft pink bow headband — keeps hair back during your skincare routine! So cute 🎀' },
+  ],
+};
+
+// Featured = top picks from each category
+const featured = [
+  products.squishies[0], products.squishies[3],
+  products.candy[0],     products.candy[3],
+  products.beauty[0],    products.beauty[2],
+  products.hairclips[0], products.hairclips[3],
+];
+
+// ─── CART STATE ──────────────────────────────────────────────────────────────
+let cart = {};
+
+function cartTotal() {
+  return Object.values(cart).reduce((s, item) => s + item.price * item.qty, 0);
+}
+function cartCount() {
+  return Object.values(cart).reduce((s, item) => s + item.qty, 0);
+}
+
+function addToCart(id) {
+  // find product
+  const all = [...products.squishies, ...products.candy, ...products.beauty, ...products.hairclips, ...products.skincare];
+  const p = all.find(x => x.id === id);
+  if (!p) return;
+  if (cart[id]) cart[id].qty++;
+  else cart[id] = { ...p, qty: 1 };
+  updateBadge();
+  showToast(`${p.emoji} ${p.name} added to cart!`);
+  renderCartItems();
+}
+
+function removeFromCart(id) {
+  delete cart[id];
+  updateBadge();
+  renderCartItems();
+}
+
+function changeQty(id, delta) {
+  if (!cart[id]) return;
+  cart[id].qty += delta;
+  if (cart[id].qty <= 0) removeFromCart(id);
+  else { updateBadge(); renderCartItems(); }
+}
+
+function updateBadge() {
+  const count = cartCount();
+  const badge = document.getElementById('cart-badge');
+  badge.textContent = count;
+  badge.classList.toggle('show', count > 0);
+}
+
+function renderCartItems() {
+  const container = document.getElementById('cart-items');
+  const footer = document.getElementById('cart-footer');
+  const items = Object.values(cart);
+
+  if (items.length === 0) {
+    container.innerHTML = `<div class="cart-empty"><div class="empty-icon">🛒</div><p>Your cart is empty!<br/>Add something cute ♡</p></div>`;
+    footer.style.display = 'none';
+    return;
+  }
+
+  footer.style.display = 'block';
+  container.innerHTML = items.map(item => `
+    <div class="cart-item">
+      <div class="cart-item-img">${item.emoji}</div>
+      <div class="cart-item-info">
+        <div class="cart-item-name">${item.name}</div>
+        <div class="cart-item-price">$${(item.price * item.qty).toFixed(2)}</div>
+        <div class="cart-item-qty">
+          <button class="qty-btn" onclick="changeQty('${item.id}',-1)">−</button>
+          <span class="qty-num">${item.qty}</span>
+          <button class="qty-btn" onclick="changeQty('${item.id}',1)">+</button>
+        </div>
+      </div>
+      <button class="cart-remove" onclick="removeFromCart('${item.id}')" title="Remove">✕</button>
+    </div>
+  `).join('');
+
+  const total = cartTotal();
+  document.getElementById('cart-total').textContent = '$' + total.toFixed(2);
+  const shippingEl = document.getElementById('shipping-note');
+  if (total === 0) {
+    shippingEl.textContent = '';
+  } else if (total >= 50) {
+    shippingEl.textContent = '🎉 You got FREE shipping!';
+    shippingEl.style.background = '#e8f7e8';
+    shippingEl.style.color = '#2e7d32';
+  } else {
+    const left = (50 - total).toFixed(2);
+    shippingEl.textContent = `📦 Add $${left} more for FREE shipping!`;
+    shippingEl.style.background = 'var(--pink-pale)';
+    shippingEl.style.color = 'var(--pink-dark)';
+  }
+}
+
+function openCart() {
+  renderCartItems();
+  document.getElementById('cart-overlay').classList.add('open');
+  document.getElementById('cart-drawer').classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+
+function closeCart() {
+  document.getElementById('cart-overlay').classList.remove('open');
+  document.getElementById('cart-drawer').classList.remove('open');
+  document.body.style.overflow = '';
+}
+
+// ── PayPal client ID — replace YOUR_PAYPAL_CLIENT_ID with your real one ──
+// Get it free at: paypal.com/signin → Apps & Credentials → Create App
+const PAYPAL_CLIENT_ID = 'YOUR_PAYPAL_CLIENT_ID';
+
+let paypalLoaded = false;
+
+function checkout() {
+  if (cartCount() === 0) return;
+  closeCart();
+  buildCheckoutModal();
+  const modal = document.getElementById('checkout-modal');
+  modal.style.display = 'flex';
+  document.body.style.overflow = 'hidden';
+  if (!paypalLoaded) loadPayPal();
+}
+
+function buildCheckoutModal() {
+  const all = [...products.squishies, ...products.candy, ...products.beauty, ...products.hairclips, ...products.skincare];
+  const sub = cartTotal();
+  const ship = sub >= 25 ? 0 : 10.00;
+  const total = sub + ship;
+
+  // Items list
+  let itemsHtml = '';
+  Object.entries(cart).forEach(([id, qty]) => {
+    const p = all.find(x => x.id === id);
+    if (!p) return;
+    itemsHtml += `<div style="display:flex;justify-content:space-between;align-items:center;padding:5px 0;font-size:.9rem;">
+      <span style="color:#7a3f5e;font-weight:700;">${p.emoji} ${p.name} × ${qty}</span>
+      <span style="font-weight:800;color:#ff91b4;">$${(p.price * qty).toFixed(2)}</span>
+    </div>`;
+  });
+  document.getElementById('co-items').innerHTML = itemsHtml;
+
+  // Shipping + total
+  const shipEl = document.getElementById('co-shipping');
+  if (ship === 0) {
+    shipEl.textContent = 'FREE 🎉';
+    shipEl.style.color = '#2e7d32';
+  } else {
+    shipEl.textContent = '$10.00';
+    shipEl.style.color = '#7a3f5e';
+  }
+  document.getElementById('co-total').textContent = '$' + total.toFixed(2);
+
+  // Reset confirmed state
+  document.getElementById('co-confirmed').style.display = 'none';
+  document.getElementById('paypal-button-container').style.display = 'block';
+
+  window._checkoutTotal = total.toFixed(2);
+}
+
+function loadPayPal() {
+  if (PAYPAL_CLIENT_ID === 'YOUR_PAYPAL_CLIENT_ID') {
+    // No real client ID yet — show friendly setup message
+    document.getElementById('paypal-button-container').innerHTML =
+      '<div style="background:#fff0f6;border:2px dashed #ff91b4;border-radius:16px;padding:20px;text-align:center;">' +
+      '<p style="color:#7a3f5e;font-weight:800;margin:0 0 10px;font-size:1rem;">💳 Payment options coming soon!</p>' +
+      '<div style="display:flex;gap:10px;justify-content:center;margin-bottom:12px;flex-wrap:wrap;">' +
+      '<span style="background:#003087;color:#fff;border-radius:8px;padding:6px 14px;font-weight:800;font-size:.9rem;">PayPal</span>' +
+      '<span style="background:#000;color:#fff;border-radius:8px;padding:6px 14px;font-weight:800;font-size:.9rem;"> Apple Pay</span>' +
+      '<span style="background:#008CFF;color:#fff;border-radius:8px;padding:6px 14px;font-weight:800;font-size:.9rem;">Venmo</span>' +
+      '</div>' +
+      '<p style="color:#b07090;font-size:.82rem;margin:0;">Ask a parent to set up a free PayPal Business account at <strong>paypal.com</strong> to enable all payment options.</p>' +
+      '</div>';
+    return;
+  }
+  const s = document.createElement('script');
+  s.src = `https://www.paypal.com/sdk/js?client-id=${PAYPAL_CLIENT_ID}&currency=USD&enable-funding=applepay,venmo`;
+  s.onload = renderPayPalButtons;
+  document.head.appendChild(s);
+  paypalLoaded = true;
+}
+
+function renderPayPalButtons() {
+  paypal.Buttons({
+    style: { layout:'vertical', color:'gold', shape:'pill', label:'pay' },
+    createOrder(data, actions) {
+      return actions.order.create({
+        purchase_units: [{ amount: { value: window._checkoutTotal } }]
+      });
+    },
+    onApprove(data, actions) {
+      return actions.order.capture().then(() => {
+        // Payment done! Clear cart & show confirmation
+        cart = {};
+        updateBadge();
+        renderCartItems();
+        document.getElementById('paypal-button-container').style.display = 'none';
+        document.getElementById('co-confirmed').style.display = 'block';
+      });
+    },
+    onError(err) {
+      showToast('❌ Payment error — please try again!');
+    }
+  }).render('#paypal-button-container');
+}
+
+function closeCheckoutModal() {
+  document.getElementById('checkout-modal').style.display = 'none';
+  document.body.style.overflow = '';
+}
+
+// ─── TOAST ───────────────────────────────────────────────────────────────────
+let toastTimer;
+function showToast(msg) {
+  const t = document.getElementById('toast');
+  t.textContent = msg;
+  t.classList.add('show');
+  clearTimeout(toastTimer);
+  toastTimer = setTimeout(() => t.classList.remove('show'), 2200);
+}
+
+// ─── PRODUCT CARD RENDER ──────────────────────────────────────────────────────
+function imgOrEmoji(p) {
+  if (p.img) {
+    return `<img src="${p.img}" alt="${p.name}"
+      style="width:100%;height:100%;object-fit:cover;border-radius:0;"
+      onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
+      <span class="emoji-fallback" style="display:none;width:100%;height:100%;align-items:center;justify-content:center;font-size:4rem;">${p.emoji}</span>`;
+  }
+  return p.emoji;
+}
+
+function deliveryRange() {
+  const now = new Date();
+  const skip = d => { while (d.getDay()===0||d.getDay()===6) d.setDate(d.getDate()+1); return d; };
+  const add = (d,n) => { let c=new Date(d); let added=0; while(added<n){c.setDate(c.getDate()+1);if(c.getDay()!==0&&c.getDay()!==6)added++;} return c; };
+  const d1 = skip(add(now,2)), d2 = skip(add(now,5));
+  const fmt = d => d.toLocaleDateString('en-US',{month:'short',day:'numeric'});
+  return fmt(d1) + ' – ' + fmt(d2);
+}
+
+function renderProduct(p) {
+  const stars = '★'.repeat(p.rating) + '☆'.repeat(5 - p.rating);
+  const badgeHtml = p.badge ? `<div class="product-badge${p.badge==='SALE'?' sale':''}">${p.badge}</div>` : '';
+  const descHtml = p.desc ? `<div class="product-desc">${p.desc}</div>` : '';
+  const imgContent = p.img
+    ? `<img src="${p.img}" alt="${p.name}" style="width:100%;height:100%;object-fit:cover;" onerror="this.parentElement.innerHTML='<span style=\\'font-size:4rem;\\'>${p.emoji}</span>'">`
+    : p.emoji;
+  return `
+    <div class="product-card">
+      ${badgeHtml}
+      <div class="product-img" style="${p.img ? 'padding:0;overflow:hidden;' : ''}">${imgContent}</div>
+      <div class="product-info">
+        <div class="product-name">${p.name}</div>
+        ${descHtml}
+        <div class="product-price">$${p.price.toFixed(2)}</div>
+        <div class="stars">${stars}</div>
+        <div class="product-delivery">📦 Arrives by ${deliveryRange()}</div>
+        <button class="btn-cart" onclick="addToCart('${p.id}')">🛒 Add to Cart</button>
+      </div>
+    </div>`;
+}
+
+function renderGrid(gridId, items) {
+  document.getElementById(gridId).innerHTML = items.map(renderProduct).join('');
+  // Update count badge if present
+  const countEl = document.getElementById(gridId.replace('-grid', '-count'));
+  if (countEl) countEl.textContent = items.length + ' items';
+}
+
+// ─── PAGE NAVIGATION ─────────────────────────────────────────────────────────
+function showPage(name) {
+  document.querySelectorAll('.page-section').forEach(s => s.classList.remove('active'));
+  document.getElementById('page-' + name).classList.add('active');
+  document.querySelectorAll('nav a').forEach(a => a.classList.remove('active'));
+  const link = [...document.querySelectorAll('nav a')].find(a => a.getAttribute('onclick')?.includes("'" + name + "'"));
+  if (link) link.classList.add('active');
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+// ─── INIT ────────────────────────────────────────────────────────────────────
+renderGrid('squishies-grid',      products.squishies);
+renderGrid('candy-grid',          products.candy);
+renderGrid('beauty-grid',         products.beauty);
+renderGrid('hairclips-grid',      products.hairclips);
+renderGrid('baskets-grid',       products.baskets);
+  renderGrid('skincare-grid',       products.skincare);
+renderGrid('home-squishies-grid', products.squishies);
+renderGrid('home-candy-grid',     products.candy);
+renderGrid('home-beauty-grid',    products.beauty);
+renderGrid('home-hairclips-grid', products.hairclips);
+renderGrid('home-baskets-grid',  products.baskets);
+  renderGrid('home-skincare-grid',  products.skincare);
+renderCartItems();
+
+</script>
+
+<!-- ══ CHECKOUT MODAL ══════════════════════════════════════════════════════ -->
+<div id="checkout-modal" style="display:none;position:fixed;inset:0;z-index:500;background:rgba(0,0,0,.45);align-items:center;justify-content:center;">
+  <div style="background:#fff;border-radius:28px;padding:32px 28px 24px;max-width:440px;width:92%;max-height:92vh;overflow-y:auto;position:relative;box-shadow:0 20px 60px #ff91b440;">
+    <button onclick="closeCheckoutModal()" style="position:absolute;top:14px;right:18px;background:none;border:none;font-size:1.6rem;cursor:pointer;color:#b07090;line-height:1;" aria-label="Close">✕</button>
+    <h2 style="font-family:'Pacifico',cursive;color:#ff91b4;margin-bottom:18px;font-size:1.5rem;">Order Summary 🛍️</h2>
+    <div id="co-items" style="margin-bottom:14px;"></div>
+    <div style="display:flex;justify-content:space-between;align-items:center;padding:8px 0;border-top:2px dashed #ffd6e7;">
+      <span style="font-weight:700;color:#7a3f5e;">Shipping</span>
+      <span id="co-shipping" style="font-weight:800;"></span>
+    </div>
+    <div style="display:flex;justify-content:space-between;align-items:center;padding:8px 0 20px;border-bottom:2px solid #ffd6e7;margin-bottom:20px;">
+      <span style="font-weight:900;font-size:1.1rem;color:#7a3f5e;">Total</span>
+      <span id="co-total" style="font-weight:900;font-size:1.3rem;color:#ff91b4;"></span>
+    </div>
+    <div style="display:flex;gap:8px;justify-content:center;margin-bottom:14px;flex-wrap:wrap;"><span style="background:#003087;color:#fff;border-radius:8px;padding:5px 14px;font-weight:800;font-size:.85rem;letter-spacing:.5px;">PayPal</span><span style="background:#1a1a1a;color:#fff;border-radius:8px;padding:5px 14px;font-weight:800;font-size:.85rem;"> Apple Pay</span><span style="background:#008CFF;color:#fff;border-radius:8px;padding:5px 14px;font-weight:800;font-size:.85rem;">Venmo</span></div><div id="paypal-button-container" style="min-height:50px;"></div>
+    <p style="font-size:.75rem;color:#b07090;text-align:center;margin-top:10px;">
+      💳 We accept PayPal · Apple Pay · Venmo
+    </p>
+    <div id="co-confirmed" style="display:none;text-align:center;padding:10px 0;">
+      <div style="font-size:3.5rem;">🎉</div>
+      <h3 style="font-family:'Pacifico',cursive;color:#ff91b4;margin:10px 0 6px;">Order Placed!</h3>
+      <p style="color:#7a3f5e;font-weight:700;">Thank you so much! Your peachy goodies are on the way! 💕</p>
+      <button onclick="closeCheckoutModal()" style="margin-top:16px;background:linear-gradient(135deg,#ff91b4,#e8629a);color:#fff;border:none;border-radius:999px;padding:12px 32px;font-weight:800;font-size:1rem;cursor:pointer;">Close ♡</button>
+    </div>
+  </div>
+</div>
+
+
+<!-- TOAST -->
+<div class="toast" id="toast"></div>
+
+</body>
+</html>
