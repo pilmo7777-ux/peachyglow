@@ -631,9 +631,8 @@
       <a href="#" class="active" onclick="showPage('home'); return false;">Home</a>
       <a href="#" onclick="showPage('squishies'); return false;">Squishies</a>
       <a href="#" onclick="showPage('candy'); return false;">Candy</a>
-      <a href="#" onclick="showPage('beauty'); return false;">Beauty</a>
+      <a href="#" onclick="showPage('beauty'); return false;">Beauty & Skincare</a>
       <a href="#" onclick="showPage('hairclips'); return false;">Hair Clips</a>
-      <a href="#" onclick="showPage('skincare'); return false;">Skincare</a>
       <a href="#" onclick="showPage('baskets'); return false;">🧺 Baskets</a>
     </nav>
     <div class="header-actions">
@@ -687,12 +686,12 @@
       <a class="cat-card" href="#" onclick="showPage('candy'); return false;"><span class="cat-icon">🍬</span><span class="cat-name">Candy</span></a>
       <a class="cat-card" href="#" onclick="showPage('beauty'); return false;"><span class="cat-icon">🧊</span><span class="cat-name">Beauty</span></a>
       <a class="cat-card" href="#" onclick="showPage('hairclips'); return false;"><span class="cat-icon">🩷</span><span class="cat-name">Hair Clips</span></a>
-      <a class="cat-card" href="#" onclick="showPage('skincare'); return false;"><span class="cat-icon">✨</span><span class="cat-name">Skincare</span></a>
+      <a class="cat-card" href="#" onclick="showPage('beauty'); return false;"><span class="cat-icon">💄</span><span class="cat-name">Beauty & Skincare</span></a>
         <a class="cat-card" href="#" onclick="showPage('baskets'); return false;">
           <div class="cat-icon">🧺</div>
           <div class="cat-name">Baskets</div>
         </a>
-      <a class="cat-card" href="#" onclick="showPage('skincare'); return false;"><span class="cat-icon">🌟</span><span class="cat-name">New Arrivals</span></a>
+      <a class="cat-card" href="#" onclick="showPage('beauty'); return false;"><span class="cat-icon">🌟</span><span class="cat-name">New Arrivals</span></a>
       <a class="cat-card" href="#" onclick="showPage('squishies'); return false;"><span class="cat-icon">🎁</span><span class="cat-name">Best Sellers</span></a>
     </div>
   </section>
@@ -775,8 +774,8 @@
 <div id="page-beauty" class="page-section">
   <div class="cat-page-banner" style="background:linear-gradient(135deg,#d6f0ff,#e8f4ff,#f0d6ff);">
     <span class="cat-big-emoji">💄</span>
-    <h1>Beauty</h1>
-    <p>Glow up with lip gloss, ice rollers & more — you deserve it! 💅<span class="cat-product-count" id="beauty-count"></span></p>
+    <h1>Beauty & Skincare</h1>
+    <p>Glow up your routine — lip gloss, ice rollers, eye masks & more! 💅✨<span class="cat-product-count" id="beauty-count"></span></p>
     <button class="cat-back-btn" onclick="showPage('home')">← Back to Shop</button>
   </div>
   <section class="products-section">
@@ -811,17 +810,7 @@
   </div>
 </div>
 
-<div id="page-skincare" class="page-section">
-  <div class="cat-page-banner" style="background:linear-gradient(135deg,#e8fff0 0%,#f0fff8 50%,#e0f8ff 100%);">
-    <span class="cat-big-emoji">✨</span>
-    <h1>Skincare</h1>
-    <p>Glow up your routine with face masks, eye patches & more! 🌸<span class="cat-product-count" id="skincare-count"></span></p>
-    <button class="cat-back-btn" onclick="showPage('home')">← Back to Shop</button>
-  </div>
-  <section class="products-section">
-    <div class="products-grid" id="skincare-grid"></div>
-  </section>
-</div>
+
 
 <!-- FOOTER (shared) -->
 <footer>
@@ -830,9 +819,8 @@
     <a href="#" onclick="showPage('home'); return false;">Home</a>
     <a href="#" onclick="showPage('squishies'); return false;">Squishies</a>
     <a href="#" onclick="showPage('candy'); return false;">Candy</a>
-    <a href="#" onclick="showPage('beauty'); return false;">Beauty</a>
+    <a href="#" onclick="showPage('beauty'); return false;">Beauty & Skincare</a>
     <a href="#" onclick="showPage('hairclips'); return false;">Hair Clips</a>
-    <a href="#" onclick="showPage('skincare'); return false;">Skincare</a>
   </div>
   <p>Made with ♡ | All things cute, all things glow</p>
   <p class="footer-copy">© 2026 peachyglow.com · All rights reserved</p>
@@ -864,51 +852,39 @@ const products = {
     { id:'s2', name:'Glitter Cube Squishy',         price:7.99,  emoji:'✨', img:'https://i5.walmartimages.com/asr/d6f9e9da-19a7-4a1e-9753-230bb9937da6.846893413ee8fe0b0670650f6a84095e.jpeg',    badge:'NEW',  rating:4, desc:'Satisfying sparkly cube squishy — 1 random color: blue, pink, or purple ✨' },
     { id:'s3', name:'Mystery Dumpling 3-Pack',      price:22.99, emoji:'🥟', img:'https://i5.walmartimages.com/asr/836f0e8f-282d-41cf-83bb-a90f93ccc7f1.7ec89295d61bbfc2e89658f39bd93ef5.jpeg', badge:'SALE', rating:5, desc:'3 mystery dumpling squishies! Great for gifts or collecting 🎁' },
     { id:'s5', name:'Kawaii Cat Paw Squishy',       price:9.99, emoji:'🐾', img:'https://i5.walmartimages.com/asr/fe743c38-df4a-49d9-8859-a2d75e7d7935.f842e81b07351ce6e4f2718e87bb77db.jpeg', badge:'',     rating:5, desc:'Giant soft cat paw squishy — super satisfying to squeeze! 🐾 Perfect stress reliever!' },
-    { id:'s6', name:'Face Swap Squishy Toy',        price:10.99, emoji:'😄', img:'https://i5.walmartimages.com/asr/53f2f5d3-906d-4133-95e3-23ce48040cf5.f5061b5d264c6e7b2bb07005475bcc0a.jpeg',badge:'NEW', rating:4, desc:'2026 summer hit! Squeeze it to swap the face — so funny and satisfying 😄✨' },
-    { id:'s7', name:'Glitter Dumpling 12-Pack',      price:11.99, emoji:'🥟', img:'https://i5.walmartimages.com/asr/de6af6ed-8dc3-42ea-89d1-6a9654f38344.e1de4f993f8020c9b9cdda8b8241ab5a.jpeg', badge:'NEW', rating:5, desc:'12 colorful glitter crystal dumpling squishies — stress-busting & super satisfying! 🌈' },
-    { id:'s8', name:'Crystal Dumpling 4-Pack',       price:11.99, emoji:'🥟', img:'https://i5.walmartimages.com/asr/5d28fb3e-0644-4c52-a070-8b9c3cfbdc3b.327ebffa348fa7d5ed207fbc10d0ffcd.jpeg', badge:'',    rating:5, desc:'4 kawaii crystal dumpling squishies — slow rising, super soft & adorable! 🥟💕' },
-        { id:'s10', name:'Jumbo Butter Squishy', price:9.99, emoji:'🧈', img:'https://i5.walmartimages.com/seo/2026-New-Pink-Jumbo-Butter-Squishies-14oz-Butter-Stick-Squishy-Squeezy-Butter-Shape-Stress-Ball-Slow-Rising-Food-Fidget-Toy-Stress-Relief-Anxiety-Rel_cd7f1a46-d9c5-4486-86f5-c18199f7f249.dc653cd64933e83a52dd47749bc20775.jpeg', badge:'NEW', rating:5, desc:'Giant pink slow-rising butter squishy — super satisfying to squeeze! 🧈💕 2026 viral hit!' },
-    { id:'s9', name:'Kawaii Dumpling Squishy',         price:12.99,  emoji:'🥟', img:'https://i5.walmartimages.com/asr/ad2b3a01-c8f2-4088-a025-dc150a99beb6.a1f434670f0ddb383626a3f86f5901e8.jpeg', badge:'NEW',  rating:5, desc:'Super cute slow-rising kawaii dumpling squishy with adorable face — so satisfying! 🥟✨' },
+        { id:'s10', name:'Mystery Random Squishy', price:9.99, emoji:'🎲', img:'https://i5.walmartimages.com/seo/Hello-Kitty-Friends-Mystery-Squishy-1-Random_84f28fe3-a979-43ad-8f2e-3ab44ea869f6.80b7604dd140cdde3f385fbac9c81c25.jpeg', badge:'NEW', rating:5, desc:'1 random mystery kawaii squishy — you wont know what youll get! Which one will be yours? 🎲✨' },
+    { id:'s11', name:'Random Slime', price:6.99, emoji:'🌈', img:'https://m.media-amazon.com/images/I/81WWAnTwaBL._AC_SX679_.jpg', badge:'NEW', rating:5, desc:'1 random slime — you wont know what you get! So stretchy and satisfying to squish! 🌈✨' }
   ],
   candy: [
-    { id:'c1', name:'PeelerZ Gummies – 1 Pack',    price:4.99,  emoji:'🍑', img:'https://i5.walmartimages.com/asr/4b62cae9-7d8b-4f79-9525-8827d9ae7641.afbb56bafc76a8d80554be2856ea2093.jpeg',         badge:'NEW',  rating:5, desc:'One pack of exotic peelable gummies — Mango, Peach, Banana & more! 🍑' },
+    { id:'c1', name:'Amos PeelerZ Gummies',        price:12.99, emoji:'🍬', img:'https://i5.walmartimages.com/asr/4b62cae9-7d8b-4f79-9525-8827d9ae7641.afbb56bafc76a8d80554be2856ea2093.jpeg', badge:'NEW',  rating:5, desc:'The viral peelable gummies everyone is obsessed with! Peel each layer for a fruity surprise 🍬✨' },
     { id:'c2', name:'PeelerZ Gummies – Variety Bag',price:7.99, emoji:'🍬', img:'https://i5.walmartimages.com/asr/4b62cae9-7d8b-4f79-9525-8827d9ae7641.afbb56bafc76a8d80554be2856ea2093.jpeg',         badge:'',     rating:5, desc:'Bigger variety bag packed with peelable gummies — great for sharing! 😋' },
     { id:'c3', name:'PeelerZ 10-Pack Gift Box',     price:14.99, emoji:'🎁', img:'https://i5.walmartimages.com/asr/4b62cae9-7d8b-4f79-9525-8827d9ae7641.afbb56bafc76a8d80554be2856ea2093.jpeg', badge:'',     rating:5, desc:'10 individual packs in one box — the ultimate PeelerZ gift set! 🎀' },
     { id:'c4', name:'4D Mango Peelable Gummies',    price:4.99,  emoji:'🥭', img:'https://i5.walmartimages.com/asr/13bc959a-debf-4287-b759-e1296c7a71fe.d77222086883372ba1220e129361da98.jpeg',   badge:'NEW',  rating:4, desc:'Peel the outer layer to reveal a soft jelly inside — just like real fruit! 🥭 So fun!' },
     { id:'c5', name:'Peelable Gummies 3-Pack',      price:11.99, emoji:'🍈', img:'https://i5.walmartimages.com/asr/4b62cae9-7d8b-4f79-9525-8827d9ae7641.afbb56bafc76a8d80554be2856ea2093.jpeg', badge:'',     rating:5, desc:'3 resealable bags of mixed peelable gummies — great deal for candy lovers! 🍬' },
-    { id:'c6', name:'PeelerZ Watermelon',            price:4.99,  emoji:'🍉', img:'https://i5.walmartimages.com/asr/1843363f-7ded-49ce-8a60-61fb86a19b21.5bcbac1fd0cf0d9764ed64c5392420b9.jpeg',  badge:'NEW',  rating:5, desc:'Peelable watermelon gummies — peel the layers for a juicy fruity surprise! 🍉😋' },
     { id:'c7', name:'PeelerZ Chili Mango',           price:4.99,  emoji:'🥭', img:'https://i5.walmartimages.com/asr/9b3bb794-e5a5-43e3-9161-32fb704565e2.ebfa1fc22da6660e1436a15c5a763430.jpeg',  badge:'🌶️HOT', rating:4, desc:'Spicy chili mango peelable gummies — sweet, tangy & a little spicy! 🥭🌶️ So addicting!' },
-    { id:'c8', name:'PeelerZ Lychee',                 price:4.99,  emoji:'🍈', img:'https://i5.walmartimages.com/asr/f4b386f1-2652-45d3-a97c-71567297e9ae.90b7b80ac701137d0d2698cc1ebd116b.jpeg',  badge:'NEW',    rating:5, desc:'Sweet & floral lychee peelable gummies — peel the layers for a tropical surprise! 🍈✨' },
+    { id:'c8', name:'PeelerZ Lychee',                 price:4.99,  emoji:'🍈', img:'https://i5.walmartimages.com/asr/f4b386f1-2652-45d3-a97c-71567297e9ae.90b7b80ac701137d0d2698cc1ebd116b.jpeg',  badge:'NEW',    rating:5, desc:'Sweet & floral lychee peelable gummies — peel the layers for a tropical surprise! 🍈✨' }
   ],
   beauty: [
     { id:'b1', name:'Silicone Ice Roller (1 pc)',  price:7.99,  emoji:'🧊', img:'https://i5.walmartimages.com/asr/03bc1c47-5971-4335-ad0b-6e7336f796ea.fff810df64a57571d2a1e6fd2eee6809.jpeg',       badge:'NEW',  rating:5, desc:'Freeze & roll on your face for glowing skin! Super trendy beauty tool 🧊✨' },
     { id:'b2', name:'Ice Roller Bundle – 2 Pack',  price:12.99, emoji:'🧊', img:'https://i5.walmartimages.com/asr/03bc1c47-5971-4335-ad0b-6e7336f796ea.fff810df64a57571d2a1e6fd2eee6809.jpeg',       badge:'SALE', rating:5, desc:'Two ice rollers — keep one, gift one! Great value 💕' },
-    { id:'b3', name:'Pink Lip Gloss',              price:7.99,  emoji:'💄', img:'https://i5.walmartimages.com/asr/be56e71c-cba5-4bb7-9c96-cd90c13ac6b1.3bfeca806f77ffd39029c2b76d41e846.jpeg',        badge:'NEW',  rating:5, desc:'Shiny pink lip gloss that keeps lips soft & glossy all day 💄 So pretty!' },
-    { id:'b4', name:'16-Pc Lip Gloss Kit',         price:17.99, emoji:'💗', img:'https://i5.walmartimages.com/asr/683ac997-55d0-414d-baae-e3327befa5bc.32520e74d091363a90b2e5c0bca03471.jpeg',    badge:'NEW',  rating:5, desc:'16 shimmery lip glosses in one cute kit — perfect gift for any girl! 💗✨' },
-        { id:'b6', name:'Strawberry Overnight Lip Mask', price:6.99, emoji:'🍓', img:'https://i5.walmartimages.com/seo/Tree-Hut-Strawberry-Hydrating-Overnight-Lip-Mask-0-6-oz_9c13fcd3-2d11-4e68-91d6-5f0e2c32219c.25cc6ab4eccd89a085e5274ec5ccf02c.png', badge:'NEW', rating:5, desc:'Hydrating strawberry overnight lip mask — wake up with soft, plump, kissable lips! 🍓💋' },
-    { id:'b7', name:'Vanilla Plump & Repair Lip Mask', price:5.99, emoji:'💋', img:'https://i5.walmartimages.com/seo/Vitamasques-Overnight-Lip-Mask-Plump-Repair-for-All-Skin-Types-Vanilla-One-Count-10-ml_833bfb27-d790-42b1-bbed-b4db08344ea1.cbeb3224ef5641954f5cdf379f544973.jpeg', badge:'NEW', rating:4, desc:'Vanilla scented overnight lip mask that plumps & repairs while you sleep! 💋✨' },
-    { id:'b5', name:'Lip Plumper Gloss',           price:7.99,  emoji:'💋', img:'https://i5.walmartimages.com/asr/a4df6b02-3423-426f-9bf5-fdd227b4f1b5.550e9fb8fd0dee2ce96e24945d6ac2a3.jpeg',      badge:'',     rating:4, desc:'Hydrating lip plumper gloss with a pretty pink tint — plump & glossy lips! 💋' },
+    { id:'sk1', name:'Pink Silk Sleep Eye Mask', price:8.99, emoji:'😴', img:'https://m.media-amazon.com/images/I/71qYEO0cs4L._AC_SX679_.jpg', badge:'NEW', rating:5, desc:'Super soft pink silk sleep eye mask — block out light and wake up glowing! Perfect for beauty sleep 😴✨' },
+    { id:'sk2', name:'Satin Silk Hair Bonnet', price:7.99, emoji:'🎀', img:'https://m.media-amazon.com/images/I/71WPgWDK9pL._AC_SX679_.jpg', badge:'NEW', rating:5, desc:'Adjustable double layer satin bonnet — protect your curls and wake up with smooth, frizz-free hair! 🎀✨' },
+    { id:'sk3', name:'Golden Eye Patches (16 Pairs)', price:13.99, emoji:'👁️', img:'https://i5.walmartimages.com/asr/40fa9a0b-ca8e-429c-9748-1d2ca0e5e513.46280fc3574dfb6d153eab8b3d47cb9c.jpeg', badge:'', rating:5, desc:'16 pairs of golden hydrogel eye patches — de-puff & glow up your eyes! ✨' },
+    { id:'sk6', name:'Pink Bow Spa Headband', price:5.99, emoji:'🎀', img:'https://i5.walmartimages.com/seo/25Pcs-Pink-Spa-Headband-Soft-Elastic-Face-Washing-Headbands-Women-Bow-Tie-Skincare-Headband-Makeup-Routine-Shower-Yoga-Self-Care-Days-Cute-Gift-Idea_ec64affa-1546-457a-825f-753ae847c0cd.da9bdadac1e525424e9fc92824b3f6d0.jpeg', badge:'NEW', rating:5, desc:'Super cute pink bow spa headband — keep hair out of your face during your glow-up routine! 🎀✨' }
   ],
   hairclips: [
-    { id:'h1', name:'8-Pc Mermaid Seashell Clips', price:7.50, emoji:'🐚', img:'https://i5.walmartimages.com/asr/8d75a98e-e34b-4d65-8ba2-af70ed5feff7.1e70c9d40fa095279b2216599248dd70.jpeg',      badge:'NEW',  rating:5, desc:'8 cute mermaid & seashell hair clips — perfect for summer & beach vibes! 🌊' },
-    { id:'h2', name:'4-Pc Starfish Hair Clips',    price:7.50,  emoji:'⭐', img:'https://i5.walmartimages.com/asr/8d75a98e-e34b-4d65-8ba2-af70ed5feff7.1e70c9d40fa095279b2216599248dd70.jpeg',       badge:'',     rating:5, desc:'4 adorable starfish clips — great for beach days & everyday cute looks! 🌟' },
-    { id:'h3', name:'5-Pc Kawaii Mermaid Clips',   price:7.50, emoji:'🩷', img:'https://i5.walmartimages.com/asr/8d75a98e-e34b-4d65-8ba2-af70ed5feff7.1e70c9d40fa095279b2216599248dd70.jpeg',       badge:'',     rating:5, desc:'5-piece set of super cute mermaid shell hair clips — girls love these! 🩷' },
-    { id:'h4', name:'Scrunchie Set (10-Pc)',        price:7.99, emoji:'🎀', img:'https://i5.walmartimages.com/asr/4cc76f3a-4fc3-4338-abed-8b1aaac04b28.f461549b46f579c27b787f38d04e9321.jpeg',       badge:'NEW',  rating:5, desc:'10 super cute scrunchies in all the prettiest colors — perfect for any hairstyle! 🎀' },
-    { id:'h5', name:'Bow Hair Clips Set',           price:7.50,  emoji:'🎀', img:'https://i5.walmartimages.com/asr/513859c1-6e7a-4ce7-981a-9adb61458263.f05a41015bcfc57316b8cb175d2d833c.jpeg',        badge:'',     rating:5, desc:'Set of cute satin ribbon bow hair clips — the coquette look everyone loves! 🎀💕' },
-    { id:'h6', name:'Bling Glitter Hair Barrettes', price:7.50,  emoji:'✨', img:'https://i5.walmartimages.com/asr/6f055ec6-e319-42a9-b9e4-37abf63555f1.f7b58e1000b8b91ab744e82c8f1028f7.jpeg',        badge:'NEW',  rating:5, desc:'Sparkly glitter snap barrettes — add some shine to any hairstyle! ✨💫' },
+    { id:'h4', name:'Kawaii Flower Hair Clips', price:7.99, emoji:'🌸', img:'https://i5.walmartimages.com/seo/24Pcs-Kawaii-Hair-Clips-Aesthetic-Hair-Barrettes-Pink-Alloy-Colorful-Star-Flower-Elegant-Decorative-Iron-Headwear-Bobby-Pins-Accessories_727a477e-12a8-48f6-b674-5991f931ce62.b4ce292f9f0bb670d37f48268140cf5d.jpeg', badge:'NEW', rating:5, desc:'24 kawaii flower & star hair clips — mix of cute shapes and colors for every vibe! 🌸✨' },
+    { id:'h7', name:'Kawaii Mermaid Hair Clips', price:7.99, emoji:'🧜', img:'https://i5.walmartimages.com/seo/KIKI-HOME-Sweet-Flower-Mermaid-Hair-Clips-Japanese-and-South-Korean-inspired-Design-Perfect-for-Spring-and-Summer_ef41c21b-dd78-4a86-9898-980afb691c11.676a5746deb28840d5efa7e497ed68ba.jpeg', badge:'NEW', rating:5, desc:'Adorable kawaii mermaid hair clips — magical & cute! Perfect for spring & summer 🧜✨' },
+    { id:'h6', name:'Butterfly Hair Clip', price:3.99, emoji:'🦋', img:'https://m.media-amazon.com/images/I/71yOIyc3AqL._AC_SX679_.jpg', badge:'NEW', rating:5, desc:'One glitter pink butterfly clip — so cute and kawaii! Perfect for parties, school or everyday wear 🦋✨' },
+    { id:'h8', name:'Kawaii Star Hair Clips', price:6.49, emoji:'⭐', img:'https://i5.walmartimages.com/seo/Monebena-50-Pcs-Star-Clips-Hair-Clips-Star-Barrettes-Girls-Non-Slip-Star-Hair-Accessories-Cute-Hairpins-Colorful-Snap-Hair-Barrettes-Kawaii-Hair-Clip_e176a971-92cc-4aec-90c3-3f8dde05cefe.e5f07f8e6befc5635f9521ab0796b618.jpeg', badge:'NEW', rating:5, desc:'Y2K kawaii star clips with charms — stars, bows, hearts & more in candy colors! So cute ⭐🎀' },
+    { id:'h9', name:'Pink Flower Claw Clips (6pc)', price:8.99, emoji:'🌺', img:'https://m.media-amazon.com/images/I/71RSPBXWhXL._AC_SX679_.jpg', badge:'NEW', rating:5, desc:'6 Hawaiian hibiscus flower claw clips — gorgeous pink floral vibes for thick or thin hair! 🌺✨' },
+    { id:'h10', name:'Mini Bow Hair Clips (30pc)', price:4.99, emoji:'🎀', img:'https://m.media-amazon.com/images/I/91ZDGtss-dL._AC_SX679_.jpg', badge:'NEW', rating:5, desc:'30 hot pink mini satin bow clips — stack them, mix them, wear them everywhere! 🎀💕' }
   ],
   baskets: [
     { id:'bk1', name:'Squishy Lover Basket', price:19.99, emoji:'🧺', img:'https://i5.walmartimages.com/seo/YOSENING-Kawaii-Cartoon-Hello-Kitty-Storage-Basket-Cute-Pink-Cosmetics-Toys-Organizer-Box-Bedroom-Decor-Birthday-Gift-Girls-Teens-QQH624-2862_34639011-3f89-457b-922f-c6138425b9da.5f6dd964644c7442064cb7ffa9824022.jpeg', badge:'NEW', rating:5, desc:'3 kawaii squishies in a cute gift basket — dumpling, cat paw & butter squishy! 🥟🧈💕 Perfect gift!' },
     { id:'bk2', name:'Candy Lover Basket',   price:10.00, emoji:'🍬', img:'https://i5.walmartimages.com/seo/YOSENING-Kawaii-Cartoon-Hello-Kitty-Storage-Basket-Cute-Pink-Cosmetics-Toys-Organizer-Box-Bedroom-Decor-Birthday-Gift-Girls-Teens-QQH624-2862_34639011-3f89-457b-922f-c6138425b9da.5f6dd964644c7442064cb7ffa9824022.jpeg', badge:'NEW', rating:5, desc:'3 PeelerZ gummies (mango, watermelon & lychee) in a cute basket — sweetest gift! 🍬🍈✨' },
     { id:'bk3', name:'Beauty Glam Basket',   price:14.99, emoji:'💄', img:'https://i5.walmartimages.com/seo/YOSENING-Kawaii-Cartoon-Hello-Kitty-Storage-Basket-Cute-Pink-Cosmetics-Toys-Organizer-Box-Bedroom-Decor-Birthday-Gift-Girls-Teens-QQH624-2862_34639011-3f89-457b-922f-c6138425b9da.5f6dd964644c7442064cb7ffa9824022.jpeg', badge:'NEW', rating:5, desc:'Lip gloss + lip mask + nail art pens in a pretty gift basket — glow up gift! 💄💅🌸' },
-    { id:'bk4', name:'Hair Cutie Basket',    price:9.99, emoji:'🎀', img:'https://i5.walmartimages.com/seo/Stuffed-Cat-Plush-Cat-Toy-Basket-Pink-Desk-Decor-Desk-Decoration-Cat-Lovers-Bow-Decor-Plush-Toy-Cute-Basket-Pink-Decorations-Kawaii-Decor-5inTall-1-S_73e4ae3c-0422-457d-9061-b25dd34701d6.c12f2d485282835d536498100efd7368.jpeg', badge:'NEW', rating:5, desc:'Scrunchies + bow clips + mermaid clips in a kawaii basket — hair goals in a box! 🎀🐚💕' },
-    { id:'bk5', name:'Kawaii BFF Basket',    price:29.99, emoji:'🌸', img:'https://i5.walmartimages.com/seo/YOSENING-Kawaii-Cartoon-Hello-Kitty-Storage-Basket-Cute-Pink-Cosmetics-Toys-Organizer-Box-Bedroom-Decor-Birthday-Gift-Girls-Teens-QQH624-2862_34639011-3f89-457b-922f-c6138425b9da.5f6dd964644c7442064cb7ffa9824022.jpeg', badge:'POPULAR', rating:5, desc:'The ultimate gift! Squishy + candy + lip gloss + hair clip + face mask! 🌸✨' },
-  ],
-  skincare: [
-    { id:'sk1', name:'Hello Kitty Sheet Mask',        price:8.99,  emoji:'🐱', img:'https://i5.walmartimages.com/asr/4f089511-e40e-4aea-b9f7-208123bb6485.cf363306713f8d83bbc4ace2264ecc24.jpeg', badge:'NEW',  rating:5, desc:'Adorable Hello Kitty sheet mask for glowing, hydrated skin! Perfect spa night treat 🐱✨' },
-    { id:'sk2', name:'7-Pack Face Mask Set',           price:8.99, emoji:'🌸', img:'https://i5.walmartimages.com/asr/41e385d6-9ec0-404b-a69f-dcdc894d8302.dd2f9cb311d5a926491a10da5120cd03.jpeg', badge:'NEW',  rating:5, desc:'7 hydrating sheet masks — one for every day of the week! Spa night essential 🌸' },
-    { id:'sk3', name:'Golden Eye Patches (16 Pairs)',  price:13.99, emoji:'👁️', img:'https://i5.walmartimages.com/asr/40fa9a0b-ca8e-429c-9748-1d2ca0e5e513.46280fc3574dfb6d153eab8b3d47cb9c.jpeg', badge:'',     rating:5, desc:'16 pairs of golden hydrogel eye patches — de-puff & glow up your eyes! ✨' },
-    { id:'sk6', name:'Pink Bow Spa Headband',          price:5.99,  emoji:'🎀', img:'https://i5.walmartimages.com/asr/17639e0f-222b-4d31-bba4-1753beefb40f.65e472c153458dc4522117c008c9d207.jpeg', badge:'',     rating:5, desc:'Soft pink bow headband — keeps hair back during your skincare routine! So cute 🎀' },
+    { id:'bk5', name:'Kawaii BFF Basket',    price:29.99, emoji:'🌸', img:'https://i5.walmartimages.com/seo/YOSENING-Kawaii-Cartoon-Hello-Kitty-Storage-Basket-Cute-Pink-Cosmetics-Toys-Organizer-Box-Bedroom-Decor-Birthday-Gift-Girls-Teens-QQH624-2862_34639011-3f89-457b-922f-c6138425b9da.5f6dd964644c7442064cb7ffa9824022.jpeg', badge:'POPULAR', rating:5, desc:'The ultimate gift! Squishy + candy + lip gloss + hair clip + face mask! 🌸✨' }
   ],
 };
 
@@ -917,7 +893,7 @@ const featured = [
   products.squishies[0], products.squishies[3],
   products.candy[0],     products.candy[3],
   products.beauty[0],    products.beauty[2],
-  products.hairclips[0], products.hairclips[3],
+  products.hairclips[0], products.hairclips[3]
 ];
 
 // ─── CART STATE ──────────────────────────────────────────────────────────────
@@ -932,7 +908,7 @@ function cartCount() {
 
 function addToCart(id) {
   // find product
-  const all = [...products.squishies, ...products.candy, ...products.beauty, ...products.hairclips, ...products.skincare];
+  const all = [...products.squishies, ...products.candy, ...products.beauty, ...products.hairclips, ...products.baskets];
   const p = all.find(x => x.id === id);
   if (!p) return;
   if (cart[id]) cart[id].qty++;
@@ -1037,7 +1013,7 @@ function checkout() {
 }
 
 function buildCheckoutModal() {
-  const all = [...products.squishies, ...products.candy, ...products.beauty, ...products.hairclips, ...products.skincare];
+  const all = [...products.squishies, ...products.candy, ...products.beauty, ...products.hairclips, ...products.baskets];
   const sub = cartTotal();
   const ship = sub >= 25 ? 0 : 10.00;
   const total = sub + ship;
@@ -1198,13 +1174,13 @@ renderGrid('candy-grid',          products.candy);
 renderGrid('beauty-grid',         products.beauty);
 renderGrid('hairclips-grid',      products.hairclips);
 renderGrid('baskets-grid',       products.baskets);
-  renderGrid('skincare-grid',       products.skincare);
+  
 renderGrid('home-squishies-grid', products.squishies);
 renderGrid('home-candy-grid',     products.candy);
 renderGrid('home-beauty-grid',    products.beauty);
 renderGrid('home-hairclips-grid', products.hairclips);
 renderGrid('home-baskets-grid',  products.baskets);
-  renderGrid('home-skincare-grid',  products.skincare);
+  
 renderCartItems();
 
 </script>
