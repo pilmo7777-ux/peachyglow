@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&family=Pacifico&display=swap');
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: 'Nunito', sans-serif;
+    background: #fff;
+    width: 1020px;
+    padding: 0;
+  }
+
+  /* TITLE BOX */
+  .title-box {
+    border: 3px solid #e8629a;
+    border-radius: 24px;
+    margin: 28px 28px 18px;
+    padding: 20px 24px 16px;
+    text-align: center;
+    position: relative;
+  }
+  .welcome-to {
+    font-family: 'Pacifico', cursive;
+    color: #ff91b4;
+    font-size: 14px;
+    margin-bottom: 4px;
+  }
+  .main-title {
+    font-family: 'Pacifico', cursive;
+    font-size: 64px;
+    line-height: 1.1;
+    color: #e8629a;
+    margin-bottom: 6px;
+  }
+  .tagline {
+    font-size: 13px;
+    color: #b07090;
+    letter-spacing: 1px;
+  }
+
+  /* CATEGORY SECTION */
+  .category {
+    margin: 0 28px 12px;
+  }
+  .category-title {
+    text-align: center;
+    font-size: 15px;
+    font-weight: 900;
+    color: #e8629a;
+    border-bottom: 2px solid #e8629a;
+    padding-bottom: 4px;
+    margin-bottom: 8px;
+    letter-spacing: 0.5px;
+  }
+
+  /* PRODUCT GRID - 2 columns */
+  .products {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 6px 16px;
+  }
+  .product-row {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 4px 0;
+    border-bottom: 1px solid #ffd6e7;
+  }
+  .product-row:last-child { border-bottom: none; }
+  .product-img {
+    width: 52px;
+    height: 52px;
+    object-fit: cover;
+    border-radius: 8px;
+    flex-shrink: 0;
+    border: 1px solid #ffd6e7;
+    background: #fff0f6;
+  }
+  .product-info { flex: 1; min-width: 0; }
+  .product-name {
+    font-size: 11.5px;
+    font-weight: 800;
+    color: #7a3f5e;
+    line-height: 1.2;
+  }
+  .product-price {
+    font-size: 12px;
+    font-weight: 900;
+    color: #e8629a;
+    margin-top: 1px;
+  }
+
+  /* BOTTOM SECTIONS */
+  .bottom-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    margin: 12px 28px 16px;
+  }
+  .contact-box, .offers-box, .order-box {
+    border: 2px solid #e8629a;
+    border-radius: 16px;
+    padding: 12px 16px;
+    text-align: center;
+  }
+  .contact-box p {
+    font-size: 12px;
+    font-weight: 800;
+    color: #7a3f5e;
+  }
+  .offers-box {
+    margin: 0 28px 12px;
+  }
+  .offers-title {
+    font-family: 'Pacifico', cursive;
+    font-size: 20px;
+    color: #e8629a;
+    margin-bottom: 6px;
+  }
+  .offers-box p {
+    font-size: 12px;
+    font-weight: 700;
+    color: #7a3f5e;
+    line-height: 1.8;
+  }
+  .order-box {
+    margin: 0 28px 24px;
+  }
+  .order-label {
+    font-family: 'Pacifico', cursive;
+    font-size: 16px;
+    color: #e8629a;
+    margin-bottom: 4px;
+  }
+  .phone {
+    font-size: 32px;
+    font-weight: 900;
+    color: #7a3f5e;
+    letter-spacing: 1px;
+  }
+  .website {
+    font-size: 12px;
+    color: #b07090;
+    margin-top: 4px;
+  }
+
+  .divider {
+    height: 2px;
+    background: linear-gradient(90deg, transparent, #ffd6e7, #e8629a, #ffd6e7, transparent);
+    margin: 10px 28px;
+  }
+</style>
+</head>
+<body>
+
+<!-- TITLE -->
+<div class="title-box">
+  <div class="welcome-to">welcome to</div>
+  <div class="main-title">peachy<br>glow</div>
+  <div class="tagline">your kawaii shop &nbsp;·&nbsp; squishies &nbsp;·&nbsp; candy &nbsp;·&nbsp; beauty &nbsp;·&nbsp; more</div>
+</div>
+
+<div class="divider"></div>
+
+<!-- HAIR CLIPS -->
+<div class="category">
+  <div class="category-title">✂ Hair Clips ✂</div>
+  <div class="products">
+    <div class="product-row">
+      <img class="product-img" src="https://i5.walmartimages.com/seo/24Pcs-Kawaii-Hair-Clips-Aesthetic-Hair-Barrettes-Pink-Alloy-Colorful-Star-Flower-Elegant-Decorative-Iron-Headwear-Bobby-Pins-Accessories_727a477e-12a8-48f6-b674-5991f931ce62.b4ce292f9f0bb670d37f48268140cf5d.jpeg" onerror="this.src='data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 width=%2252%22 height=%2252%22><rect fill=%22%23fff0f6%22 width=%2252%22 height=%2252%22 rx=%228%22/><text x=%2226%22 y=%2232%22 text-anchor=%22middle%22 font-size=%2224%22>🌸</text></svg>'"/>
+      <div class="product-info"><div class="product-name">Kawaii Flower Hair Clips</div><div class="product-price">$7.99</div></div>
+    </div>
+    <div class="product-row">
+      <img class="product-img" src="https://i5.walmartimages.com/seo/KIKI-HOME-Sweet-Flower-Mermaid-Hair-Clips-Japanese-and-South-Korean-inspired-Design-Perfect-for-Spring-and-Summer_ef41c21b-dd78-4a86-9898-980afb691c11.676a5746deb28840d5efa7e497ed68ba.jpeg" onerror="this.src='data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 width=%2252%22 height=%2252%22><rect fill=%22%23fff0f6%22 width=%2252%22 height=%2252%22 rx=%228%22/><text x=%2226%22 y=%2232%22 text-anchor=%22middle%22 font-size=%2224%22>🧜</text></svg>'"/>
+      <div class="product-info"><div class="product-name">Kawaii Mermaid Hair Clips</div><div class="product-price">$7.99</div></div>
+    </div>
+    <div class="product-row">
+      <img class="product-img" src="https://m.media-amazon.com/images/I/71yOIyc3AqL._AC_SX679_.jpg" onerror="this.src='data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 width=%2252%22 height=%2252%22><rect fill=%22%23fff0f6%22 width=%2252%22 height=%2252%22 rx=%228%22/><text x=%2226%22 y=%2232%22 text-anchor=%22middle%22 font-size=%2224%22>🦋</text></svg>'"/>
+      <div class="product-info"><div class="product-name">Butterfly Hair Clip</div><div class="product-price">$3.99</div></div>
+    </div>
+    <div class="product-row">
+      <img class="product-img" src="https://i5.walmartimages.com/seo/Monebena-50-Pcs-Star-Clips-Hair-Clips-Star-Barrettes-Girls-Non-Slip-Star-Hair-Accessories-Cute-Hairpins-Colorful-Snap-Hair-Barrettes-Kawaii-Hair-Clip_e176a971-92cc-4aec-90c3-3f8dde05cefe.e5f07f8e6befc5635f9521ab0796b618.jpeg" onerror="this.src='data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 width=%2252%22 height=%2252%22><rect fill=%22%23fff0f6%22 width=%2252%22 height=%2252%22 rx=%228%22/><text x=%2226%22 y=%2232%22 text-anchor=%22middle%22 font-size=%2224%22>⭐</text></svg>'"/>
+      <div class="product-info"><div class="product-name">Kawaii Star Hair Clips</div><div class="product-price">$6.49</div></div>
+    </div>
+    <div class="product-row">
+      <img class="product-img" src="https://m.media-amazon.com/images/I/71RSPBXWhXL._AC_SX679_.jpg" onerror="this.src='data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 width=%2252%22 height=%2252%22><rect fill=%22%23fff0f6%22 width=%2252%22 height=%2252%22 rx=%228%22/><text x=%2226%22 y=%2232%22 text-anchor=%22middle%22 font-size=%2224%22>🌺</text></svg>'"/>
+      <div class="product-info"><div class="product-name">Pink Flower Claw Clips 6pc</div><div class="product-price">$8.99</div></div>
+    </div>
+    <div class="product-row">
+      <img class="product-img" src="https://m.media-amazon.com/images/I/91ZDGtss-dL._AC_SX679_.jpg" onerror="this.src='data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 width=%2252%22 height=%2252%22><rect fill=%22%23fff0f6%22 width=%2252%22 height=%2252%22 rx=%228%22/><text x=%2226%22 y=%2232%22 text-anchor=%22middle%22 font-size=%2224%22>🎀</text></svg>'"/>
+      <div class="product-info"><div class="product-name">Mini Bow Hair Clips 30pc</div><div class="product-price">$4.99</div></div>
+    </div>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<!-- SQUISHIES -->
+<div class="category">
+  <div class="category-title">🥟 Squishies 🥟</div>
+  <div class="products">
+    <div class="product-row">
+      <img class="product-img" src="https://i5.walmartimages.com/asr/836f0e8f-282d-41cf-83bb-a90f93ccc7f1.7ec89295d61bbfc2e89658f39bd93ef5.jpeg" onerror="this.src='data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 width=%2252%22 height=%2252%22><rect fill=%22%23fff0f6%22 width=%2252%22 height=%2252%22 rx=%228%22/><text x=%2226%22 y=%2232%22 text-anchor=%22middle%22 font-size=%2224%22>🥟</text></svg>'"/>
+      <div class="product-info"><div class="product-name">Mystery Dumpling Squishy</div><div class="product-price">$12.99</div></div>
+    </div>
+    <div class="product-row">
+      <img class="product-img" src="https://i5.walmartimages.com/asr/d6f9e9da-19a7-4a1e-9753-230bb9937da6.846893413ee8fe0b0670650f6a84095e.jpeg" onerror="this.src='data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 width=%2252%22 height=%2252%22><rect fill=%22%23fff0f6%22 width=%2252%22 height=%2252%22 rx=%228%22/><text x=%2226%22 y=%2232%22 text-anchor=%22middle%22 font-size=%2224%22>✨</text></svg>'"/>
+      <div class="product-info"><div class="product-name">Glitter Cube Squishy</div><div class="product-price">$7.99</div></div>
+    </div>
+    <div class="product-row">
+      <img class="product-img" src="https://i5.walmartimages.com/asr/836f0e8f-282d-41cf-83bb-a90f93ccc7f1.7ec89295d61bbfc2e89658f39bd93ef5.jpeg" onerror="this.src='data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 width=%2252%22 height=%2252%22><rect fill=%22%23fff0f6%22 width=%2252%22 height=%2252%22 rx=%228%22/><text x=%2226%22 y=%2232%22 text-anchor=%22middle%22 font-size=%2224%22>🥟</text></svg>'"/>
+      <div class="product-info"><div class="product-name">Mystery Dumpling 3-Pack</div><div class="product-price">$22.99</div></div>
+    </div>
+    <div class="product-row">
+      <img class="product-img" src="https://i5.walmartimages.com/asr/fe743c38-df4a-49d9-8859-a2d75e7d7935.f842e81b07351ce6e4f2718e87bb77db.jpeg" onerror="this.src='data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 width=%2252%22 height=%2252%22><rect fill=%22%23fff0f6%22 width=%2252%22 height=%2252%22 rx=%228%22/><text x=%2226%22 y=%2232%22 text-anchor=%22middle%22 font-size=%2224%22>🐾</text></svg>'"/>
+      <div class="product-info"><div class="product-name">Kawaii Cat Paw Squishy</div><div class="product-price">$9.99</div></div>
+    </div>
+    <div class="product-row">
+      <img class="product-img" src="https://i5.walmartimages.com/seo/Hello-Kitty-Friends-Mystery-Squishy-1-Random_84f28fe3-a979-43ad-8f2e-3ab44ea869f6.80b7604dd140cdde3f385fbac9c81c25.jpeg" onerror="this.src='data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 width=%2252%22 height=%2252%22><rect fill=%22%23fff0f6%22 width=%2252%22 height=%2252%22 rx=%228%22/><text x=%2226%22 y=%2232%22 text-anchor=%22middle%22 font-size=%2224%22>🎲</text></svg>'"/>
+      <div class="product-info"><div class="product-name">Mystery Random Squishy</div><div class="product-price">$9.99</div></div>
+    </div>
+    <div class="product-row">
+      <img class="product-img" src="https://m.media-amazon.com/images/I/81WWAnTwaBL._AC_SX679_.jpg" onerror="this.src='data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 width=%2252%22 height=%2252%22><rect fill=%22%23fff0f6%22 width=%2252%22 height=%2252%22 rx=%228%22/><text x=%2226%22 y=%2232%22 text-anchor=%22middle%22 font-size=%2224%22>🌈</text></svg>'"/>
+      <div class="product-info"><div class="product-name">Random Slime</div><div class="product-price">$6.99</div></div>
+    </div>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<!-- CANDY -->
+<div class="category">
+  <div class="category-title">🍬 Candy 🍬</div>
+  <div class="products">
+    <div class="product-row">
+      <img class="product-img" src="https://i5.walmartimages.com/asr/4b62cae9-7d8b-4f79-9525-8827d9ae7641.afbb56bafc76a8d80554be2856ea2093.jpeg" onerror="this.src='data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 width=%2252%22 height=%2252%22><rect fill=%22%23fff0f6%22 width=%2252%22 height=%2252%22 rx=%228%22/><text x=%2226%22 y=%2232%22 text-anchor=%22middle%22 font-size=%2224%22>🍬</text></svg>'"/>
+      <div class="product-info"><div class="product-name">Amos PeelerZ Gummies</div><div class="product-price">$12.99</div></div>
+    </div>
+    <div class="product-row">
+      <img class="product-img" src="https://i5.walmartimages.com/asr/4b62cae9-7d8b-4f79-9525-8827d9ae7641.afbb56bafc76a8d80554be2856ea2093.jpeg" onerror="this.src='data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 width=%2252%22 height=%2252%22><rect fill=%22%23fff0f6%22 width=%2252%22 height=%2252%22 rx=%228%22/><text x=%2226%22 y=%2232%22 text-anchor=%22middle%22 font-size=%2224%22>🍬</text></svg>'"/>
+      <div class="product-info"><div class="product-name">PeelerZ Variety Bag</div><div class="product-price">$7.99</div></div>
+    </div>
+    <div class="product-row">
+      <img class="product-img" src="https://i5.walmartimages.com/asr/4b62cae9-7d8b-4f79-9525-8827d9ae7641.afbb56bafc76a8d80554be2856ea2093.jpeg" onerror="this.src='data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 width=%2252%22 height=%2252%22><rect fill=%22%23fff0f6%22 width=%2252%22 height=%2252%22 rx=%228%22/><text x=%2226%22 y=%2232%22 text-anchor=%22middle%22 font-size=%2224%22>🎁</text></svg>'"/>
+      <div class="product-info"><div class="product-name">PeelerZ 10-Pack Gift Box</div><div class="product-price">$14.99</div></div>
+    </div>
+    <div class="product-row">
+      <img class="product-img" src="https://i5.walmartimages.com/asr/13bc959a-debf-4287-b759-e1296c7a71fe.d77222086883372ba1220e129361da98.jpeg" onerror="this.src='data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 width=%2252%22 height=%2252%22><rect fill=%22%23fff0f6%22 width=%2252%22 height=%2252%22 rx=%228%22/><text x=%2226%22 y=%2232%22 text-anchor=%22middle%22 font-size=%2224%22>🥭</text></svg>'"/>
+      <div class="product-info"><div class="product-name">4D Mango Peelable Gummies</div><div class="product-price">$4.99</div></div>
+    </div>
+    <div class="product-row">
+      <img class="product-img" src="https://i5.walmartimages.com/asr/4b62cae9-7d8b-4f79-9525-8827d9ae7641.afbb56bafc76a8d80554be2856ea2093.jpeg" onerror="this.src='data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 width=%2252%22 height=%2252%22><rect fill=%22%23fff0f6%22 width=%2252%22 height=%2252%22 rx=%228%22/><text x=%2226%22 y=%2232%22 text-anchor=%22middle%22 font-size=%2224%22>🍈</text></svg>'"/>
+      <div class="product-info"><div class="product-name">Peelable Gummies 3-Pack</div><div class="product-price">$11.99</div></div>
+    </div>
+    <div class="product-row">
+      <img class="product-img" src="https://i5.walmartimages.com/asr/9b3bb794-e5a5-43e3-9161-32fb704565e2.ebfa1fc22da6660e1436a15c5a763430.jpeg" onerror="this.src='data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 width=%2252%22 height=%2252%22><rect fill=%22%23fff0f6%22 width=%2252%22 height=%2252%22 rx=%228%22/><text x=%2226%22 y=%2232%22 text-anchor=%22middle%22 font-size=%2224%22>🌶️</text></svg>'"/>
+      <div class="product-info"><div class="product-name">PeelerZ Chili Mango</div><div class="product-price">$4.99</div></div>
+    </div>
+    <div class="product-row">
+      <img class="product-img" src="https://i5.walmartimages.com/asr/f4b386f1-2652-45d3-a97c-71567297e9ae.90b7b80ac701137d0d2698cc1ebd116b.jpeg" onerror="this.src='data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 width=%2252%22 height=%2252%22><rect fill=%22%23fff0f6%22 width=%2252%22 height=%2252%22 rx=%228%22/><text x=%2226%22 y=%2232%22 text-anchor=%22middle%22 font-size=%2224%22>🍈</text></svg>'"/>
+      <div class="product-info"><div class="product-name">PeelerZ Lychee</div><div class="product-price">$4.99</div></div>
+    </div>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<!-- SKINCARE & BEAUTY -->
+<div class="category">
+  <div class="category-title">💄 Skincare & Beauty 💄</div>
+  <div class="products">
+    <div class="product-row">
+      <img class="product-img" src="https://i5.walmartimages.com/asr/03bc1c47-5971-4335-ad0b-6e7336f796ea.fff810df64a57571d2a1e6fd2eee6809.jpeg" onerror="this.src='data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 width=%2252%22 height=%2252%22><rect fill=%22%23fff0f6%22 width=%2252%22 height=%2252%22 rx=%228%22/><text x=%2226%22 y=%2232%22 text-anchor=%22middle%22 font-size=%2224%22>🧊</text></svg>'"/>
+      <div class="product-info"><div class="product-name">Silicone Ice Roller</div><div class="product-price">$7.99</div></div>
+    </div>
+    <div class="product-row">
+      <img class="product-img" src="https://i5.walmartimages.com/asr/03bc1c47-5971-4335-ad0b-6e7336f796ea.fff810df64a57571d2a1e6fd2eee6809.jpeg" onerror="this.src='data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 width=%2252%22 height=%2252%22><rect fill=%22%23fff0f6%22 width=%2252%22 height=%2252%22 rx=%228%22/><text x=%2226%22 y=%2232%22 text-anchor=%22middle%22 font-size=%2224%22>🧊</text></svg>'"/>
+      <div class="product-info"><div class="product-name">Ice Roller Bundle 2-Pack</div><div class="product-price">$12.99</div></div>
+    </div>
+    <div class="product-row">
+      <img class="product-img" src="https://m.media-amazon.com/images/I/71qYEO0cs4L._AC_SX679_.jpg" onerror="this.src='data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 width=%2252%22 height=%2252%22><rect fill=%22%23fff0f6%22 width=%2252%22 height=%2252%22 rx=%228%22/><text x=%2226%22 y=%2232%22 text-anchor=%22middle%22 font-size=%2224%22>😴</text></svg>'"/>
+      <div class="product-info"><div class="product-name">Pink Silk Sleep Eye Mask</div><div class="product-price">$8.99</div></div>
+    </div>
+    <div class="product-row">
+      <img class="product-img" src="https://m.media-amazon.com/images/I/71WPgWDK9pL._AC_SX679_.jpg" onerror="this.src='data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 width=%2252%22 height=%2252%22><rect fill=%22%23fff0f6%22 width=%2252%22 height=%2252%22 rx=%228%22/><text x=%2226%22 y=%2232%22 text-anchor=%22middle%22 font-size=%2224%22>🎀</text></svg>'"/>
+      <div class="product-info"><div class="product-name">Satin Silk Hair Bonnet</div><div class="product-price">$7.99</div></div>
+    </div>
+    <div class="product-row">
+      <img class="product-img" src="https://i5.walmartimages.com/asr/40fa9a0b-ca8e-429c-9748-1d2ca0e5e513.46280fc3574dfb6d153eab8b3d47cb9c.jpeg" onerror="this.src='data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 width=%2252%22 height=%2252%22><rect fill=%22%23fff0f6%22 width=%2252%22 height=%2252%22 rx=%228%22/><text x=%2226%22 y=%2232%22 text-anchor=%22middle%22 font-size=%2224%22>👁️</text></svg>'"/>
+      <div class="product-info"><div class="product-name">Golden Eye Patches 16pr</div><div class="product-price">$13.99</div></div>
+    </div>
+    <div class="product-row">
+      <img class="product-img" src="https://i5.walmartimages.com/seo/25Pcs-Pink-Spa-Headband-Soft-Elastic-Face-Washing-Headbands-Women-Bow-Tie-Skincare-Headband-Makeup-Routine-Shower-Yoga-Self-Care-Days-Cute-Gift-Idea_ec64affa-1546-457a-825f-753ae847c0cd.da9bdadac1e525424e9fc92824b3f6d0.jpeg" onerror="this.src='data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 width=%2252%22 height=%2252%22><rect fill=%22%23fff0f6%22 width=%2252%22 height=%2252%22 rx=%228%22/><text x=%2226%22 y=%2232%22 text-anchor=%22middle%22 font-size=%2224%22>🎀</text></svg>'"/>
+      <div class="product-info"><div class="product-name">Pink Bow Spa Headband</div><div class="product-price">$5.99</div></div>
+    </div>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<!-- GIFT BASKETS -->
+<div class="category">
+  <div class="category-title">🧺 Gift Baskets 🧺</div>
+  <div class="products">
+    <div class="product-row">
+      <img class="product-img" src="https://i5.walmartimages.com/seo/YOSENING-Kawaii-Cartoon-Hello-Kitty-Storage-Basket-Cute-Pink-Cosmetics-Toys-Organizer-Box-Bedroom-Decor-Birthday-Gift-Girls-Teens-QQH624-2862_34639011-3f89-457b-922f-c6138425b9da.5f6dd964644c7442064cb7ffa9824022.jpeg" onerror="this.src='data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 width=%2252%22 height=%2252%22><rect fill=%22%23fff0f6%22 width=%2252%22 height=%2252%22 rx=%228%22/><text x=%2226%22 y=%2232%22 text-anchor=%22middle%22 font-size=%2224%22>🧺</text></svg>'"/>
+      <div class="product-info"><div class="product-name">Squishy Lover Basket</div><div class="product-price">$19.99</div></div>
+    </div>
+    <div class="product-row">
+      <img class="product-img" src="https://i5.walmartimages.com/seo/YOSENING-Kawaii-Cartoon-Hello-Kitty-Storage-Basket-Cute-Pink-Cosmetics-Toys-Organizer-Box-Bedroom-Decor-Birthday-Gift-Girls-Teens-QQH624-2862_34639011-3f89-457b-922f-c6138425b9da.5f6dd964644c7442064cb7ffa9824022.jpeg" onerror="this.src='data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 width=%2252%22 height=%2252%22><rect fill=%22%23fff0f6%22 width=%2252%22 height=%2252%22 rx=%228%22/><text x=%2226%22 y=%2232%22 text-anchor=%22middle%22 font-size=%2224%22>🍬</text></svg>'"/>
+      <div class="product-info"><div class="product-name">Candy Lover Basket</div><div class="product-price">$10.00</div></div>
+    </div>
+    <div class="product-row">
+      <img class="product-img" src="https://i5.walmartimages.com/seo/YOSENING-Kawaii-Cartoon-Hello-Kitty-Storage-Basket-Cute-Pink-Cosmetics-Toys-Organizer-Box-Bedroom-Decor-Birthday-Gift-Girls-Teens-QQH624-2862_34639011-3f89-457b-922f-c6138425b9da.5f6dd964644c7442064cb7ffa9824022.jpeg" onerror="this.src='data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 width=%2252%22 height=%2252%22><rect fill=%22%23fff0f6%22 width=%2252%22 height=%2252%22 rx=%228%22/><text x=%2226%22 y=%2232%22 text-anchor=%22middle%22 font-size=%2224%22>💄</text></svg>'"/>
+      <div class="product-info"><div class="product-name">Beauty Glam Basket</div><div class="product-price">$14.99</div></div>
+    </div>
+    <div class="product-row">
+      <img class="product-img" src="https://i5.walmartimages.com/seo/YOSENING-Kawaii-Cartoon-Hello-Kitty-Storage-Basket-Cute-Pink-Cosmetics-Toys-Organizer-Box-Bedroom-Decor-Birthday-Gift-Girls-Teens-QQH624-2862_34639011-3f89-457b-922f-c6138425b9da.5f6dd964644c7442064cb7ffa9824022.jpeg" onerror="this.src='data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 width=%2252%22 height=%2252%22><rect fill=%22%23fff0f6%22 width=%2252%22 height=%2252%22 rx=%228%22/><text x=%2226%22 y=%2232%22 text-anchor=%22middle%22 font-size=%2224%22>🌸</text></svg>'"/>
+      <div class="product-info"><div class="product-name">Kawaii BFF Basket</div><div class="product-price">$29.99</div></div>
+    </div>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<!-- CONTACT -->
+<div style="text-align:center;margin:8px 28px;font-size:12px;font-weight:800;color:#b07090;">
+  ✉ contact us to look at pictures! ✉
+</div>
+
+<!-- SPECIAL OFFERS -->
+<div class="offers-box">
+  <div class="offers-title">special offers</div>
+  <p>
+    ✦ $10 flat rate shipping<br>
+    ✦ FREE shipping on orders over $50<br>
+    ✦ Spend $60+ &amp; get a FREE nail package!
+  </p>
+</div>
+
+<!-- ORDER BOX -->
+<div class="order-box">
+  <div class="order-label">order or DM us!</div>
+  <div class="phone">813 731 9317</div>
+  <div class="website">peachyglow.vercel.app</div>
+</div>
+
+</body>
+</html>

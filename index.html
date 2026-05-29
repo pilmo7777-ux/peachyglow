@@ -736,7 +736,7 @@
   <section class="perks">
     <div class="perks-inner">
       <div class="perk"><span class="perk-icon">🚚</span><span class="perk-title">Free Shipping</span><span class="perk-sub">on orders over $50</span></div>
-      <div class="perk"><span class="perk-icon">♡</span><span class="perk-title">Easy Returns</span><span class="perk-sub">30 day returns</span></div>
+      <div class="perk"><span class="perk-icon">🚫</span><span class="perk-title">No Returns</span><span class="perk-sub">all sales final</span></div>
       <div class="perk"><span class="perk-icon">🎀</span><span class="perk-title">Cute Packaging</span><span class="perk-sub">every order</span></div>
       <div class="perk"><span class="perk-icon">⭐</span><span class="perk-title">Support 24/7</span><span class="perk-sub">we're here for you!</span></div>
     </div>
@@ -883,7 +883,6 @@ const products = {
   baskets: [
     { id:'bk1', name:'Squishy Lover Basket', price:19.99, emoji:'🧺', img:'https://i5.walmartimages.com/seo/YOSENING-Kawaii-Cartoon-Hello-Kitty-Storage-Basket-Cute-Pink-Cosmetics-Toys-Organizer-Box-Bedroom-Decor-Birthday-Gift-Girls-Teens-QQH624-2862_34639011-3f89-457b-922f-c6138425b9da.5f6dd964644c7442064cb7ffa9824022.jpeg', badge:'NEW', rating:5, desc:'3 kawaii squishies in a cute gift basket — dumpling, cat paw & butter squishy! 🥟🧈💕 Perfect gift!' },
     { id:'bk2', name:'Candy Lover Basket',   price:10.00, emoji:'🍬', img:'https://i5.walmartimages.com/seo/YOSENING-Kawaii-Cartoon-Hello-Kitty-Storage-Basket-Cute-Pink-Cosmetics-Toys-Organizer-Box-Bedroom-Decor-Birthday-Gift-Girls-Teens-QQH624-2862_34639011-3f89-457b-922f-c6138425b9da.5f6dd964644c7442064cb7ffa9824022.jpeg', badge:'NEW', rating:5, desc:'3 PeelerZ gummies (mango, watermelon & lychee) in a cute basket — sweetest gift! 🍬🍈✨' },
-    { id:'bk3', name:'Beauty Glam Basket',   price:14.99, emoji:'💄', img:'https://i5.walmartimages.com/seo/YOSENING-Kawaii-Cartoon-Hello-Kitty-Storage-Basket-Cute-Pink-Cosmetics-Toys-Organizer-Box-Bedroom-Decor-Birthday-Gift-Girls-Teens-QQH624-2862_34639011-3f89-457b-922f-c6138425b9da.5f6dd964644c7442064cb7ffa9824022.jpeg', badge:'NEW', rating:5, desc:'Lip gloss + lip mask + nail art pens in a pretty gift basket — glow up gift! 💄💅🌸' },
     { id:'bk5', name:'Kawaii BFF Basket',    price:29.99, emoji:'🌸', img:'https://i5.walmartimages.com/seo/YOSENING-Kawaii-Cartoon-Hello-Kitty-Storage-Basket-Cute-Pink-Cosmetics-Toys-Organizer-Box-Bedroom-Decor-Birthday-Gift-Girls-Teens-QQH624-2862_34639011-3f89-457b-922f-c6138425b9da.5f6dd964644c7442064cb7ffa9824022.jpeg', badge:'POPULAR', rating:5, desc:'The ultimate gift! Squishy + candy + lip gloss + hair clip + face mask! 🌸✨' }
   ],
 };
@@ -1045,6 +1044,13 @@ function buildCheckoutModal() {
   document.getElementById('co-confirmed').style.display = 'none';
   document.getElementById('paypal-button-container').style.display = 'block';
 
+  // Reset special note section
+  document.getElementById('note-input-area').style.display = 'none';
+  document.getElementById('note-yes-btn').style.cssText = 'flex:1;padding:9px;border-radius:999px;border:2px solid #ff91b4;background:#ff91b4;color:#fff;font-weight:800;font-size:.9rem;cursor:pointer;';
+  document.getElementById('note-no-btn').style.cssText  = 'flex:1;padding:9px;border-radius:999px;border:2px solid #ffd6e7;background:#fff;color:#b07090;font-weight:800;font-size:.9rem;cursor:pointer;';
+  const noteEl = document.getElementById('special-note');
+  if (noteEl) noteEl.value = '';
+
   window._checkoutTotal = total.toFixed(2);
 }
 
@@ -1092,6 +1098,22 @@ function renderPayPalButtons() {
       showToast('❌ Payment error — please try again!');
     }
   }).render('#paypal-button-container');
+}
+
+function toggleNoteInput(show) {
+  document.getElementById('note-input-area').style.display = show ? 'block' : 'none';
+  const yesBtn = document.getElementById('note-yes-btn');
+  const noBtn  = document.getElementById('note-no-btn');
+  if (show) {
+    yesBtn.style.background = '#ff91b4'; yesBtn.style.color = '#fff';
+    noBtn.style.background  = '#fff';    noBtn.style.color  = '#b07090';
+    noBtn.style.border = '2px solid #ffd6e7';
+    setTimeout(() => document.getElementById('special-note').focus(), 50);
+  } else {
+    yesBtn.style.background = '#fff'; yesBtn.style.color = '#ff91b4';
+    noBtn.style.background  = '#ff91b4'; noBtn.style.color = '#fff';
+    document.getElementById('special-note').value = '';
+  }
 }
 
 function closeCheckoutModal() {
@@ -1191,6 +1213,20 @@ renderCartItems();
     <button onclick="closeCheckoutModal()" style="position:absolute;top:14px;right:18px;background:none;border:none;font-size:1.6rem;cursor:pointer;color:#b07090;line-height:1;" aria-label="Close">✕</button>
     <h2 style="font-family:'Pacifico',cursive;color:#ff91b4;margin-bottom:18px;font-size:1.5rem;">Order Summary 🛍️</h2>
     <div id="co-items" style="margin-bottom:14px;"></div>
+    <!-- Special Note Add-On -->
+    <div style="background:#fff0f8;border:2px solid #ffd6e7;border-radius:18px;padding:16px 18px;margin-bottom:18px;">
+      <p style="font-family:'Pacifico',cursive;color:#ff91b4;font-size:1rem;margin:0 0 8px;">🌸 Add a Special Note?</p>
+      <p style="font-size:.82rem;color:#7a3f5e;margin:0 0 12px;">We'll include a handwritten note with your order! 💕</p>
+      <div style="display:flex;gap:10px;margin-bottom:12px;">
+        <button id="note-yes-btn" onclick="toggleNoteInput(true)" style="flex:1;padding:9px;border-radius:999px;border:2px solid #ff91b4;background:#ff91b4;color:#fff;font-weight:800;font-size:.9rem;cursor:pointer;">Yes please! ♡</button>
+        <button id="note-no-btn" onclick="toggleNoteInput(false)" style="flex:1;padding:9px;border-radius:999px;border:2px solid #ffd6e7;background:#fff;color:#b07090;font-weight:800;font-size:.9rem;cursor:pointer;">No thanks</button>
+      </div>
+      <div id="note-input-area" style="display:none;">
+        <textarea id="special-note" placeholder="Write your note here… e.g. Happy Birthday Sofia! 🎂" style="width:100%;box-sizing:border-box;border:2px solid #ffd6e7;border-radius:14px;padding:10px 12px;font-size:.85rem;color:#7a3f5e;resize:none;height:80px;font-family:inherit;outline:none;" maxlength="200"></textarea>
+        <p style="font-size:.72rem;color:#c0a0b0;margin:4px 0 0;text-align:right;">max 200 characters</p>
+      </div>
+    </div>
+
     <div style="display:flex;justify-content:space-between;align-items:center;padding:8px 0;border-top:2px dashed #ffd6e7;">
       <span style="font-weight:700;color:#7a3f5e;">Shipping</span>
       <span id="co-shipping" style="font-weight:800;"></span>
