@@ -2,3 +2,6 @@
 *.tmp
 Thumbs.db
 .DS_Store
+.fuse_hidden*
+_tmp_*.png
+*-Setup-Guide-For-Parent.md
