@@ -349,6 +349,39 @@
       line-height: 1.45;
     }
 
+    .product-contents {
+      background: var(--pink-pale);
+      border: 1.5px solid #ffd6e7;
+      border-radius: 12px;
+      padding: 8px 10px;
+      margin-bottom: 10px;
+      text-align: left;
+    }
+    .product-contents .pc-title {
+      font-size: .72rem;
+      font-weight: 800;
+      color: var(--pink-dark);
+      margin-bottom: 4px;
+      letter-spacing: .2px;
+    }
+    .product-contents ul {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+    }
+    .product-contents li {
+      font-size: .74rem;
+      font-weight: 600;
+      color: var(--text);
+      line-height: 1.5;
+    }
+    .product-contents li .pc-qty {
+      display: inline-block;
+      min-width: 22px;
+      font-weight: 800;
+      color: var(--pink-dark);
+    }
+
     .btn-cart {
       width: 100%;
       background: var(--pink);
@@ -847,47 +880,42 @@
 // ─── DATA ───────────────────────────────────────────────────────────────────
 const products = {
   squishies: [
-    { id:'s1',  name:'Dumpling Duo Bundle',          price:22.99, emoji:'🥟', img:'https://m.media-amazon.com/images/I/71g6ftnoXTL._AC_SX679_.jpg', badge:'BUNDLE', rating:5, desc:'2 mystery glitter dumpling squishies — 2 random colors! Double the squish fun 🥟🥟✨' },
-    { id:'s2',  name:'Squish Mix Bundle',            price:36.99, emoji:'✨', img:'squishy_bundle.png', badge:'BUNDLE', rating:5, desc:'Dumpling + 5 Glitter Cubes + 4 Cat Paws — sparkly squish overload! 🥟✨✨✨✨✨🐾🐾🐾🐾' },
-    { id:'s3',  name:'Mystery Dumpling 3-Pack',      price:26.99, emoji:'🥟', img:'https://m.media-amazon.com/images/I/71g6ftnoXTL._AC_SX679_.jpg', badge:'POPULAR',rating:5, desc:'3 mystery dumpling squishies — each a different random color! Great gift 🎁🥟' },
-    { id:'s5',  name:'Kawaii Squad Bundle',          price:27.99, emoji:'🐾', img:'squishy_bundle_pink.png', badge:'BUNDLE', rating:5, desc:'4 Cat Paws + Mystery Random + Random Slime — the ultimate kawaii squish haul! 🐾🐾🐾🐾🎲🌈' },
-    { id:'s10', name:'Mystery Surprise Bundle',      price:19.99, emoji:'🎲', img:'squishy_slime_bundle.png', badge:'BUNDLE', rating:5, desc:'Donut squishy + candy fluff slime — total surprise pack! Squishy soft & candy scented 🎲🍩🌈' },
-    { id:'s11', name:'Slime Triple Bundle',          price:17.99, emoji:'🌈', img:'peachyglow_slime_bundle.png', badge:'BUNDLE', rating:5, desc:'3 candy fluff scented slimes — stretchy, satisfying & colorful! Perfect slime collection 🌈🌈🌈✨' },
-    { id:'s12', name:'Ultimate Squishy Bundle',      price:54.99, emoji:'🥟', img:'ultimate_squishy_bundle_square.png', badge:'BEST DEAL', rating:5, desc:'3 dumplings + 5 glitter cubes + 4 cat paws + donut squishy + candy fluff slime — 14 squishies total! The full collection 🥟✨🐾🍩🌈' },
+    { id:'s2',  name:'Squish Mix Bundle',            price:32.00, emoji:'✨', img:'squishy_bundle.png', badge:'BUNDLE', rating:5, desc:'Dumpling + 5 Glitter Cubes + 4 Cat Paws — sparkly squish overload! 🥟✨✨✨✨✨🐾🐾🐾🐾' },
+    { id:'s5',  name:'Kawaii Squad Bundle',          price:20.00, emoji:'🐾', img:'squishy_bundle_pink.png', badge:'BUNDLE', rating:5, desc:'4 Cat Paws + Mystery Random + Random Slime — the ultimate kawaii squish haul! 🐾🐾🐾🐾🎲🌈' },
+    { id:'s10', name:'Mystery Surprise Bundle',      price:10.00, emoji:'🎲', img:'squishy_slime_bundle.png', badge:'BUNDLE', rating:5, desc:'Donut squishy + candy fluff slime — total surprise pack! Squishy soft & candy scented 🎲🍩🌈' },
+    { id:'s12', name:'Ultimate Squishy Bundle',      price:55.00, emoji:'🥟', img:'ultimate_squishy_bundle_square.png', badge:'BEST DEAL', rating:5, desc:'3 dumplings + 5 glitter cubes + 4 cat paws + donut squishy + candy fluff slime — 14 squishies total! The full collection 🥟✨🐾🍩🌈' },
   ],
   candy: [
-    { id:'c1',  name:'Tropical PeelerZ Bundle',      price:12.99, emoji:'🥭', img:'https://m.media-amazon.com/images/I/71+SIz2+l4L._SX679_.jpg', badge:'BUNDLE', rating:5, desc:'Mango + Lychee + Pineapple PeelerZ mini packs — 3 tropical flavors in one sweet bundle! 🥭🍈🍍✨' },
-    { id:'c2',  name:'Fruity PeelerZ Bundle',        price:12.99, emoji:'🍑', img:'https://m.media-amazon.com/images/I/41Yy6SAz7HL._SY300_SX300_QL70_FMwebp_.jpg', badge:'BUNDLE', rating:5, desc:'Peach + Banana + Lychee PeelerZ mini packs — soft inside, chewy outside! 🍑🍌🍈✨' },
-    { id:'c3',  name:'Spicy Sweet Bundle',           price:12.99, emoji:'🌶️', img:'https://m.media-amazon.com/images/I/71w02kIl96L._SX679_.jpg', badge:'🌶️HOT',  rating:4, desc:'Chili Mango + Mango + Pineapple PeelerZ mini packs — sweet meets spicy! 🌶️🥭🍍' },
-    { id:'c4',  name:'PeelerZ Full Collection',      price:24.99, emoji:'🍬', img:'https://m.media-amazon.com/images/I/71BF3jdV1IL._SX679_.jpg', badge:'BEST DEAL', rating:5, desc:'All 6 PeelerZ mini packs — Mango, Chili Mango, Lychee, Peach, Banana & Pineapple! 🥭🌶️🍈🍑🍌🍍' },
-    { id:'c5',  name:'Candy + Haribo Bundle',        price:14.99, emoji:'🐻', img:'https://m.media-amazon.com/images/I/91SJfDcx5kL._SX679_.jpg', badge:'BUNDLE', rating:5, desc:'3 PeelerZ mini packs + Haribo mini packs — best of both worlds! 🐻🥭🍑🍌' },
-    { id:'c6',  name:'Sweet Starter Bundle',         price:9.99,  emoji:'🍬', img:'https://m.media-amazon.com/images/I/71+SIz2+l4L._SX679_.jpg', badge:'BUNDLE', rating:5, desc:'2 PeelerZ mini packs + Haribo mini packs — perfect intro to our candy shop! 🐻🥭🍑' },
-    { id:'c7',  name:'Ultimate Candy Bundle',        price:29.99, emoji:'🍬', img:'https://m.media-amazon.com/images/I/91SJfDcx5kL._SX679_.jpg', badge:'BEST DEAL', rating:5, desc:'All 6 PeelerZ mini packs + 2 Haribo mini packs — the complete candy haul! 🥭🌶️🍈🍑🍌🍍🐻🐻' },
+    { id:'c1',  name:'Tropical PeelerZ Bundle',      price:1.29, emoji:'🥭', img:'https://m.media-amazon.com/images/I/71+SIz2+l4L._SX679_.jpg', badge:'BUNDLE', rating:5, desc:'Mango + Lychee + Pineapple PeelerZ mini packs — 3 tropical flavors in one sweet bundle! 🥭🍈🍍✨' },
+    { id:'c2',  name:'Fruity PeelerZ Bundle',        price:1.29, emoji:'🍑', img:'https://m.media-amazon.com/images/I/41Yy6SAz7HL._SY300_SX300_QL70_FMwebp_.jpg', badge:'BUNDLE', rating:5, desc:'Peach + Banana + Lychee PeelerZ mini packs — soft inside, chewy outside! 🍑🍌🍈✨' },
+    { id:'c3',  name:'Spicy Sweet Bundle',           price:1.29, emoji:'🌶️', img:'https://m.media-amazon.com/images/I/71w02kIl96L._SX679_.jpg', badge:'🌶️HOT',  rating:4, desc:'Chili Mango + Mango + Pineapple PeelerZ mini packs — sweet meets spicy! 🌶️🥭🍍' },
+    { id:'c4',  name:'PeelerZ Full Collection',      price:1.99, emoji:'🍬', img:'https://m.media-amazon.com/images/I/71BF3jdV1IL._SX679_.jpg', badge:'BEST DEAL', rating:5, desc:'All 6 PeelerZ mini packs — Mango, Chili Mango, Lychee, Peach, Banana & Pineapple! 🥭🌶️🍈🍑🍌🍍' },
+    { id:'c5',  name:'Candy + Haribo Bundle',        price:1.49, emoji:'🐻', img:'https://m.media-amazon.com/images/I/91SJfDcx5kL._SX679_.jpg', badge:'BUNDLE', rating:5, desc:'3 PeelerZ mini packs + Haribo mini packs — best of both worlds! 🐻🥭🍑🍌' },
+    { id:'c6',  name:'Sweet Starter Bundle',         price:0.99,  emoji:'🍬', img:'https://m.media-amazon.com/images/I/71+SIz2+l4L._SX679_.jpg', badge:'BUNDLE', rating:5, desc:'2 PeelerZ mini packs + Haribo mini packs — perfect intro to our candy shop! 🐻🥭🍑' },
+    { id:'c7',  name:'Ultimate Candy Bundle',        price:2.99, emoji:'🍬', img:'https://m.media-amazon.com/images/I/91SJfDcx5kL._SX679_.jpg', badge:'BEST DEAL', rating:5, desc:'All 6 PeelerZ mini packs + 2 Haribo mini packs — the complete candy haul! 🥭🌶️🍈🍑🍌🍍🐻🐻' },
   ],
   beauty: [
     { id:'b1',  name:'Glow-Up Bundle',               price:19.99, emoji:'🧊', img:'peachyglow_selfcare_bundle.png', badge:'BUNDLE',   rating:5, desc:'Ice Roller + Pink Silk Eye Mask + Spa Headband — full glow-up routine in one bundle! 🧊😴🎀✨' },
     { id:'b2',  name:'Beauty Sleep Bundle',          price:14.99, emoji:'😴', img:'peachyglow_sleep_bundle.png', badge:'BUNDLE', rating:5, desc:'Pink Silk Eye Mask + Satin Hair Bonnet — wake up glowing every morning! 😴🎀💕' },
     { id:'b3',  name:'Self-Care Starter Bundle',     price:12.99, emoji:'🎀', img:'peachyglow_spaday_bundle.png', badge:'BUNDLE',   rating:5, desc:'Spa Headband + Satin Hair Bonnet — pamper yourself like a pro! 🎀🎀✨' },
-    { id:'b4',  name:'Ice Roller Duo Bundle',        price:12.99, emoji:'🧊', img:'https://m.media-amazon.com/images/I/61F4-WXzXQL._SX466_.jpg', badge:'BUNDLE',   rating:5, desc:'2 Silicone Ice Rollers — keep one, gift one! Freeze & roll for glowing skin 🧊🧊💕' },
-    { id:'b5',  name:'BFF Beauty Bundle',            price:24.99, emoji:'✨', img:'peachyglow_glowup_bundle.png', badge:'BUNDLE', rating:5, desc:'Satin Hair Bonnet + Silk Sleep Mask + Spa Headband + Ice Roller — matching glow-up set for you & your bestie! 🎀😴🧊💕' },
-    { id:'b6',  name:'Ultimate Beauty Bundle',       price:34.99, emoji:'✨', img:'ultimate_beauty_bundle.png', badge:'BEST DEAL', rating:5, desc:'Everything — 2 Ice Rollers + Eye Mask + Hair Bonnet + Spa Headband! Full beauty collection 🧊😴🎀✨' },
+    { id:'b5',  name:'Ultimate Beauty Bundle',       price:24.99, emoji:'✨', img:'peachyglow_glowup_bundle.png', badge:'BEST DEAL', rating:5, desc:'Satin Hair Bonnet + Silk Sleep Mask + Spa Headband + Ice Roller — matching glow-up set for you & your bestie! 🎀😴🧊💕' },
   ],
   hairclips: [
-    { id:'h1',  name:'Kawaii Clips Starter Bundle',  price:14.99, emoji:'🌸', img:'peachyglow_hairclip_bundle.png', badge:'BUNDLE', rating:5, desc:'Kawaii Flower Clips + Butterfly Clip + Mini Bow Clips — cute starter pack! 🌸🦋🎀' },
+    { id:'h1',  name:'Kawaii Clips Starter Bundle',  price:15.99, emoji:'🌸', img:'peachyglow_hairclip_bundle.png', badge:'BUNDLE', rating:5, desc:'Kawaii Flower Clips + Butterfly Clip + Mini Bow Clips — cute starter pack! 🌸🦋🎀' },
     { id:'h2',  name:'Ocean Vibes Bundle',           price:15.99, emoji:'🧜', img:'peachyglow_mermaidcore_clip_bundle.png', badge:'BUNDLE',  rating:5, desc:'Kawaii Mermaid Clips + Star Clips + Flower Clips — magical ocean aesthetic! 🧜⭐🌺' },
-    { id:'h3',  name:'Y2K Hair Bundle',              price:13.99, emoji:'⭐', img:'peachyglow_star_bundle.png', badge:'BUNDLE',  rating:5, desc:'Star Clips + Butterfly Clips + Mini Bow Clips — full Y2K aesthetic! ⭐🦋🎀✨' },
-    { id:'h4',  name:'Flower Power Bundle',          price:11.99, emoji:'🌺', img:'flower_mermaid_clip_bundle.png', badge:'BUNDLE',  rating:5, desc:'Flower Clips + Mermaid Clips — floral girly vibes! 🌸🌺🧜✨' },
-    { id:'h5',  name:'Bow Lover Bundle',             price:11.99, emoji:'🎀', img:'peachyglow_clip_bundle_listing.png', badge:'BUNDLE',  rating:5, desc:'Mini Bow Clips (30pc) + Butterfly Clip + Kawaii Flower Clips — bow obsessed! 🎀🦋🌸' },
-    { id:'h6',  name:'Ultimate Hair Clips Bundle',   price:34.99, emoji:'🌸', img:'peachyglow_clip_bundle_5pc.png', badge:'BEST DEAL', rating:5, desc:'All 5 styles — Flower, Mermaid, Butterfly, Star & Mini Bows! Every hair clip we carry 🌸🧜🦋⭐🎀' },
+    { id:'h3',  name:'Y2K Hair Bundle',              price:15.99, emoji:'⭐', img:'peachyglow_star_bundle.png', badge:'BUNDLE',  rating:5, desc:'Star Clips + Butterfly Clips + Mini Bow Clips — full Y2K aesthetic! ⭐🦋🎀✨' },
+    { id:'h4',  name:'Flower Power Bundle',          price:12.99, emoji:'🌺', img:'flower_mermaid_clip_bundle.png', badge:'BUNDLE',  rating:5, desc:'Flower Clips + Mermaid Clips — floral girly vibes! 🌸🌺🧜✨' },
+    { id:'h5',  name:'Bow Lover Bundle',             price:15.99, emoji:'🎀', img:'peachyglow_clip_bundle_listing.png', badge:'BUNDLE',  rating:5, desc:'Mini Bow Clips (4pc) + Butterfly Clip + Kawaii Flower Clips — bow obsessed! 🎀🦋🌸' },
+    { id:'h6',  name:'Ultimate Hair Clips Bundle',   price:24.99, emoji:'🌸', img:'peachyglow_clip_bundle_5pc.png', badge:'BEST DEAL', rating:5, desc:'All 5 styles — Flower, Mermaid, Butterfly, Star & Mini Bows! Every hair clip we carry 🌸🧜🦋⭐🎀' },
   ],
   baskets: [
     { id:'bk1', name:'Squishy Lover Basket', price:19.99, emoji:'🧺', img:'https://m.media-amazon.com/images/I/71BepKthhRL._AC_UL320_.jpg', badge:'NEW', rating:5, desc:'3 kawaii squishies in a cute gift basket — dumpling, cat paw & random slime! 🥟🌈💕 Perfect gift!' },
-    { id:'bk2', name:'Candy Lover Basket',   price:14.99, emoji:'🍬', img:'https://m.media-amazon.com/images/I/710klcCFE1L._AC_UL320_.jpg', badge:'NEW', rating:5, desc:'3 PeelerZ packs (mango, chili mango & lychee) in a cute basket — sweetest gift! 🍬🥭✨' },
+    { id:'bk2', name:'Candy Lover Basket',   price:5.00, emoji:'🍬', img:'https://m.media-amazon.com/images/I/710klcCFE1L._AC_UL320_.jpg', badge:'NEW', rating:5, desc:'3 PeelerZ packs (mango, chili mango & lychee) in a cute basket — sweetest gift! 🍬🥭✨' },
     { id:'bk5', name:'Kawaii BFF Basket',    price:29.99, emoji:'🌸', img:'https://m.media-amazon.com/images/I/81A8qNn-EPL._AC_UL320_.jpg', badge:'POPULAR', rating:5, desc:'The ultimate gift! Squishy + candy + hair clips + skincare surprise + mini nail set! 🌸💅✨' },
-    { id:'bk6', name:'🍬 Candy Bundle',       price:29.99, emoji:'🍬', img:'https://m.media-amazon.com/images/I/91SJfDcx5kL._SX679_.jpg', badge:'BUNDLE', rating:5, desc:'All 6 PeelerZ flavors + Haribo mini packs — every candy we carry in one bundle! 🥭🍈🍑🍌🍍🌶️🐻 Save vs buying separately!' },
-    { id:'bk7', name:'🥟 Squishy Bundle',     price:39.99, emoji:'🥟', img:'https://m.media-amazon.com/images/I/71g6ftnoXTL._AC_SX679_.jpg', badge:'BUNDLE', rating:5, desc:'Every squishy we carry — dumpling, glitter cube, cat paw, mystery random + random slime! 🥟✨🌈 The ultimate squish haul!' },
-    { id:'bk8', name:'🎀 Hair Clips Bundle',  price:29.99, emoji:'🎀', img:'https://m.media-amazon.com/images/I/41x8z9DotQL._SY300_SX300_QL70_FMwebp_.jpg', badge:'BUNDLE', rating:5, desc:'All 5 hair clip styles — flower, mermaid, butterfly, star & mini bows! 🌸🧜🦋⭐🎀 Something for every vibe!' },
-    { id:'bk9', name:'✨ Beauty Bundle',       price:34.99, emoji:'✨', img:'https://m.media-amazon.com/images/I/61F4-WXzXQL._SX466_.jpg', badge:'BUNDLE', rating:5, desc:'Everything in our Beauty & Skincare section — ice roller, eye mask, hair bonnet & spa headband! 🧊😴🎀 Full glow-up kit!' },
+    { id:'bk6', name:'🍬 Candy Bundle',       price:2.99, emoji:'🍬', img:'https://m.media-amazon.com/images/I/91SJfDcx5kL._SX679_.jpg', badge:'BUNDLE', rating:5, desc:'All 6 PeelerZ flavors + Haribo mini packs — every candy we carry in one bundle! 🥭🍈🍑🍌🍍🌶️🐻 Save vs buying separately!' },
+    { id:'bk7', name:'🥟 Squishy Bundle',     price:29.99, emoji:'🥟', img:'https://m.media-amazon.com/images/I/71g6ftnoXTL._AC_SX679_.jpg', badge:'BUNDLE', rating:5, desc:'Every squishy we carry — dumpling, glitter cube, cat paw, mystery random + random slime! 🥟✨🌈 The ultimate squish haul!' },
+    { id:'bk8', name:'🎀 Hair Clips Bundle',  price:24.99, emoji:'🎀', img:'https://m.media-amazon.com/images/I/41x8z9DotQL._SY300_SX300_QL70_FMwebp_.jpg', badge:'BUNDLE', rating:5, desc:'All 5 hair clip styles — flower, mermaid, butterfly, star & mini bows! 🌸🧜🦋⭐🎀 Something for every vibe!' },
+    { id:'bk9', name:'✨ Beauty Bundle',       price:29.99, emoji:'✨', img:'https://m.media-amazon.com/images/I/61F4-WXzXQL._SX466_.jpg', badge:'BUNDLE', rating:5, desc:'Everything in our Beauty & Skincare section — ice roller, eye mask, hair bonnet & spa headband! 🧊😴🎀 Full glow-up kit!' },
   ],
 };
 
@@ -1136,10 +1164,48 @@ function deliveryRange() {
   return fmt(d1) + ' – ' + fmt(d2);
 }
 
+const bundleContents = {
+  s1:[[2,'Dumpling squishy']],
+  s2:[[1,'Dumpling squishy'],[5,'Glitter cube squishy'],[4,'Cat paw squishy']],
+  s3:[[3,'Dumpling squishy']],
+  s5:[[4,'Cat paw squishy'],[1,'Mystery random squishy'],[1,'Random slime']],
+  s10:[[1,'Donut squishy'],[1,'Candy fluff slime']],
+  s11:[[3,'Candy fluff slime']],
+  s12:[[3,'Dumpling squishy'],[5,'Glitter cube squishy'],[4,'Cat paw squishy'],[1,'Donut squishy'],[1,'Candy fluff slime']],
+  c1:[[1,'Mango PeelerZ pack'],[1,'Lychee PeelerZ pack'],[1,'Pineapple PeelerZ pack']],
+  c2:[[1,'Peach PeelerZ pack'],[1,'Banana PeelerZ pack'],[1,'Lychee PeelerZ pack']],
+  c3:[[1,'Chili Mango PeelerZ pack'],[1,'Mango PeelerZ pack'],[1,'Pineapple PeelerZ pack']],
+  c4:[[1,'Mango PeelerZ pack'],[1,'Chili Mango PeelerZ pack'],[1,'Lychee PeelerZ pack'],[1,'Peach PeelerZ pack'],[1,'Banana PeelerZ pack'],[1,'Pineapple PeelerZ pack']],
+  c5:[[1,'Mango PeelerZ pack'],[1,'Peach PeelerZ pack'],[1,'Banana PeelerZ pack'],[1,'Haribo gummy mini pack']],
+  c6:[[1,'Mango PeelerZ pack'],[1,'Peach PeelerZ pack'],[1,'Haribo gummy mini pack']],
+  c7:[[1,'Mango PeelerZ pack'],[1,'Chili Mango PeelerZ pack'],[1,'Lychee PeelerZ pack'],[1,'Peach PeelerZ pack'],[1,'Banana PeelerZ pack'],[1,'Pineapple PeelerZ pack'],[2,'Haribo gummy mini pack']],
+  b1:[[1,'Silicone ice roller'],[1,'Pink silk eye mask'],[1,'Spa headband']],
+  b2:[[1,'Pink silk eye mask'],[1,'Satin hair bonnet']],
+  b3:[[1,'Spa headband'],[1,'Satin hair bonnet']],
+  b4:[[2,'Silicone ice roller']],
+  b5:[[1,'Satin hair bonnet'],[1,'Silk sleep mask'],[1,'Spa headband'],[1,'Silicone ice roller']],
+  b6:[[2,'Silicone ice roller'],[1,'Silk eye mask'],[1,'Satin hair bonnet'],[1,'Spa headband']],
+  h1:[[1,'Kawaii flower clips (set)'],[1,'Butterfly clip'],[1,'Mini bow clips (4pc)']],
+  h2:[[1,'Mermaid clips (set)'],[1,'Star clips (set)'],[1,'Flower clips (set)']],
+  h3:[[1,'Star clips (set)'],[1,'Butterfly clips (set)'],[1,'Mini bow clips (4pc)']],
+  h4:[[1,'Flower clips (set)'],[1,'Mermaid clips (set)']],
+  h5:[[1,'Mini bow clips (4pc)'],[1,'Butterfly clip'],[1,'Kawaii flower clips (set)']],
+  h6:[[1,'Flower clips (set)'],[1,'Mermaid clips (set)'],[1,'Butterfly clips (set)'],[1,'Star clips (set)'],[1,'Mini bow clips (4pc)']],
+  bk1:[[1,'Dumpling squishy'],[1,'Cat paw squishy'],[1,'Random slime'],[1,'Gift basket']],
+  bk2:[[1,'Mango PeelerZ pack'],[1,'Chili Mango PeelerZ pack'],[1,'Lychee PeelerZ pack'],[1,'Gift basket']],
+  bk5:[[1,'Assorted squishy'],[1,'Assorted candy pack'],[1,'Assorted hair clips'],[1,'Skincare surprise'],[1,'Mini nail set'],[1,'Gift basket']],
+  bk6:[[1,'Mango PeelerZ pack'],[1,'Chili Mango PeelerZ pack'],[1,'Lychee PeelerZ pack'],[1,'Peach PeelerZ pack'],[1,'Banana PeelerZ pack'],[1,'Pineapple PeelerZ pack'],[1,'Haribo gummy mini pack']],
+  bk7:[[1,'Dumpling squishy'],[1,'Glitter cube squishy'],[1,'Cat paw squishy'],[1,'Mystery random squishy'],[1,'Random slime']],
+  bk8:[[1,'Flower clips (set)'],[1,'Mermaid clips (set)'],[1,'Butterfly clips (set)'],[1,'Star clips (set)'],[1,'Mini bow clips (4pc)']],
+  bk9:[[1,'Silicone ice roller'],[1,'Silk eye mask'],[1,'Satin hair bonnet'],[1,'Spa headband']],
+};
+
 function renderProduct(p) {
   const stars = '★'.repeat(p.rating) + '☆'.repeat(5 - p.rating);
   const badgeHtml = p.badge ? `<div class="product-badge${p.badge==='SALE'?' sale':''}">${p.badge}</div>` : '';
   const descHtml = p.desc ? `<div class="product-desc">${p.desc}</div>` : '';
+  const items = bundleContents[p.id];
+  const contentsHtml = items ? `<div class="product-contents"><div class="pc-title">🎁 What's inside</div><ul>${items.map(([q,n])=>`<li><span class="pc-qty">${q}×</span> ${n}</li>`).join('')}</ul></div>` : '';
   const imgContent = p.img
     ? `<img src="${p.img}" alt="${p.name}" style="width:100%;height:100%;object-fit:cover;" onerror="this.parentElement.innerHTML='<span style=\\'font-size:4rem;\\'>${p.emoji}</span>'">`
     : p.emoji;
@@ -1150,6 +1216,7 @@ function renderProduct(p) {
       <div class="product-info">
         <div class="product-name">${p.name}</div>
         ${descHtml}
+        ${contentsHtml}
         <div class="product-price">$${p.price.toFixed(2)}</div>
         <div class="stars">${stars}</div>
         <div class="product-delivery">📦 Arrives by ${deliveryRange()}</div>
@@ -1207,44 +1274,4 @@ renderCartItems();
         <button id="note-yes-btn" onclick="toggleNoteInput(true)" style="flex:1;padding:9px;border-radius:999px;border:2px solid #ff91b4;background:#ff91b4;color:#fff;font-weight:800;font-size:.9rem;cursor:pointer;">Yes please! ♡</button>
         <button id="note-no-btn" onclick="toggleNoteInput(false)" style="flex:1;padding:9px;border-radius:999px;border:2px solid #ffd6e7;background:#fff;color:#b07090;font-weight:800;font-size:.9rem;cursor:pointer;">No thanks</button>
       </div>
-      <div id="note-input-area" style="display:none;">
-        <textarea id="special-note" placeholder="Write your note here… e.g. Happy Birthday Sofia! 🎂" style="width:100%;box-sizing:border-box;border:2px solid #ffd6e7;border-radius:14px;padding:10px 12px;font-size:.85rem;color:#7a3f5e;resize:none;height:80px;font-family:inherit;outline:none;" maxlength="200"></textarea>
-        <p style="font-size:.72rem;color:#c0a0b0;margin:4px 0 0;text-align:right;">max 200 characters</p>
-      </div>
-    </div>
-
-    <div style="display:flex;justify-content:space-between;align-items:center;padding:8px 0;border-top:2px dashed #ffd6e7;">
-      <span style="font-weight:700;color:#7a3f5e;">Shipping</span>
-      <span id="co-shipping" style="font-weight:800;"></span>
-    </div>
-    <div style="display:flex;justify-content:space-between;align-items:center;padding:8px 0 20px;border-bottom:2px solid #ffd6e7;margin-bottom:20px;">
-      <span style="font-weight:900;font-size:1.1rem;color:#7a3f5e;">Total</span>
-      <span id="co-total" style="font-weight:900;font-size:1.3rem;color:#ff91b4;"></span>
-    </div>
-    <p style="font-size:.8rem;color:#7a3f5e;text-align:center;font-weight:700;margin:4px 0 12px;">Pay safely with PayPal 💕</p>
-    <div style="background:#fff0f8;border:2px solid #ffd6e7;border-radius:14px;padding:10px 14px;margin:0 0 12px;text-align:center;">
-      <p style="font-size:.8rem;color:#7a3f5e;font-weight:700;margin:0;">📦 We'll ship to your PayPal address</p>
-      <p style="font-size:.72rem;color:#b07090;margin:4px 0 0;">Just double-check it's correct when you check out! 💕</p>
-    </div>
-    <div id="paypal-button-container" style="min-height:48px;"></div>
-    <p style="font-size:.72rem;color:#b07090;text-align:center;margin-top:10px;">
-      🔒 PayPal also lets you pay with Venmo or any debit/credit card — no PayPal account needed.
-    </p>
-    </div><!-- /co-form -->
-    <div id="co-confirmed" style="display:none;text-align:center;padding:10px 0;">
-      <div style="font-size:3.5rem;">🎉</div>
-      <h3 style="font-family:'Pacifico',cursive;color:#ff91b4;margin:10px 0 6px;">Order Placed!</h3>
-      <p style="color:#7a3f5e;font-weight:700;">Thank you so much! Your cherry cloud goodies are on the way! 💕</p>
-      <button onclick="closeCheckoutModal()" style="margin-top:16px;background:linear-gradient(135deg,#ff91b4,#e8629a);color:#fff;border:none;border-radius:999px;padding:12px 32px;font-weight:800;font-size:1rem;cursor:pointer;">Close ♡</button>
-    </div>
-  </div>
-</div>
-
-
-<!-- TOAST -->
-<div class="toast" id="toast"></div>
-
-<!-- PayPal SDK — LIVE client ID (real payments). -->
-<script src="https://www.paypal.com/sdk/js?client-id=ARXezvRpfxup9YGK7jLv14psm0T7PrbwCeNgadQb_b5xmu_hxsRC5VPGzG0LX2xPg7GOAknYt9HPNuuc&currency=USD&components=buttons&enable-funding=venmo"></script>
-
-<
+    
