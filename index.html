@@ -666,7 +666,6 @@
       <a href="#" onclick="showPage('candy'); return false;">Candy</a>
       <a href="#" onclick="showPage('beauty'); return false;">Beauty & Skincare</a>
       <a href="#" onclick="showPage('hairclips'); return false;">Hair Clips</a>
-      <a href="#" onclick="showPage('baskets'); return false;">🧺 Baskets</a>
     </nav>
     <div class="header-actions">
       <button class="icon-btn" onclick="openCart()" title="Shopping Cart">
@@ -720,10 +719,7 @@
       <a class="cat-card" href="#" onclick="showPage('beauty'); return false;"><span class="cat-icon">🧊</span><span class="cat-name">Beauty</span></a>
       <a class="cat-card" href="#" onclick="showPage('hairclips'); return false;"><span class="cat-icon">🩷</span><span class="cat-name">Hair Clips</span></a>
       <a class="cat-card" href="#" onclick="showPage('beauty'); return false;"><span class="cat-icon">💄</span><span class="cat-name">Beauty & Skincare</span></a>
-        <a class="cat-card" href="#" onclick="showPage('baskets'); return false;">
-          <div class="cat-icon">🧺</div>
-          <div class="cat-name">Baskets</div>
-        </a>
+
       <a class="cat-card" href="#" onclick="showPage('beauty'); return false;"><span class="cat-icon">🌟</span><span class="cat-name">New Arrivals</span></a>
       <a class="cat-card" href="#" onclick="showPage('squishies'); return false;"><span class="cat-icon">🎁</span><span class="cat-name">Best Sellers</span></a>
     </div>
@@ -759,7 +755,7 @@
   <!-- SKINCARE SECTION -->
   <section class="products-section" style="background:linear-gradient(180deg,#e8fff0 0%,#f0fff8 100%);max-width:100%;padding:52px 24px;">
     <div style="max-width:1200px;margin:0 auto;">
-      <div class="products-grid" id="home-baskets-grid"></div>
+
     </section>
     <section class="products-section">
       <div class="products-grid" id="home-skincare-grid"></div>
@@ -829,18 +825,7 @@
 </div>
 
 
-<!-- ======== SKINCARE PAGE ======== -->
-<div id="page-baskets" class="page-section">
-  <div class="cat-page-banner" style="background:linear-gradient(135deg,#ffd6e7 0%,#ffe8f4 50%,#ffeef8 100%);">
-    <span class="cat-big-emoji">🧺</span>
-    <h1>Gift Baskets</h1>
-    <p>Curated kawaii bundles — perfect for gifting! 🌸<span class="cat-product-count" id="baskets-count"></span></p>
-    <button class="cat-back-btn" onclick="showPage('home')">← Back to Shop</button>
-  </div>
-  <div class="products-section">
-    <div class="products-grid" id="baskets-grid"></div>
-  </div>
-</div>
+
 
 
 
@@ -905,17 +890,8 @@ const products = {
     { id:'h2',  name:'Ocean Vibes Bundle',           price:15.99, emoji:'🧜', img:'peachyglow_mermaidcore_clip_bundle.png', badge:'BUNDLE',  rating:5, desc:'Kawaii Mermaid Clips + Star Clips + Flower Clips — magical ocean aesthetic! 🧜⭐🌺' },
     { id:'h3',  name:'Y2K Hair Bundle',              price:15.99, emoji:'⭐', img:'peachyglow_star_bundle.png', badge:'BUNDLE',  rating:5, desc:'Star Clips + Butterfly Clips + Mini Bow Clips — full Y2K aesthetic! ⭐🦋🎀✨' },
     { id:'h4',  name:'Flower Power Bundle',          price:12.99, emoji:'🌺', img:'flower_mermaid_clip_bundle.png', badge:'BUNDLE',  rating:5, desc:'Flower Clips + Mermaid Clips — floral girly vibes! 🌸🌺🧜✨' },
-    { id:'h5',  name:'Bow Lover Bundle',             price:15.99, emoji:'🎀', img:'peachyglow_clip_bundle_listing.png', badge:'BUNDLE',  rating:5, desc:'Mini Bow Clips (4pc) + Butterfly Clip + Kawaii Flower Clips — bow obsessed! 🎀🦋🌸' },
+    { id:'h5',  name:'Bow Lover Bundle',             price:15.99, emoji:'🎀', img:'peachyglow_clip_bundle_listing.png', badge:'BUNDLE',  rating:5, desc:'Mini Bow Clips (2pc) + Butterfly Clip + Kawaii Flower Clips — bow obsessed! 🎀🦋🌸' },
     { id:'h6',  name:'Ultimate Hair Clips Bundle',   price:24.99, emoji:'🌸', img:'peachyglow_clip_bundle_5pc.png', badge:'BEST DEAL', rating:5, desc:'All 5 styles — Flower, Mermaid, Butterfly, Star & Mini Bows! Every hair clip we carry 🌸🧜🦋⭐🎀' },
-  ],
-  baskets: [
-    { id:'bk1', name:'Squishy Lover Basket', price:19.99, emoji:'🧺', img:'https://m.media-amazon.com/images/I/71BepKthhRL._AC_UL320_.jpg', badge:'NEW', rating:5, desc:'3 kawaii squishies in a cute gift basket — dumpling, cat paw & random slime! 🥟🌈💕 Perfect gift!' },
-    { id:'bk2', name:'Candy Lover Basket',   price:5.00, emoji:'🍬', img:'https://m.media-amazon.com/images/I/710klcCFE1L._AC_UL320_.jpg', badge:'NEW', rating:5, desc:'3 PeelerZ packs (mango, chili mango & lychee) in a cute basket — sweetest gift! 🍬🥭✨' },
-    { id:'bk5', name:'Kawaii BFF Basket',    price:29.99, emoji:'🌸', img:'https://m.media-amazon.com/images/I/81A8qNn-EPL._AC_UL320_.jpg', badge:'POPULAR', rating:5, desc:'The ultimate gift! Squishy + candy + hair clips + skincare surprise + mini nail set! 🌸💅✨' },
-    { id:'bk6', name:'🍬 Candy Bundle',       price:2.99, emoji:'🍬', img:'https://m.media-amazon.com/images/I/91SJfDcx5kL._SX679_.jpg', badge:'BUNDLE', rating:5, desc:'All 6 PeelerZ flavors + Haribo mini packs — every candy we carry in one bundle! 🥭🍈🍑🍌🍍🌶️🐻 Save vs buying separately!' },
-    { id:'bk7', name:'🥟 Squishy Bundle',     price:29.99, emoji:'🥟', img:'https://m.media-amazon.com/images/I/71g6ftnoXTL._AC_SX679_.jpg', badge:'BUNDLE', rating:5, desc:'Every squishy we carry — dumpling, glitter cube, cat paw, mystery random + random slime! 🥟✨🌈 The ultimate squish haul!' },
-    { id:'bk8', name:'🎀 Hair Clips Bundle',  price:24.99, emoji:'🎀', img:'https://m.media-amazon.com/images/I/41x8z9DotQL._SY300_SX300_QL70_FMwebp_.jpg', badge:'BUNDLE', rating:5, desc:'All 5 hair clip styles — flower, mermaid, butterfly, star & mini bows! 🌸🧜🦋⭐🎀 Something for every vibe!' },
-    { id:'bk9', name:'✨ Beauty Bundle',       price:29.99, emoji:'✨', img:'https://m.media-amazon.com/images/I/61F4-WXzXQL._SX466_.jpg', badge:'BUNDLE', rating:5, desc:'Everything in our Beauty & Skincare section — ice roller, eye mask, hair bonnet & spa headband! 🧊😴🎀 Full glow-up kit!' },
   ],
 };
 
@@ -939,7 +915,7 @@ function cartCount() {
 
 function addToCart(id) {
   // find product
-  const all = [...products.squishies, ...products.candy, ...products.beauty, ...products.hairclips, ...products.baskets];
+  const all = [...products.squishies, ...products.candy, ...products.beauty, ...products.hairclips];
   const p = all.find(x => x.id === id);
   if (!p) return;
   if (cart[id]) cart[id].qty++;
@@ -1037,7 +1013,7 @@ function checkout() {
 }
 
 function buildCheckoutModal() {
-  const all = [...products.squishies, ...products.candy, ...products.beauty, ...products.hairclips, ...products.baskets];
+  const all = [...products.squishies, ...products.candy, ...products.beauty, ...products.hairclips];
   const sub = cartTotal();
   const ship = sub >= 25 ? 0 : 10.00;
   const total = sub + ship;
@@ -1185,19 +1161,12 @@ const bundleContents = {
   b4:[[2,'Silicone ice roller']],
   b5:[[1,'Satin hair bonnet'],[1,'Silk sleep mask'],[1,'Spa headband'],[1,'Silicone ice roller']],
   b6:[[2,'Silicone ice roller'],[1,'Silk eye mask'],[1,'Satin hair bonnet'],[1,'Spa headband']],
-  h1:[[1,'Kawaii flower clips (set)'],[1,'Butterfly clip'],[1,'Mini bow clips (4pc)']],
-  h2:[[1,'Mermaid clips (set)'],[1,'Star clips (set)'],[1,'Flower clips (set)']],
-  h3:[[1,'Star clips (set)'],[1,'Butterfly clips (set)'],[1,'Mini bow clips (4pc)']],
-  h4:[[1,'Flower clips (set)'],[1,'Mermaid clips (set)']],
-  h5:[[1,'Mini bow clips (4pc)'],[1,'Butterfly clip'],[1,'Kawaii flower clips (set)']],
-  h6:[[1,'Flower clips (set)'],[1,'Mermaid clips (set)'],[1,'Butterfly clips (set)'],[1,'Star clips (set)'],[1,'Mini bow clips (4pc)']],
-  bk1:[[1,'Dumpling squishy'],[1,'Cat paw squishy'],[1,'Random slime'],[1,'Gift basket']],
-  bk2:[[1,'Mango PeelerZ pack'],[1,'Chili Mango PeelerZ pack'],[1,'Lychee PeelerZ pack'],[1,'Gift basket']],
-  bk5:[[1,'Assorted squishy'],[1,'Assorted candy pack'],[1,'Assorted hair clips'],[1,'Skincare surprise'],[1,'Mini nail set'],[1,'Gift basket']],
-  bk6:[[1,'Mango PeelerZ pack'],[1,'Chili Mango PeelerZ pack'],[1,'Lychee PeelerZ pack'],[1,'Peach PeelerZ pack'],[1,'Banana PeelerZ pack'],[1,'Pineapple PeelerZ pack'],[1,'Haribo gummy mini pack']],
-  bk7:[[1,'Dumpling squishy'],[1,'Glitter cube squishy'],[1,'Cat paw squishy'],[1,'Mystery random squishy'],[1,'Random slime']],
-  bk8:[[1,'Flower clips (set)'],[1,'Mermaid clips (set)'],[1,'Butterfly clips (set)'],[1,'Star clips (set)'],[1,'Mini bow clips (4pc)']],
-  bk9:[[1,'Silicone ice roller'],[1,'Silk eye mask'],[1,'Satin hair bonnet'],[1,'Spa headband']],
+  h1:[[1,'Kawaii flower clips (2pc)'],[1,'Butterfly clip (2pc)'],[1,'Mini bow clips (2pc)']],
+  h2:[[1,'Mermaid clips (2pc)'],[1,'Star clips (2pc)'],[1,'Flower clips (2pc)']],
+  h3:[[1,'Star clips (2pc)'],[1,'Butterfly clips (2pc)'],[1,'Mini bow clips (2pc)']],
+  h4:[[1,'Flower clips (2pc)'],[1,'Mermaid clips (2pc)']],
+  h5:[[1,'Mini bow clips (2pc)'],[1,'Butterfly clip (2pc)'],[1,'Kawaii flower clips (2pc)']],
+  h6:[[1,'Flower clips (2pc)'],[1,'Mermaid clips (2pc)'],[1,'Butterfly clips (2pc)'],[1,'Star clips (2pc)'],[1,'Mini bow clips (2pc)']],
 };
 
 function renderProduct(p) {
@@ -1247,13 +1216,11 @@ renderGrid('squishies-grid',      products.squishies);
 renderGrid('candy-grid',          products.candy);
 renderGrid('beauty-grid',         products.beauty);
 renderGrid('hairclips-grid',      products.hairclips);
-renderGrid('baskets-grid',       products.baskets);
   
 renderGrid('home-squishies-grid', products.squishies);
 renderGrid('home-candy-grid',     products.candy);
 renderGrid('home-beauty-grid',    products.beauty);
 renderGrid('home-hairclips-grid', products.hairclips);
-renderGrid('home-baskets-grid',  products.baskets);
   
 renderCartItems();
 
@@ -1274,4 +1241,44 @@ renderCartItems();
         <button id="note-yes-btn" onclick="toggleNoteInput(true)" style="flex:1;padding:9px;border-radius:999px;border:2px solid #ff91b4;background:#ff91b4;color:#fff;font-weight:800;font-size:.9rem;cursor:pointer;">Yes please! ♡</button>
         <button id="note-no-btn" onclick="toggleNoteInput(false)" style="flex:1;padding:9px;border-radius:999px;border:2px solid #ffd6e7;background:#fff;color:#b07090;font-weight:800;font-size:.9rem;cursor:pointer;">No thanks</button>
       </div>
-    
+      <div id="note-input-area" style="display:none;">
+        <textarea id="special-note" placeholder="Write your note here… e.g. Happy Birthday Sofia! 🎂" style="width:100%;box-sizing:border-box;border:2px solid #ffd6e7;border-radius:14px;padding:10px 12px;font-size:.85rem;color:#7a3f5e;resize:none;height:80px;font-family:inherit;outline:none;" maxlength="200"></textarea>
+        <p style="font-size:.72rem;color:#c0a0b0;margin:4px 0 0;text-align:right;">max 200 characters</p>
+      </div>
+    </div>
+
+    <div style="display:flex;justify-content:space-between;align-items:center;padding:8px 0;border-top:2px dashed #ffd6e7;">
+      <span style="font-weight:700;color:#7a3f5e;">Shipping</span>
+      <span id="co-shipping" style="font-weight:800;"></span>
+    </div>
+    <div style="display:flex;justify-content:space-between;align-items:center;padding:8px 0 20px;border-bottom:2px solid #ffd6e7;margin-bottom:20px;">
+      <span style="font-weight:900;font-size:1.1rem;color:#7a3f5e;">Total</span>
+      <span id="co-total" style="font-weight:900;font-size:1.3rem;color:#ff91b4;"></span>
+    </div>
+    <p style="font-size:.8rem;color:#7a3f5e;text-align:center;font-weight:700;margin:4px 0 12px;">Pay safely with PayPal 💕</p>
+    <div style="background:#fff0f8;border:2px solid #ffd6e7;border-radius:14px;padding:10px 14px;margin:0 0 12px;text-align:center;">
+      <p style="font-size:.8rem;color:#7a3f5e;font-weight:700;margin:0;">📦 We'll ship to your PayPal address</p>
+      <p style="font-size:.72rem;color:#b07090;margin:4px 0 0;">Just double-check it's correct when you check out! 💕</p>
+    </div>
+    <div id="paypal-button-container" style="min-height:48px;"></div>
+    <p style="font-size:.72rem;color:#b07090;text-align:center;margin-top:10px;">
+      🔒 PayPal also lets you pay with Venmo or any debit/credit card — no PayPal account needed.
+    </p>
+    </div><!-- /co-form -->
+    <div id="co-confirmed" style="display:none;text-align:center;padding:10px 0;">
+      <div style="font-size:3.5rem;">🎉</div>
+      <h3 style="font-family:'Pacifico',cursive;color:#ff91b4;margin:10px 0 6px;">Order Placed!</h3>
+      <p style="color:#7a3f5e;font-weight:700;">Thank you so much! Your cherry cloud goodies are on the way! 💕</p>
+      <button onclick="closeCheckoutModal()" style="margin-top:16px;background:linear-gradient(135deg,#ff91b4,#e8629a);color:#fff;border:none;border-radius:999px;padding:12px 32px;font-weight:800;font-size:1rem;cursor:pointer;">Close ♡</button>
+    </div>
+  </div>
+</div>
+
+
+<!-- TOAST -->
+<div class="toast" id="toast"></div>
+
+<!-- PayPal SDK — LIVE client ID (real payments). -->
+<script src="https://www.paypal.com/sdk/js?client-id=ARXezvRpfxup9YGK7jLv14psm0T7PrbwCeNgadQb_b5xmu_hxsRC5VPGzG0LX2xPg7GOAknYt9HPNuuc&currency=USD&components=buttons&enable-funding=venmo"></script>
+
+<
