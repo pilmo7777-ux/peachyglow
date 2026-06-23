@@ -1065,7 +1065,7 @@ function buildCheckoutModal() {
   // Populate product dropdown
   const prodSel = document.getElementById('ship-product');
   if (prodSel) {
-    prodSel.innerHTML = '<option value="">🛍️ What would you like to order?</option>';
+    prodSel.innerHTML = '<option value="">\u{1F6CD}\uFE0F What would you like to order?</option>';
     all.forEach(p => {
       const opt = document.createElement('option');
       opt.value = p.name;
@@ -1371,4 +1371,20 @@ renderCartItems();
       </p>
     </div>
     </div><!-- /co-form -->
-    <div id="co-confirmed" s
+    <div id="co-confirmed" style="display:none;text-align:center;padding:10px 0;">
+      <div style="font-size:3.5rem;">🎉</div>
+      <h3 style="font-family:'Pacifico',cursive;color:#ff91b4;margin:10px 0 6px;">Order Placed!</h3>
+      <p style="color:#7a3f5e;font-weight:700;">Thank you so much! Your cherry cloud goodies are on the way! 💕</p>
+      <button onclick="closeCheckoutModal()" style="margin-top:16px;background:linear-gradient(135deg,#ff91b4,#e8629a);color:#fff;border:none;border-radius:999px;padding:12px 32px;font-weight:800;font-size:1rem;cursor:pointer;">Close ♡</button>
+    </div>
+  </div>
+</div>
+
+
+<!-- TOAST -->
+<div class="toast" id="toast"></div>
+
+<!-- PayPal SDK — LIVE client ID (real payments). -->
+<script src="https://www.paypal.com/sdk/js?client-id=ARXezvRpfxup9YGK7jLv14psm0T7PrbwCeNgadQb_b5xmu_hxsRC5VPGzG0LX2xPg7GOAknYt9HPNuuc&currency=USD&components=buttons&enable-funding=venmo"></script>
+
+<
