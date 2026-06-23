@@ -1062,18 +1062,6 @@ function buildCheckoutModal() {
   });
   window._cartSummary = itemLines.join('\n');
 
-  // Populate product dropdown
-  const prodSel = document.getElementById('ship-product');
-  if (prodSel) {
-    prodSel.innerHTML = '<option value="">\u{1F6CD}\uFE0F What would you like to order?</option>';
-    all.forEach(p => {
-      const opt = document.createElement('option');
-      opt.value = p.name;
-      opt.textContent = `${p.emoji} ${p.name} — $${p.price.toFixed(2)}`;
-      prodSel.appendChild(opt);
-    });
-  }
-
   // Reset shipping form
   ['ship-name','ship-addr','ship-city','ship-state','ship-zip','ship-email'].forEach(id => {
     const el = document.getElementById(id);
@@ -1327,10 +1315,8 @@ renderCartItems();
     <!-- ── SHIPPING ADDRESS FORM ── -->
     <div id="co-shipping-form" style="background:#fff0f8;border:2px solid #ffd6e7;border-radius:18px;padding:16px 18px;margin-bottom:18px;">
       <p style="font-family:'Pacifico',cursive;color:#ff91b4;font-size:1rem;margin:0 0 12px;">📦 Where should we ship it?</p>
-      <select id="ship-product"
-        style="width:100%;padding:9px 12px;border:2px solid #ffd6e7;border-radius:12px;font-family:inherit;font-size:.88rem;color:#7a3f5e;outline:none;margin-bottom:8px;box-sizing:border-box;background:#fff;">
-        <option value="">🛍️ What would you like to order?</option>
-      </select>
+      <input id="ship-product" type="text" placeholder="What bundle would you like? e.g. Kawaii Squad Bundle 📦" maxlength="120"
+        style="width:100%;padding:9px 12px;border:2px solid #ffd6e7;border-radius:12px;font-family:inherit;font-size:.88rem;color:#7a3f5e;outline:none;margin-bottom:8px;box-sizing:border-box;">
       <input id="ship-name"  type="text"  placeholder="Full name" maxlength="80"
         style="width:100%;padding:9px 12px;border:2px solid #ffd6e7;border-radius:12px;font-family:inherit;font-size:.88rem;color:#7a3f5e;outline:none;margin-bottom:8px;box-sizing:border-box;">
       <input id="ship-addr"  type="text"  placeholder="Street address" maxlength="120"
