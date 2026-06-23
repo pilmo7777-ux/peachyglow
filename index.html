@@ -876,7 +876,7 @@ const products = {
     { id:'c3',  name:'Spicy Sweet Bundle',           price:1.50, emoji:'🌶️', img:'https://m.media-amazon.com/images/I/71w02kIl96L._SX679_.jpg', badge:'🌶️HOT',  rating:4, desc:'Chili Mango + Mango + Pineapple PeelerZ mini packs — sweet meets spicy! 🌶️🥭🍍' },
     { id:'c4',  name:'PeelerZ Full Collection',      price:3.00, emoji:'🍬', img:'https://m.media-amazon.com/images/I/71BF3jdV1IL._SX679_.jpg', badge:'BEST DEAL', rating:5, desc:'All 6 PeelerZ mini packs — Mango, Chili Mango, Lychee, Peach, Banana & Pineapple! 🥭🌶️🍈🍑🍌🍍' },
     { id:'c5',  name:'Candy + Haribo Bundle',        price:2.00, emoji:'🐻', img:'https://m.media-amazon.com/images/I/91SJfDcx5kL._SX679_.jpg', badge:'BUNDLE', rating:5, desc:'3 PeelerZ mini packs + Haribo mini packs — best of both worlds! 🐻🥭🍑🍌' },
-    { id:'c6',  name:'Sweet Starter Bundle',         price:0.99,  emoji:'🍬', img:'https://m.media-amazon.com/images/I/71+SIz2+l4L._SX679_.jpg', badge:'BUNDLE', rating:5, desc:'2 PeelerZ mini packs + Haribo mini packs — perfect intro to our candy shop! 🐻🥭🍑' },
+    { id:'c6',  name:'Sweet Starter Bundle',         price:1.50,  emoji:'🍬', img:'https://m.media-amazon.com/images/I/71+SIz2+l4L._SX679_.jpg', badge:'BUNDLE', rating:5, desc:'2 PeelerZ mini packs + Haribo mini packs — perfect intro to our candy shop! 🐻🥭🍑' },
     { id:'c7',  name:'Ultimate Candy Bundle',        price:7.50, emoji:'🍬', img:'https://m.media-amazon.com/images/I/91SJfDcx5kL._SX679_.jpg', badge:'BEST DEAL', rating:5, desc:'All 6 PeelerZ mini packs + 2 Haribo mini packs — the complete candy haul! 🥭🌶️🍈🍑🍌🍍🐻🐻' },
   ],
   beauty: [
@@ -1054,25 +1054,63 @@ function buildCheckoutModal() {
 
   window._checkoutTotal = total.toFixed(2);
 
-  // ── Render PayPal button for this order ──
+  // Store cart summary for email notification
+  let itemLines = [];
+  Object.entries(cart).forEach(([id, item]) => {
+    const p = all.find(x => x.id === id) || item;
+    if (p) itemLines.push(`${p.name} x${item.qty} = $${(p.price * item.qty).toFixed(2)}`);
+  });
+  window._cartSummary = itemLines.join('\n');
+
+  // Reset shipping form
+  ['ship-name','ship-addr','ship-city','ship-state','ship-zip','ship-email'].forEach(id => {
+    const el = document.getElementById(id);
+    if (el) el.value = '';
+  });
+  document.getElementById('ship-error').style.display = 'none';
+  document.getElementById('co-shipping-form').style.display = 'block';
+  document.getElementById('co-continue-btn').style.display = 'block';
+  document.getElementById('co-payment-section').style.display = 'none';
+}
+
+function proceedToPayment() {
+  const name  = (document.getElementById('ship-name').value  || '').trim();
+  const addr  = (document.getElementById('ship-addr').value  || '').trim();
+  const city  = (document.getElementById('ship-city').value  || '').trim();
+  const state = (document.getElementById('ship-state').value || '').trim();
+  const zip   = (document.getElementById('ship-zip').value   || '').trim();
+  const email = (document.getElementById('ship-email').value || '').trim();
+
+  if (!name || !addr || !city || !state || !zip || !email) {
+    document.getElementById('ship-error').style.display = 'block';
+    return;
+  }
+  document.getElementById('ship-error').style.display = 'none';
+  window._shipInfo = { name, addr, city, state, zip, email };
+
+  // Hide shipping form, show payment
+  document.getElementById('co-shipping-form').style.display = 'none';
+  document.getElementById('co-continue-btn').style.display = 'none';
+  document.getElementById('co-payment-section').style.display = 'block';
+
+  // Render PayPal button
   const ppc = document.getElementById('paypal-button-container');
   if (ppc) {
     ppc.innerHTML = '';
+    const itemDesc = window._cartSummary.replace(/\n/g, ' | ').slice(0, 127);
     if (window.paypal && paypal.Buttons) {
       paypal.Buttons({
         style: { layout: 'vertical', color: 'gold', shape: 'pill', label: 'paypal' },
         createOrder: (data, actions) => actions.order.create({
           purchase_units: [{
-            amount: {
-              value: window._checkoutTotal,
-              currency_code: 'USD'
-            },
-            description: 'cherry cloud order'
+            amount: { value: window._checkoutTotal, currency_code: 'USD' },
+            description: itemDesc
           }]
         }),
-        onApprove: (data, actions) => actions.order.capture().then(() => {
+        onApprove: (data, actions) => actions.order.capture().then((details) => {
           document.getElementById('co-form').style.display = 'none';
           document.getElementById('co-confirmed').style.display = 'block';
+          sendOrderEmail(details);
           cart = {};
           updateBadge();
           renderCartItems();
@@ -1086,6 +1124,31 @@ function buildCheckoutModal() {
       ppc.innerHTML = '<p style="text-align:center;color:#b07090;font-size:.85rem;">Loading payment… please wait a moment and reopen checkout.</p>';
     }
   }
+}
+
+async function sendOrderEmail(paypalDetails) {
+  try {
+    const s = window._shipInfo || {};
+    const note = (document.getElementById('special-note') || {}).value || '(none)';
+    const payerName = (paypalDetails.payer && paypalDetails.payer.name)
+      ? `${paypalDetails.payer.name.given_name} ${paypalDetails.payer.name.surname}` : s.name;
+    const body = {
+      _subject: '🛍️ New Cherry Cloud Order!',
+      Customer_Name: s.name,
+      Ship_To: `${s.addr}, ${s.city}, ${s.state} ${s.zip}`,
+      Customer_Email: s.email,
+      Items_Ordered: window._cartSummary,
+      Order_Total: '$' + window._checkoutTotal,
+      Special_Note: note,
+      PayPal_Payer: payerName,
+      PayPal_Order_ID: paypalDetails.id || 'N/A'
+    };
+    await fetch('https://formsubmit.co/ajax/pilmo7777@gmail.com', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+      body: JSON.stringify(body)
+    });
+  } catch(e) { console.log('Email send failed silently', e); }
 }
 
 
@@ -1247,23 +1310,48 @@ renderCartItems();
       </div>
     </div>
 
-    <div style="display:flex;justify-content:space-between;align-items:center;padding:8px 0;border-top:2px dashed #ffd6e7;">
-      <span style="font-weight:700;color:#7a3f5e;">Shipping</span>
-      <span id="co-shipping" style="font-weight:800;"></span>
+    <!-- ── SHIPPING ADDRESS FORM ── -->
+    <div id="co-shipping-form" style="background:#fff0f8;border:2px solid #ffd6e7;border-radius:18px;padding:16px 18px;margin-bottom:18px;">
+      <p style="font-family:'Pacifico',cursive;color:#ff91b4;font-size:1rem;margin:0 0 12px;">📦 Where should we ship it?</p>
+      <input id="ship-name"  type="text"  placeholder="Full name" maxlength="80"
+        style="width:100%;padding:9px 12px;border:2px solid #ffd6e7;border-radius:12px;font-family:inherit;font-size:.88rem;color:#7a3f5e;outline:none;margin-bottom:8px;box-sizing:border-box;">
+      <input id="ship-addr"  type="text"  placeholder="Street address" maxlength="120"
+        style="width:100%;padding:9px 12px;border:2px solid #ffd6e7;border-radius:12px;font-family:inherit;font-size:.88rem;color:#7a3f5e;outline:none;margin-bottom:8px;box-sizing:border-box;">
+      <div style="display:flex;gap:8px;margin-bottom:8px;">
+        <input id="ship-city"  type="text"  placeholder="City"  maxlength="60"
+          style="flex:2;padding:9px 12px;border:2px solid #ffd6e7;border-radius:12px;font-family:inherit;font-size:.88rem;color:#7a3f5e;outline:none;box-sizing:border-box;">
+        <input id="ship-state" type="text"  placeholder="State" maxlength="2"
+          style="flex:1;padding:9px 12px;border:2px solid #ffd6e7;border-radius:12px;font-family:inherit;font-size:.88rem;color:#7a3f5e;outline:none;box-sizing:border-box;">
+        <input id="ship-zip"   type="text"  placeholder="ZIP"   maxlength="10"
+          style="flex:1;padding:9px 12px;border:2px solid #ffd6e7;border-radius:12px;font-family:inherit;font-size:.88rem;color:#7a3f5e;outline:none;box-sizing:border-box;">
+      </div>
+      <input id="ship-email" type="email" placeholder="Your email (for order confirmation)" maxlength="100"
+        style="width:100%;padding:9px 12px;border:2px solid #ffd6e7;border-radius:12px;font-family:inherit;font-size:.88rem;color:#7a3f5e;outline:none;box-sizing:border-box;">
+      <p id="ship-error" style="color:#e8629a;font-size:.78rem;font-weight:700;margin:8px 0 0;display:none;">⚠️ Please fill in all fields!</p>
     </div>
-    <div style="display:flex;justify-content:space-between;align-items:center;padding:8px 0 20px;border-bottom:2px solid #ffd6e7;margin-bottom:20px;">
-      <span style="font-weight:900;font-size:1.1rem;color:#7a3f5e;">Total</span>
-      <span id="co-total" style="font-weight:900;font-size:1.3rem;color:#ff91b4;"></span>
+
+    <!-- ── CONTINUE TO PAYMENT BUTTON ── -->
+    <button id="co-continue-btn" onclick="proceedToPayment()"
+      style="width:100%;padding:13px;background:linear-gradient(135deg,#ff91b4,#e8629a);color:#fff;border:none;border-radius:999px;font-weight:900;font-size:1rem;cursor:pointer;margin-bottom:16px;font-family:inherit;">
+      Continue to Payment 💕
+    </button>
+
+    <!-- ── PAYMENT SECTION (hidden until shipping filled) ── -->
+    <div id="co-payment-section" style="display:none;">
+      <div style="display:flex;justify-content:space-between;align-items:center;padding:8px 0;border-top:2px dashed #ffd6e7;">
+        <span style="font-weight:700;color:#7a3f5e;">Shipping</span>
+        <span id="co-shipping" style="font-weight:800;"></span>
+      </div>
+      <div style="display:flex;justify-content:space-between;align-items:center;padding:8px 0 20px;border-bottom:2px solid #ffd6e7;margin-bottom:20px;">
+        <span style="font-weight:900;font-size:1.1rem;color:#7a3f5e;">Total</span>
+        <span id="co-total" style="font-weight:900;font-size:1.3rem;color:#ff91b4;"></span>
+      </div>
+      <p style="font-size:.8rem;color:#7a3f5e;text-align:center;font-weight:700;margin:4px 0 12px;">Pay safely with PayPal 💕</p>
+      <div id="paypal-button-container" style="min-height:48px;"></div>
+      <p style="font-size:.72rem;color:#b07090;text-align:center;margin-top:10px;">
+        🔒 PayPal also lets you pay with Venmo or any debit/credit card — no PayPal account needed.
+      </p>
     </div>
-    <p style="font-size:.8rem;color:#7a3f5e;text-align:center;font-weight:700;margin:4px 0 12px;">Pay safely with PayPal 💕</p>
-    <div style="background:#fff0f8;border:2px solid #ffd6e7;border-radius:14px;padding:10px 14px;margin:0 0 12px;text-align:center;">
-      <p style="font-size:.8rem;color:#7a3f5e;font-weight:700;margin:0;">📦 We'll ship to your PayPal address</p>
-      <p style="font-size:.72rem;color:#b07090;margin:4px 0 0;">Just double-check it's correct when you check out! 💕</p>
-    </div>
-    <div id="paypal-button-container" style="min-height:48px;"></div>
-    <p style="font-size:.72rem;color:#b07090;text-align:center;margin-top:10px;">
-      🔒 PayPal also lets you pay with Venmo or any debit/credit card — no PayPal account needed.
-    </p>
     </div><!-- /co-form -->
     <div id="co-confirmed" style="display:none;text-align:center;padding:10px 0;">
       <div style="font-size:3.5rem;">🎉</div>
