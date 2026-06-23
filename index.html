@@ -1062,6 +1062,18 @@ function buildCheckoutModal() {
   });
   window._cartSummary = itemLines.join('\n');
 
+  // Populate product dropdown
+  const prodSel = document.getElementById('ship-product');
+  if (prodSel) {
+    prodSel.innerHTML = '<option value="">🛍️ What would you like to order?</option>';
+    all.forEach(p => {
+      const opt = document.createElement('option');
+      opt.value = p.name;
+      opt.textContent = `${p.emoji} ${p.name} — $${p.price.toFixed(2)}`;
+      prodSel.appendChild(opt);
+    });
+  }
+
   // Reset shipping form
   ['ship-name','ship-addr','ship-city','ship-state','ship-zip','ship-email'].forEach(id => {
     const el = document.getElementById(id);
@@ -1074,19 +1086,20 @@ function buildCheckoutModal() {
 }
 
 function proceedToPayment() {
-  const name  = (document.getElementById('ship-name').value  || '').trim();
-  const addr  = (document.getElementById('ship-addr').value  || '').trim();
-  const city  = (document.getElementById('ship-city').value  || '').trim();
-  const state = (document.getElementById('ship-state').value || '').trim();
-  const zip   = (document.getElementById('ship-zip').value   || '').trim();
-  const email = (document.getElementById('ship-email').value || '').trim();
+  const product = (document.getElementById('ship-product').value || '').trim();
+  const name    = (document.getElementById('ship-name').value    || '').trim();
+  const addr    = (document.getElementById('ship-addr').value    || '').trim();
+  const city    = (document.getElementById('ship-city').value    || '').trim();
+  const state   = (document.getElementById('ship-state').value   || '').trim();
+  const zip     = (document.getElementById('ship-zip').value     || '').trim();
+  const email   = (document.getElementById('ship-email').value   || '').trim();
 
-  if (!name || !addr || !city || !state || !zip || !email) {
+  if (!product || !name || !addr || !city || !state || !zip || !email) {
     document.getElementById('ship-error').style.display = 'block';
     return;
   }
   document.getElementById('ship-error').style.display = 'none';
-  window._shipInfo = { name, addr, city, state, zip, email };
+  window._shipInfo = { product, name, addr, city, state, zip, email };
 
   // Hide shipping form, show payment
   document.getElementById('co-shipping-form').style.display = 'none';
@@ -1135,6 +1148,7 @@ async function sendOrderEmail(paypalDetails) {
     const body = {
       _subject: '🛍️ New Cherry Cloud Order!',
       Customer_Name: s.name,
+      Bundle_Ordered: s.product,
       Ship_To: `${s.addr}, ${s.city}, ${s.state} ${s.zip}`,
       Customer_Email: s.email,
       Items_Ordered: window._cartSummary,
@@ -1313,6 +1327,10 @@ renderCartItems();
     <!-- ── SHIPPING ADDRESS FORM ── -->
     <div id="co-shipping-form" style="background:#fff0f8;border:2px solid #ffd6e7;border-radius:18px;padding:16px 18px;margin-bottom:18px;">
       <p style="font-family:'Pacifico',cursive;color:#ff91b4;font-size:1rem;margin:0 0 12px;">📦 Where should we ship it?</p>
+      <select id="ship-product"
+        style="width:100%;padding:9px 12px;border:2px solid #ffd6e7;border-radius:12px;font-family:inherit;font-size:.88rem;color:#7a3f5e;outline:none;margin-bottom:8px;box-sizing:border-box;background:#fff;">
+        <option value="">🛍️ What would you like to order?</option>
+      </select>
       <input id="ship-name"  type="text"  placeholder="Full name" maxlength="80"
         style="width:100%;padding:9px 12px;border:2px solid #ffd6e7;border-radius:12px;font-family:inherit;font-size:.88rem;color:#7a3f5e;outline:none;margin-bottom:8px;box-sizing:border-box;">
       <input id="ship-addr"  type="text"  placeholder="Street address" maxlength="120"
@@ -1353,20 +1371,4 @@ renderCartItems();
       </p>
     </div>
     </div><!-- /co-form -->
-    <div id="co-confirmed" style="display:none;text-align:center;padding:10px 0;">
-      <div style="font-size:3.5rem;">🎉</div>
-      <h3 style="font-family:'Pacifico',cursive;color:#ff91b4;margin:10px 0 6px;">Order Placed!</h3>
-      <p style="color:#7a3f5e;font-weight:700;">Thank you so much! Your cherry cloud goodies are on the way! 💕</p>
-      <button onclick="closeCheckoutModal()" style="margin-top:16px;background:linear-gradient(135deg,#ff91b4,#e8629a);color:#fff;border:none;border-radius:999px;padding:12px 32px;font-weight:800;font-size:1rem;cursor:pointer;">Close ♡</button>
-    </div>
-  </div>
-</div>
-
-
-<!-- TOAST -->
-<div class="toast" id="toast"></div>
-
-<!-- PayPal SDK — LIVE client ID (real payments). -->
-<script src="https://www.paypal.com/sdk/js?client-id=ARXezvRpfxup9YGK7jLv14psm0T7PrbwCeNgadQb_b5xmu_hxsRC5VPGzG0LX2xPg7GOAknYt9HPNuuc&currency=USD&components=buttons&enable-funding=venmo"></script>
-
-<
+    <div id="co-confirmed" s
