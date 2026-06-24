@@ -770,6 +770,19 @@
     </div>
   </section>
 
+  <!-- SHIPPING FORM CTA -->
+  <section style="background:linear-gradient(135deg,#ffd6e7,#ffe8f4,#ffd6f4);padding:48px 24px;text-align:center;">
+    <div style="max-width:560px;margin:0 auto;">
+      <div style="font-size:2.2rem;margin-bottom:6px;">🍒📦</div>
+      <h2 style="color:#7a3f5e;font-size:1.7rem;margin:0 0 8px;">Where should we ship it to?</h2>
+      <p style="color:#9a5577;font-size:1rem;margin:0 0 22px;">Tell us your shipping details and which bundle you'd like — we'll send it your way! 💕</p>
+      <a href="https://docs.google.com/forms/d/e/1FAIpQLScTyHsDpzfkJNG8t6T1RbOUouxpPo9vDlQ66v5s6iPD0P_bkQ/viewform" target="_blank" rel="noopener"
+         style="display:inline-block;background:#ff91b4;color:#fff;font-weight:800;font-size:1.05rem;padding:14px 34px;border-radius:50px;text-decoration:none;box-shadow:0 6px 18px rgba(255,145,180,.45);">
+        Fill out shipping form →
+      </a>
+    </div>
+  </section>
+
 </div><!-- /home -->
 
 <!-- ======== SQUISHIES PAGE ======== -->
@@ -1062,35 +1075,34 @@ function buildCheckoutModal() {
   });
   window._cartSummary = itemLines.join('\n');
 
-  // Reset shipping form
-  ['ship-name','ship-addr','ship-city','ship-state','ship-zip','ship-email'].forEach(id => {
-    const el = document.getElementById(id);
-    if (el) el.value = '';
-  });
-  document.getElementById('ship-error').style.display = 'none';
-  document.getElementById('co-shipping-form').style.display = 'block';
   document.getElementById('co-continue-btn').style.display = 'block';
   document.getElementById('co-payment-section').style.display = 'none';
+
+  // Lock checkout until the shipping form is confirmed
+  const shipConfirm = document.getElementById('ship-confirm');
+  if (shipConfirm) shipConfirm.checked = false;
+  toggleContinueBtn();
+}
+
+function toggleContinueBtn() {
+  const cb  = document.getElementById('ship-confirm');
+  const btn = document.getElementById('co-continue-btn');
+  if (!btn) return;
+  const ok = cb && cb.checked;
+  btn.disabled = !ok;
+  btn.style.opacity = ok ? '1' : '.5';
+  btn.style.cursor  = ok ? 'pointer' : 'not-allowed';
 }
 
 function proceedToPayment() {
-  const product = (document.getElementById('ship-product').value || '').trim();
-  const name    = (document.getElementById('ship-name').value    || '').trim();
-  const addr    = (document.getElementById('ship-addr').value    || '').trim();
-  const city    = (document.getElementById('ship-city').value    || '').trim();
-  const state   = (document.getElementById('ship-state').value   || '').trim();
-  const zip     = (document.getElementById('ship-zip').value     || '').trim();
-  const email   = (document.getElementById('ship-email').value   || '').trim();
-
-  if (!product || !name || !addr || !city || !state || !zip || !email) {
-    document.getElementById('ship-error').style.display = 'block';
+  const cb = document.getElementById('ship-confirm');
+  if (!cb || !cb.checked) {
+    showToast('Please fill out the shipping form first 📦');
     return;
   }
-  document.getElementById('ship-error').style.display = 'none';
-  window._shipInfo = { product, name, addr, city, state, zip, email };
+  window._shipInfo = {};
 
-  // Hide shipping form, show payment
-  document.getElementById('co-shipping-form').style.display = 'none';
+  // Show payment (shipping details are collected via the Google Form)
   document.getElementById('co-continue-btn').style.display = 'none';
   document.getElementById('co-payment-section').style.display = 'block';
 
@@ -1132,13 +1144,12 @@ async function sendOrderEmail(paypalDetails) {
     const s = window._shipInfo || {};
     const note = (document.getElementById('special-note') || {}).value || '(none)';
     const payerName = (paypalDetails.payer && paypalDetails.payer.name)
-      ? `${paypalDetails.payer.name.given_name} ${paypalDetails.payer.name.surname}` : s.name;
+      ? `${paypalDetails.payer.name.given_name} ${paypalDetails.payer.name.surname}` : '(via PayPal)';
     const body = {
       _subject: '🛍️ New Cherry Cloud Order!',
-      Customer_Name: s.name,
-      Bundle_Ordered: s.product,
-      Ship_To: `${s.addr}, ${s.city}, ${s.state} ${s.zip}`,
-      Customer_Email: s.email,
+      Customer_Name: payerName || '(via PayPal)',
+      Ship_To: '📦 Check the PeachyGlow Shipping Form responses sheet for the address',
+      Customer_Email: (paypalDetails.payer && paypalDetails.payer.email_address) || '(via PayPal)',
       Items_Ordered: window._cartSummary,
       Order_Total: '$' + window._checkoutTotal,
       Special_Note: note,
@@ -1312,31 +1323,23 @@ renderCartItems();
       </div>
     </div>
 
-    <!-- ── SHIPPING ADDRESS FORM ── -->
-    <div id="co-shipping-form" style="background:#fff0f8;border:2px solid #ffd6e7;border-radius:18px;padding:16px 18px;margin-bottom:18px;">
-      <p style="font-family:'Pacifico',cursive;color:#ff91b4;font-size:1rem;margin:0 0 12px;">📦 Where should we ship it?</p>
-      <input id="ship-product" type="text" placeholder="What bundle would you like? e.g. Kawaii Squad Bundle 📦" maxlength="120"
-        style="width:100%;padding:9px 12px;border:2px solid #ffd6e7;border-radius:12px;font-family:inherit;font-size:.88rem;color:#7a3f5e;outline:none;margin-bottom:8px;box-sizing:border-box;">
-      <input id="ship-name"  type="text"  placeholder="Full name" maxlength="80"
-        style="width:100%;padding:9px 12px;border:2px solid #ffd6e7;border-radius:12px;font-family:inherit;font-size:.88rem;color:#7a3f5e;outline:none;margin-bottom:8px;box-sizing:border-box;">
-      <input id="ship-addr"  type="text"  placeholder="Street address" maxlength="120"
-        style="width:100%;padding:9px 12px;border:2px solid #ffd6e7;border-radius:12px;font-family:inherit;font-size:.88rem;color:#7a3f5e;outline:none;margin-bottom:8px;box-sizing:border-box;">
-      <div style="display:flex;gap:8px;margin-bottom:8px;">
-        <input id="ship-city"  type="text"  placeholder="City"  maxlength="60"
-          style="flex:2;padding:9px 12px;border:2px solid #ffd6e7;border-radius:12px;font-family:inherit;font-size:.88rem;color:#7a3f5e;outline:none;box-sizing:border-box;">
-        <input id="ship-state" type="text"  placeholder="State" maxlength="2"
-          style="flex:1;padding:9px 12px;border:2px solid #ffd6e7;border-radius:12px;font-family:inherit;font-size:.88rem;color:#7a3f5e;outline:none;box-sizing:border-box;">
-        <input id="ship-zip"   type="text"  placeholder="ZIP"   maxlength="10"
-          style="flex:1;padding:9px 12px;border:2px solid #ffd6e7;border-radius:12px;font-family:inherit;font-size:.88rem;color:#7a3f5e;outline:none;box-sizing:border-box;">
-      </div>
-      <input id="ship-email" type="email" placeholder="Your email (for order confirmation)" maxlength="100"
-        style="width:100%;padding:9px 12px;border:2px solid #ffd6e7;border-radius:12px;font-family:inherit;font-size:.88rem;color:#7a3f5e;outline:none;box-sizing:border-box;">
-      <p id="ship-error" style="color:#e8629a;font-size:.78rem;font-weight:700;margin:8px 0 0;display:none;">⚠️ Please fill in all fields!</p>
+    <!-- ── SHIPPING FORM LINK ── -->
+    <div style="background:#fff0f8;border:2px solid #ffd6e7;border-radius:18px;padding:16px 18px;margin-bottom:18px;text-align:center;">
+      <p style="font-family:'Pacifico',cursive;color:#ff91b4;font-size:1rem;margin:0 0 8px;">📦 Where should we ship it?</p>
+      <p style="font-size:.82rem;color:#7a3f5e;margin:0 0 12px;">Fill out our quick shipping form with your address &amp; which bundle you'd like — takes 30 seconds! 💕</p>
+      <a href="https://docs.google.com/forms/d/e/1FAIpQLScTyHsDpzfkJNG8t6T1RbOUouxpPo9vDlQ66v5s6iPD0P_bkQ/viewform" target="_blank" rel="noopener"
+        style="display:inline-block;background:#ff91b4;color:#fff;font-weight:800;font-size:.92rem;padding:11px 28px;border-radius:999px;text-decoration:none;box-shadow:0 4px 14px rgba(255,145,180,.4);">
+        Open shipping form →
+      </a>
+      <label style="display:flex;align-items:center;gap:8px;justify-content:center;margin-top:14px;font-size:.82rem;color:#7a3f5e;font-weight:700;cursor:pointer;">
+        <input type="checkbox" id="ship-confirm" onchange="toggleContinueBtn()" style="width:18px;height:18px;accent-color:#ff91b4;cursor:pointer;">
+        I've filled out the shipping form ✓
+      </label>
     </div>
 
     <!-- ── CONTINUE TO PAYMENT BUTTON ── -->
-    <button id="co-continue-btn" onclick="proceedToPayment()"
-      style="width:100%;padding:13px;background:linear-gradient(135deg,#ff91b4,#e8629a);color:#fff;border:none;border-radius:999px;font-weight:900;font-size:1rem;cursor:pointer;margin-bottom:16px;font-family:inherit;">
+    <button id="co-continue-btn" onclick="proceedToPayment()" disabled
+      style="width:100%;padding:13px;background:linear-gradient(135deg,#ff91b4,#e8629a);color:#fff;border:none;border-radius:999px;font-weight:900;font-size:1rem;cursor:not-allowed;opacity:.5;margin-bottom:16px;font-family:inherit;">
       Continue to Payment 💕
     </button>
 
@@ -1373,4 +1376,4 @@ renderCartItems();
 <!-- PayPal SDK — LIVE client ID (real payments). -->
 <script src="https://www.paypal.com/sdk/js?client-id=ARXezvRpfxup9YGK7jLv14psm0T7PrbwCeNgadQb_b5xmu_hxsRC5VPGzG0LX2xPg7GOAknYt9HPNuuc&currency=USD&components=buttons&enable-funding=venmo"></script>
 
-<
+<                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 
