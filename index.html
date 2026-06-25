@@ -1169,7 +1169,7 @@ async function sendShippingEmail() {
   try {
     const f = shipFields();
     f._subject = '📦 New shipping details — Cherry Cloud';
-    await fetch('https://formsubmit.co/ajax/kaitarapillay@gmail.com', {
+    await fetch('https://formsubmit.co/ajax/pilmo7777@gmail.com', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
       body: JSON.stringify(f)
@@ -1183,7 +1183,7 @@ async function sendOrderEmail(paypalDetails) {
     const f = shipFields();
     f._subject = '🛍️ New PAID Cherry Cloud Order!';
     f.PayPal_Order_ID = (paypalDetails && paypalDetails.id) || 'N/A';
-    await fetch('https://formsubmit.co/ajax/kaitarapillay@gmail.com', {
+    await fetch('https://formsubmit.co/ajax/pilmo7777@gmail.com', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
       body: JSON.stringify(f)
