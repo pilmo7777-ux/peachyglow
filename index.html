@@ -666,6 +666,7 @@
       <a href="#" onclick="showPage('candy'); return false;">Candy</a>
       <a href="#" onclick="showPage('beauty'); return false;">Beauty & Skincare</a>
       <a href="#" onclick="showPage('hairclips'); return false;">Hair Clips</a>
+      <a href="#" onclick="showPage('blog'); return false;">Blog</a>
     </nav>
     <div class="header-actions">
       <button class="icon-btn" onclick="openCart()" title="Shopping Cart">
@@ -718,7 +719,7 @@
       <a class="cat-card" href="#" onclick="showPage('candy'); return false;"><span class="cat-icon">🍬</span><span class="cat-name">Candy</span></a>
       <a class="cat-card" href="#" onclick="showPage('beauty'); return false;"><span class="cat-icon">🧊</span><span class="cat-name">Beauty</span></a>
       <a class="cat-card" href="#" onclick="showPage('hairclips'); return false;"><span class="cat-icon">🩷</span><span class="cat-name">Hair Clips</span></a>
-      <a class="cat-card" href="#" onclick="showPage('beauty'); return false;"><span class="cat-icon">💄</span><span class="cat-name">Beauty & Skincare</span></a>
+      <a class="cat-card" href="#" onclick="showPage('blog'); return false;"><span class="cat-icon">📝</span><span class="cat-name">Blog</span></a>
 
       <a class="cat-card" href="#" onclick="showPage('beauty'); return false;"><span class="cat-icon">🌟</span><span class="cat-name">New Arrivals</span></a>
       <a class="cat-card" href="#" onclick="showPage('squishies'); return false;"><span class="cat-icon">🎁</span><span class="cat-name">Best Sellers</span></a>
@@ -828,6 +829,101 @@
 
 
 
+
+<!-- ======== BLOG PAGE ======== -->
+<style>
+  #page-blog .blog-wrap { max-width: 780px; margin: 0 auto; padding: 0 20px 50px; }
+  #page-blog .blog-intro {
+    font-size: 1.12rem; font-weight: 600; color: #7a3f5e; background: #fff;
+    border-radius: 20px; padding: 22px 26px; box-shadow: 0 6px 20px #ffb6c130; margin: 8px 0 10px;
+  }
+  #page-blog .blog-featured {
+    display:block; width:100%; max-width:520px; margin: 0 auto 18px;
+    border-radius: 26px; box-shadow: 0 12px 36px #ff8fb840;
+  }
+  #page-blog h2 { font-size: 1.55rem; color: #e8629a; margin: 34px 0 10px; }
+  #page-blog .bundle {
+    background:#fff; border-radius:24px; padding:22px 24px; margin:20px 0;
+    box-shadow:0 8px 24px #ffb6c130; border:2px solid #ffd6e7;
+  }
+  #page-blog .bundle h3 { font-size:1.3rem; color:#b48ce0; margin-bottom:8px; }
+  #page-blog .bundle p { margin-bottom:10px; }
+  #page-blog ul { list-style:none; margin:0 0 6px 2px; }
+  #page-blog li { position:relative; padding:3px 0 3px 28px; }
+  #page-blog li::before { content:"🍒"; position:absolute; left:0; top:3px; }
+  #page-blog .callout {
+    background:linear-gradient(135deg,#ffd6e7,#fff); border:2px dashed #ff91b4;
+    border-radius:24px; padding:24px; margin:28px 0; text-align:center;
+  }
+  #page-blog .callout h2 { margin-top:0; }
+  #page-blog .blog-cta {
+    background:#fff; border-radius:28px; padding:32px 24px; margin:30px 0;
+    text-align:center; box-shadow:0 8px 24px #ffb6c130;
+  }
+  #page-blog .blog-cta img { width:200px; max-width:65%; border-radius:16px; }
+</style>
+<div id="page-blog" class="page-section">
+  <div class="cat-page-banner" style="background:linear-gradient(135deg,#ffe0ef,#fff0f8,#ffe0f4);">
+    <span class="cat-big-emoji">📝</span>
+    <h1>cherry cloud Blog</h1>
+    <p>Cute gift guides, trends & self-care tips — all things kawaii! 🍒✨</p>
+    <button class="cat-back-btn" onclick="showPage('home')">← Back to Shop</button>
+  </div>
+
+  <div class="blog-wrap">
+    <h2 style="text-align:center;margin-top:28px;">Top 5 Cute Gift Bundles Teens Love (Under $10!)</h2>
+    <p style="text-align:center;color:#b07090;font-weight:700;margin-bottom:18px;">Gift Guides · 4 min read</p>
+    <img class="blog-featured" src="ultimate_squishy_bundle_square.png" alt="Cute pastel squishy gift bundle from cherry cloud" />
+
+    <p class="blog-intro">If you're looking for an affordable, adorable gift, cute bundles are one of the best choices. Teens love small surprises, pastel colors, and fun items they can use every day. At cherry cloud, we mix squishies, candy, hair clips, and skincare minis — all for under $10!</p>
+
+    <h2>⭐ Why Cute Bundles Are So Popular</h2>
+    <p>Teens love getting a little box of surprises instead of just one thing. Bundles feel exciting to open, they look amazing in photos, and they're easy on your allowance. They're perfect for birthdays, sleepovers, holidays, or just making someone smile.</p>
+
+    <div class="bundle">
+      <h3>🍬 1. Squishy Surprise Bundles</h3>
+      <p>Squishies are soft, colorful, and super satisfying to squeeze. They help with stress and fidgeting. Our squishy bundles include:</p>
+      <ul><li>Kawaii pastel squishies</li><li>Mini candy mix</li><li>A surprise charm</li></ul>
+    </div>
+
+    <div class="bundle">
+      <h3>🎀 2. Aesthetic Hair Clip Sets</h3>
+      <p>Pastel hair clips are trending everywhere — TikTok, Pinterest, and Instagram. Our bundles include:</p>
+      <ul><li>Soft-girl aesthetic clips</li><li>Dreamy pastel colors</li><li>Cute shapes and styles</li></ul>
+    </div>
+
+    <div class="bundle">
+      <h3>🍭 3. Candy Gift Packs</h3>
+      <p>Everyone loves candy, especially when it's colorful and fun. Our candy bundles include:</p>
+      <ul><li>Gummies</li><li>Sweet treats</li><li>Mini surprise snacks</li></ul>
+    </div>
+
+    <div class="bundle">
+      <h3>✨ 4. Teen Skincare Mini Sets</h3>
+      <p>Self-care is huge right now, and teens love a cute glow-up routine. Our beauty sets include:</p>
+      <ul><li>Ice rollers</li><li>Silk eye masks</li><li>Spa headbands</li></ul>
+    </div>
+
+    <div class="bundle">
+      <h3>🎁 5. Kawaii Mystery Bundles</h3>
+      <p>Mystery bundles are one of our most popular items because they're exciting and fun. Each one includes:</p>
+      <ul><li>Squishies</li><li>Candy</li><li>Hair accessories</li><li>Surprise items</li></ul>
+      <p>Every bundle is different, so it feels like opening a present!</p>
+    </div>
+
+    <div class="callout">
+      <h2>💗 Why cherry cloud Bundles Make the Best Gifts</h2>
+      <p>Affordable, cute &amp; aesthetic, perfect for teens, great for birthdays &amp; holidays, and filled with fun surprises. If you love kawaii items, pastel colors, and sweet treats, cherry cloud is the perfect place to shop!</p>
+    </div>
+
+    <div class="blog-cta">
+      <h2>🍒 Want More Cute Bundles?</h2>
+      <p>Scan the QR code or tap below to see all our bundles!</p>
+      <img src="cherrycloud_qr.png" alt="Scan to shop cherry cloud" /><br />
+      <button class="cat-back-btn" onclick="showPage('home')" style="margin-top:16px;">Shop the bundles ♡</button>
+    </div>
+  </div>
+</div>
 
 <!-- FOOTER (shared) -->
 <footer>
@@ -1087,9 +1183,9 @@ function proceedToPayment() {
   document.getElementById('ship-error').style.display = 'none';
   window._shipInfo = { bundle, name, addr, city, state, country, zip, email };
 
-  // Email this order immediately + send it to the spreadsheet
+  // Email this order immediately + send it to the spreadsheet (not paid yet)
   sendShippingEmail();
-  sendToSheet();
+  sendToSheet('❌ NOT PAID YET');
 
   // Show payment
   document.getElementById('co-continue-btn').style.display = 'none';
@@ -1114,6 +1210,7 @@ function proceedToPayment() {
           document.getElementById('co-form').style.display = 'none';
           document.getElementById('co-confirmed').style.display = 'block';
           sendOrderEmail(details);
+          sendToSheet('✅ PAID');
           cart = {};
           updateBadge();
           renderCartItems();
@@ -1144,9 +1241,10 @@ function shipFields() {
 }
 
 // Send the submission straight into the Google Sheet (customers never see Google)
-function sendToSheet() {
+function sendToSheet(paymentStatus) {
   try {
     const s = window._shipInfo || {};
+    const note = (document.getElementById('special-note') || {}).value || '';
     const fd = new URLSearchParams();
     fd.append('entry.1938254905', s.name    || ''); // Full name
     fd.append('entry.1043342046', s.bundle  || ''); // Which bundle(s)
@@ -1156,6 +1254,8 @@ function sendToSheet() {
     fd.append('entry.514828331',  s.zip     || ''); // ZIP code
     fd.append('entry.491371372',  s.country || ''); // Country
     fd.append('entry.814202113',  s.email   || ''); // Email
+    fd.append('entry.661152461',  paymentStatus || '❌ NOT PAID YET'); // Payment status
+    fd.append('entry.1661722612', note); // Special note
     fetch('https://docs.google.com/forms/d/e/1FAIpQLScTyHsDpzfkJNG8t6T1RbOUouxpPo9vDlQ66v5s6iPD0P_bkQ/formResponse', {
       method: 'POST',
       mode: 'no-cors',
@@ -1349,65 +1449,4 @@ renderCartItems();
       </div>
       <div id="note-input-area" style="display:none;">
         <textarea id="special-note" placeholder="Write your note here… e.g. Happy Birthday Sofia! 🎂" style="width:100%;box-sizing:border-box;border:2px solid #ffd6e7;border-radius:14px;padding:10px 12px;font-size:.85rem;color:#7a3f5e;resize:none;height:80px;font-family:inherit;outline:none;" maxlength="200"></textarea>
-        <p style="font-size:.72rem;color:#c0a0b0;margin:4px 0 0;text-align:right;">max 200 characters</p>
-      </div>
-    </div>
-
-    <!-- ── WHERE SHOULD WE SHIP IT? (on-site form, before payment) ── -->
-    <div id="co-shipping-form" style="background:#fff0f8;border:2px solid #ffd6e7;border-radius:18px;padding:16px 18px;margin-bottom:18px;">
-      <p style="font-family:'Pacifico',cursive;color:#ff91b4;font-size:1.05rem;margin:0 0 4px;">📦 Where should we ship it?</p>
-      <p style="font-size:.8rem;color:#7a3f5e;margin:0 0 12px;">Tell us what you'd like &amp; where to send it 💕</p>
-      <input id="ship-name" type="text" placeholder="Full name" maxlength="80" style="width:100%;padding:9px 12px;border:2px solid #ffd6e7;border-radius:12px;font-family:inherit;font-size:.88rem;color:#7a3f5e;outline:none;margin-bottom:8px;box-sizing:border-box;">
-      <input id="ship-addr" type="text" placeholder="Street address (where you live)" maxlength="120" style="width:100%;padding:9px 12px;border:2px solid #ffd6e7;border-radius:12px;font-family:inherit;font-size:.88rem;color:#7a3f5e;outline:none;margin-bottom:8px;box-sizing:border-box;">
-      <div style="display:flex;gap:8px;margin-bottom:8px;">
-        <input id="ship-city" type="text" placeholder="City" maxlength="60" style="flex:2;padding:9px 12px;border:2px solid #ffd6e7;border-radius:12px;font-family:inherit;font-size:.88rem;color:#7a3f5e;outline:none;box-sizing:border-box;min-width:0;">
-        <input id="ship-state" type="text" placeholder="State / Province" maxlength="40" style="flex:1;padding:9px 12px;border:2px solid #ffd6e7;border-radius:12px;font-family:inherit;font-size:.88rem;color:#7a3f5e;outline:none;box-sizing:border-box;min-width:0;">
-      </div>
-      <div style="display:flex;gap:8px;margin-bottom:8px;">
-        <input id="ship-zip" type="text" placeholder="ZIP code" maxlength="10" style="flex:1;padding:9px 12px;border:2px solid #ffd6e7;border-radius:12px;font-family:inherit;font-size:.88rem;color:#7a3f5e;outline:none;box-sizing:border-box;min-width:0;">
-        <input id="ship-country" type="text" placeholder="Country" maxlength="56" style="flex:1;padding:9px 12px;border:2px solid #ffd6e7;border-radius:12px;font-family:inherit;font-size:.88rem;color:#7a3f5e;outline:none;box-sizing:border-box;min-width:0;">
-      </div>
-      <input id="ship-email" type="email" placeholder="Your email (for order updates)" maxlength="100" style="width:100%;padding:9px 12px;border:2px solid #ffd6e7;border-radius:12px;font-family:inherit;font-size:.88rem;color:#7a3f5e;outline:none;box-sizing:border-box;">
-      <p id="ship-error" style="color:#e8629a;font-size:.78rem;font-weight:700;margin:8px 0 0;display:none;">⚠️ Please fill in everything, with a valid ZIP and email!</p>
-    </div>
-
-    <!-- ── CONTINUE TO PAYMENT BUTTON ── -->
-    <button id="co-continue-btn" onclick="proceedToPayment()"
-      style="width:100%;padding:13px;background:linear-gradient(135deg,#ff91b4,#e8629a);color:#fff;border:none;border-radius:999px;font-weight:900;font-size:1rem;cursor:pointer;margin-bottom:16px;font-family:inherit;">
-      Continue to Payment 💕
-    </button>
-
-    <!-- ── PAYMENT SECTION (hidden until shipping filled) ── -->
-    <div id="co-payment-section" style="display:none;">
-      <div style="display:flex;justify-content:space-between;align-items:center;padding:8px 0;border-top:2px dashed #ffd6e7;">
-        <span style="font-weight:700;color:#7a3f5e;">Shipping</span>
-        <span id="co-shipping" style="font-weight:800;"></span>
-      </div>
-      <div style="display:flex;justify-content:space-between;align-items:center;padding:8px 0 20px;border-bottom:2px solid #ffd6e7;margin-bottom:20px;">
-        <span style="font-weight:900;font-size:1.1rem;color:#7a3f5e;">Total</span>
-        <span id="co-total" style="font-weight:900;font-size:1.3rem;color:#ff91b4;"></span>
-      </div>
-      <p style="font-size:.8rem;color:#7a3f5e;text-align:center;font-weight:700;margin:4px 0 12px;">Pay safely with PayPal 💕</p>
-      <div id="paypal-button-container" style="min-height:48px;"></div>
-      <p style="font-size:.72rem;color:#b07090;text-align:center;margin-top:10px;">
-        🔒 PayPal also lets you pay with Venmo or any debit/credit card — no PayPal account needed.
-      </p>
-    </div>
-    </div><!-- /co-form -->
-    <div id="co-confirmed" style="display:none;text-align:center;padding:10px 0;">
-      <div style="font-size:3.5rem;">🎉</div>
-      <h3 style="font-family:'Pacifico',cursive;color:#ff91b4;margin:10px 0 6px;">Order Placed!</h3>
-      <p style="color:#7a3f5e;font-weight:700;">Thank you so much! Your cherry cloud goodies are on the way! 💕</p>
-      <button onclick="closeCheckoutModal()" style="margin-top:16px;background:linear-gradient(135deg,#ff91b4,#e8629a);color:#fff;border:none;border-radius:999px;padding:12px 32px;font-weight:800;font-size:1rem;cursor:pointer;">Close ♡</button>
-    </div>
-  </div>
-</div>
-
-
-<!-- TOAST -->
-<div class="toast" id="toast"></div>
-
-<!-- PayPal SDK — LIVE client ID (real payments). -->
-<script src="https://www.paypal.com/sdk/js?client-id=ARXezvRpfxup9YGK7jLv14psm0T7PrbwCeNgadQb_b5xmu_hxsRC5VPGzG0LX2xPg7GOAknYt9HPNuuc&currency=USD&components=buttons&enable-funding=venmo"></script>
-
-<
+        <p style="font-size:.72rem;color:#c0a0b0;margin:4px 0 0;text-align:right;">ma
