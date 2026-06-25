@@ -1063,7 +1063,7 @@ function buildCheckoutModal() {
   window._cartSummary = itemLines.join('\n');
 
   // Reset the shipping form
-  ['ship-bundle','ship-name','ship-addr','ship-city','ship-state','ship-country','ship-zip','ship-email'].forEach(id => {
+  ['ship-name','ship-addr','ship-city','ship-state','ship-country','ship-zip','ship-email'].forEach(id => {
     const el = document.getElementById(id); if (el) el.value = '';
   });
   const se = document.getElementById('ship-error'); if (se) se.style.display = 'none';
@@ -1074,12 +1074,13 @@ function buildCheckoutModal() {
 
 function proceedToPayment() {
   const g = id => (document.getElementById(id).value || '').trim();
-  const bundle=g('ship-bundle'), name=g('ship-name'), addr=g('ship-addr'),
+  const name=g('ship-name'), addr=g('ship-addr'),
         city=g('ship-city'), state=g('ship-state'), country=g('ship-country'),
         zip=g('ship-zip'), email=g('ship-email');
+  const bundle = window._cartSummary || '';
   const zipOk = /^[0-9]{4,10}$/.test(zip);
   const emailOk = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
-  if (!bundle||!name||!addr||!city||!state||!country||!zip||!email||!zipOk||!emailOk) {
+  if (!name||!addr||!city||!state||!country||!zip||!email||!zipOk||!emailOk) {
     document.getElementById('ship-error').style.display = 'block';
     return;
   }
@@ -1168,7 +1169,8 @@ function sendToSheet() {
 async function sendShippingEmail() {
   try {
     const f = shipFields();
-    f._subject = '📦 New shipping details — Cherry Cloud';
+    f.Payment_Status = '❌ NOT PAID YET';
+    f._subject = '❌ NOT PAID — Cherry Cloud shipping info';
     await fetch('https://formsubmit.co/ajax/pilmo7777@gmail.com', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
@@ -1181,7 +1183,8 @@ async function sendShippingEmail() {
 async function sendOrderEmail(paypalDetails) {
   try {
     const f = shipFields();
-    f._subject = '🛍️ New PAID Cherry Cloud Order!';
+    f.Payment_Status = '✅ PAID';
+    f._subject = '✅ PAID — Cherry Cloud order!';
     f.PayPal_Order_ID = (paypalDetails && paypalDetails.id) || 'N/A';
     await fetch('https://formsubmit.co/ajax/pilmo7777@gmail.com', {
       method: 'POST',
@@ -1354,7 +1357,6 @@ renderCartItems();
     <div id="co-shipping-form" style="background:#fff0f8;border:2px solid #ffd6e7;border-radius:18px;padding:16px 18px;margin-bottom:18px;">
       <p style="font-family:'Pacifico',cursive;color:#ff91b4;font-size:1.05rem;margin:0 0 4px;">📦 Where should we ship it?</p>
       <p style="font-size:.8rem;color:#7a3f5e;margin:0 0 12px;">Tell us what you'd like &amp; where to send it 💕</p>
-      <input id="ship-bundle" type="text" placeholder="Which bundle(s) would you like? 🍒" maxlength="140" style="width:100%;padding:9px 12px;border:2px solid #ffd6e7;border-radius:12px;font-family:inherit;font-size:.88rem;color:#7a3f5e;outline:none;margin-bottom:8px;box-sizing:border-box;">
       <input id="ship-name" type="text" placeholder="Full name" maxlength="80" style="width:100%;padding:9px 12px;border:2px solid #ffd6e7;border-radius:12px;font-family:inherit;font-size:.88rem;color:#7a3f5e;outline:none;margin-bottom:8px;box-sizing:border-box;">
       <input id="ship-addr" type="text" placeholder="Street address (where you live)" maxlength="120" style="width:100%;padding:9px 12px;border:2px solid #ffd6e7;border-radius:12px;font-family:inherit;font-size:.88rem;color:#7a3f5e;outline:none;margin-bottom:8px;box-sizing:border-box;">
       <div style="display:flex;gap:8px;margin-bottom:8px;">
