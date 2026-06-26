@@ -1209,6 +1209,7 @@ function proceedToPayment() {
         onApprove: (data, actions) => actions.order.capture().then((details) => {
           document.getElementById('co-form').style.display = 'none';
           document.getElementById('co-confirmed').style.display = 'block';
+          resetRating();
           sendOrderEmail(details);
           sendToSheet('✅ PAID');
           cart = {};
@@ -1314,6 +1315,48 @@ function toggleNoteInput(show) {
 function closeCheckoutModal() {
   document.getElementById('checkout-modal').style.display = 'none';
   document.body.style.overflow = '';
+}
+
+// ─── STAR RATING (after payment) ──────────────────────────────────────────────
+let _selectedRating = 0;
+function paintStars(n) {
+  for (let i = 1; i <= 5; i++) {
+    const s = document.getElementById('star-' + i);
+    if (!s) continue;
+    s.textContent = i <= n ? '★' : '☆';
+    s.style.color = i <= n ? '#ffb300' : '#ffd6e7';
+  }
+}
+function hoverRating(n) { paintStars(n || _selectedRating); }
+function setRating(n) {
+  _selectedRating = n;
+  paintStars(n);
+  document.getElementById('rating-submit-wrap').style.display = 'block';
+}
+function resetRating() {
+  _selectedRating = 0;
+  paintStars(0);
+  const w = document.getElementById('rating-submit-wrap'); if (w) w.style.display = 'none';
+  const c = document.getElementById('rating-comment'); if (c) c.value = '';
+  const box = document.getElementById('rating-box'); if (box) box.style.display = 'block';
+  const th = document.getElementById('rating-thanks'); if (th) th.style.display = 'none';
+}
+async function submitRating() {
+  if (!_selectedRating) { showToast('Tap the stars to rate! ⭐'); return; }
+  const msg = (document.getElementById('rating-comment') || {}).value || '';
+  try {
+    await fetch('https://formsubmit.co/ajax/pilmo7777@gmail.com', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+      body: JSON.stringify({
+        _subject: '⭐ New Cherry Cloud rating (' + _selectedRating + '/5)',
+        Rating: _selectedRating + ' / 5 stars',
+        Comment: msg || '(none)'
+      })
+    });
+  } catch (e) { console.log('Rating send failed silently', e); }
+  document.getElementById('rating-box').style.display = 'none';
+  document.getElementById('rating-thanks').style.display = 'block';
 }
 
 // ─── TOAST ───────────────────────────────────────────────────────────────────
@@ -1449,4 +1492,81 @@ renderCartItems();
       </div>
       <div id="note-input-area" style="display:none;">
         <textarea id="special-note" placeholder="Write your note here… e.g. Happy Birthday Sofia! 🎂" style="width:100%;box-sizing:border-box;border:2px solid #ffd6e7;border-radius:14px;padding:10px 12px;font-size:.85rem;color:#7a3f5e;resize:none;height:80px;font-family:inherit;outline:none;" maxlength="200"></textarea>
-        <p style="font-size:.72rem;color:#c0a0b0;margin:4px 0 0;text-align:right;">ma
+        <p style="font-size:.72rem;color:#c0a0b0;margin:4px 0 0;text-align:right;">max 200 characters</p>
+      </div>
+    </div>
+
+    <!-- ── WHERE SHOULD WE SHIP IT? (on-site form, before payment) ── -->
+    <div id="co-shipping-form" style="background:#fff0f8;border:2px solid #ffd6e7;border-radius:18px;padding:16px 18px;margin-bottom:18px;">
+      <p style="font-family:'Pacifico',cursive;color:#ff91b4;font-size:1.05rem;margin:0 0 4px;">📦 Where should we ship it?</p>
+      <p style="font-size:.8rem;color:#7a3f5e;margin:0 0 12px;">Tell us what you'd like &amp; where to send it 💕</p>
+      <input id="ship-name" type="text" placeholder="Full name" maxlength="80" style="width:100%;padding:9px 12px;border:2px solid #ffd6e7;border-radius:12px;font-family:inherit;font-size:.88rem;color:#7a3f5e;outline:none;margin-bottom:8px;box-sizing:border-box;">
+      <input id="ship-addr" type="text" placeholder="Street address (where you live)" maxlength="120" style="width:100%;padding:9px 12px;border:2px solid #ffd6e7;border-radius:12px;font-family:inherit;font-size:.88rem;color:#7a3f5e;outline:none;margin-bottom:8px;box-sizing:border-box;">
+      <div style="display:flex;gap:8px;margin-bottom:8px;">
+        <input id="ship-city" type="text" placeholder="City" maxlength="60" style="flex:2;padding:9px 12px;border:2px solid #ffd6e7;border-radius:12px;font-family:inherit;font-size:.88rem;color:#7a3f5e;outline:none;box-sizing:border-box;min-width:0;">
+        <input id="ship-state" type="text" placeholder="State / Province" maxlength="40" style="flex:1;padding:9px 12px;border:2px solid #ffd6e7;border-radius:12px;font-family:inherit;font-size:.88rem;color:#7a3f5e;outline:none;box-sizing:border-box;min-width:0;">
+      </div>
+      <div style="display:flex;gap:8px;margin-bottom:8px;">
+        <input id="ship-zip" type="text" placeholder="ZIP code" maxlength="10" style="flex:1;padding:9px 12px;border:2px solid #ffd6e7;border-radius:12px;font-family:inherit;font-size:.88rem;color:#7a3f5e;outline:none;box-sizing:border-box;min-width:0;">
+        <input id="ship-country" type="text" placeholder="Country" maxlength="56" style="flex:1;padding:9px 12px;border:2px solid #ffd6e7;border-radius:12px;font-family:inherit;font-size:.88rem;color:#7a3f5e;outline:none;box-sizing:border-box;min-width:0;">
+      </div>
+      <input id="ship-email" type="email" placeholder="Your email (for order updates)" maxlength="100" style="width:100%;padding:9px 12px;border:2px solid #ffd6e7;border-radius:12px;font-family:inherit;font-size:.88rem;color:#7a3f5e;outline:none;box-sizing:border-box;">
+      <p id="ship-error" style="color:#e8629a;font-size:.78rem;font-weight:700;margin:8px 0 0;display:none;">⚠️ Please fill in everything, with a valid ZIP and email!</p>
+    </div>
+
+    <!-- ── CONTINUE TO PAYMENT BUTTON ── -->
+    <button id="co-continue-btn" onclick="proceedToPayment()"
+      style="width:100%;padding:13px;background:linear-gradient(135deg,#ff91b4,#e8629a);color:#fff;border:none;border-radius:999px;font-weight:900;font-size:1rem;cursor:pointer;margin-bottom:16px;font-family:inherit;">
+      Continue to Payment 💕
+    </button>
+
+    <!-- ── PAYMENT SECTION (hidden until shipping filled) ── -->
+    <div id="co-payment-section" style="display:none;">
+      <div style="display:flex;justify-content:space-between;align-items:center;padding:8px 0;border-top:2px dashed #ffd6e7;">
+        <span style="font-weight:700;color:#7a3f5e;">Shipping</span>
+        <span id="co-shipping" style="font-weight:800;"></span>
+      </div>
+      <div style="display:flex;justify-content:space-between;align-items:center;padding:8px 0 20px;border-bottom:2px solid #ffd6e7;margin-bottom:20px;">
+        <span style="font-weight:900;font-size:1.1rem;color:#7a3f5e;">Total</span>
+        <span id="co-total" style="font-weight:900;font-size:1.3rem;color:#ff91b4;"></span>
+      </div>
+      <p style="font-size:.8rem;color:#7a3f5e;text-align:center;font-weight:700;margin:4px 0 12px;">Pay safely with PayPal 💕</p>
+      <div id="paypal-button-container" style="min-height:48px;"></div>
+      <p style="font-size:.72rem;color:#b07090;text-align:center;margin-top:10px;">
+        🔒 PayPal also lets you pay with Venmo or any debit/credit card — no PayPal account needed.
+      </p>
+    </div>
+    </div><!-- /co-form -->
+    <div id="co-confirmed" style="display:none;text-align:center;padding:10px 0;">
+      <div style="font-size:3.5rem;">🎉</div>
+      <h3 style="font-family:'Pacifico',cursive;color:#ff91b4;margin:10px 0 6px;">Order Placed!</h3>
+      <p style="color:#7a3f5e;font-weight:700;">Thank you so much! Your cherry cloud goodies are on the way! 💕</p>
+
+      <!-- ── STAR RATING ── -->
+      <div id="rating-box" style="background:#fff0f8;border:2px solid #ffd6e7;border-radius:18px;padding:18px 18px 16px;margin:18px 0 6px;">
+        <p style="font-family:'Pacifico',cursive;color:#ff91b4;font-size:1.05rem;margin:0 0 10px;">How was your experience? ⭐</p>
+        <div id="star-row" style="font-size:2.4rem;line-height:1;letter-spacing:6px;cursor:pointer;user-select:none;">
+          <span id="star-1" onclick="setRating(1)" onmouseover="hoverRating(1)" onmouseout="hoverRating(0)" style="color:#ffd6e7;">☆</span><span id="star-2" onclick="setRating(2)" onmouseover="hoverRating(2)" onmouseout="hoverRating(0)" style="color:#ffd6e7;">☆</span><span id="star-3" onclick="setRating(3)" onmouseover="hoverRating(3)" onmouseout="hoverRating(0)" style="color:#ffd6e7;">☆</span><span id="star-4" onclick="setRating(4)" onmouseover="hoverRating(4)" onmouseout="hoverRating(0)" style="color:#ffd6e7;">☆</span><span id="star-5" onclick="setRating(5)" onmouseover="hoverRating(5)" onmouseout="hoverRating(0)" style="color:#ffd6e7;">☆</span>
+        </div>
+        <div id="rating-submit-wrap" style="display:none;margin-top:12px;">
+          <textarea id="rating-comment" placeholder="Tell us what you loved! (optional) 💕" maxlength="250" style="width:100%;box-sizing:border-box;border:2px solid #ffd6e7;border-radius:12px;padding:9px 11px;font-size:.84rem;color:#7a3f5e;resize:none;height:64px;font-family:inherit;outline:none;"></textarea>
+          <button onclick="submitRating()" style="margin-top:10px;background:linear-gradient(135deg,#ff91b4,#e8629a);color:#fff;border:none;border-radius:999px;padding:10px 28px;font-weight:800;font-size:.95rem;cursor:pointer;">Send my rating ♡</button>
+        </div>
+      </div>
+      <div id="rating-thanks" style="display:none;background:#fff0f8;border:2px solid #ffd6e7;border-radius:18px;padding:16px;margin:18px 0 6px;">
+        <p style="color:#7a3f5e;font-weight:800;margin:0;">Thank you for your rating! 🌸 It means so much to us!</p>
+      </div>
+
+      <button onclick="closeCheckoutModal()" style="margin-top:16px;background:linear-gradient(135deg,#ff91b4,#e8629a);color:#fff;border:none;border-radius:999px;padding:12px 32px;font-weight:800;font-size:1rem;cursor:pointer;">Close ♡</button>
+    </div>
+  </div>
+</div>
+
+
+<!-- TOAST -->
+<div class="toast" id="toast"></div>
+
+<!-- PayPal SDK — LIVE client ID (real payments). -->
+<script src="https://www.paypal.com/sdk/js?client-id=ARXezvRpfxup9YGK7jLv14psm0T7PrbwCeNgadQb_b5xmu_hxsRC5VPGzG0LX2xPg7GOAknYt9HPNuuc&currency=USD&components=buttons&enable-funding=venmo"></script>
+
+<
